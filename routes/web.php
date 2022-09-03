@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfessorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('/professors', ProfessorController::class)->only([
+    "create", "index", "store"
+]);
+
+// Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
