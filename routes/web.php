@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/alunos/novo', 'App\Http\Controllers\AlunosController@create');
+Route::post('/alunos/novo', 'App\Http\Controllers\AlunosController@store')->name('cadastrar_aluno');
