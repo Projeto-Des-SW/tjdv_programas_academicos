@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfessorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +46,10 @@ Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@destro
 // Criar e armazenar
 Route::get('/servidores/new', 'App\Http\Controllers\ServidorController@create');
 Route::post('/servidores/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
+
+
+Route::resource('/professores', ProfessorController::class)->only([
+    "create", "index", "store"
+]);
+
+// Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");

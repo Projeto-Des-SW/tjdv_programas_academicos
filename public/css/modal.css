@@ -1,0 +1,29 @@
+/* css padrão para todos o modais */
+.modal-create{
+  text-align: center;
+}
+
+.input-modal-create{
+  padding: 10px;
+  background: #FFFFFF;
+  box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+};
+
+input {
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  text-align: center;
+}
+
+.submit-button{
+  background: #143BC2;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
