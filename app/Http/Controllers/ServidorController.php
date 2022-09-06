@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servidor;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class ServidorController extends Controller
@@ -32,10 +34,10 @@ class ServidorController extends Controller
         $usuario->save();
 
         $servidor = new Servidor();
-        $aluno->nome = $request->input('nome');
-        $aluno->cpf = $request->input('cpf');
-        $aluno->id_user = $usuario->id;
-        $aluno->save();
+        $servidor->nome = $request->input('nome');
+        $servidor->cpf = $request->input('cpf');
+        $servidor->id_user = $usuario->id;
+        $servidor->save();
 
         return "Servidor cadastrado com sucesso!";
     }
