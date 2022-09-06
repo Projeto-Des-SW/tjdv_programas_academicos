@@ -14,7 +14,7 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        return view("professors.index");
+        return view("professores.index");
     }
 
     /**
@@ -24,7 +24,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        return view("professors.create");
+        return view("professores.create");
     }
 
     /**
@@ -37,7 +37,7 @@ class ProfessorController extends Controller
     {
         $params = $request->except(array('_token'));
         if (Professor::create($params)) {
-            return redirect(route("professors.index"));
+            return redirect(route("professores.index"));
         }
     }
 

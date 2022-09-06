@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("templates.app")
 
 @section("body")
   <h1>Hey there</h1>
@@ -8,6 +8,8 @@
     Launch demo modal
   </button>
 
-  @include("professors.componentes.modal_create")
+  
+
+  @include("professores.componentes.modal_create")
 
 @endsection
