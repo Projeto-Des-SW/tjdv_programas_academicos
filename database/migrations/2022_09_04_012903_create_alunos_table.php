@@ -14,16 +14,17 @@ class CreateAlunosTable extends Migration
     public function up()
     {
         Schema::create('alunos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 100);
-            $table->string('cpf', 11)->unique();
-            $table->string('email', 50)->unique();
-            $table->string('senha', 50);
-            $table->string('curso', 50);
-            $table->string('semestre_entrada', 20);
-            $table->unsignedBigInteger('id_aluno', 20);
-            $table->foreign('id_aluno')->references('id')->on('users');
+            $table->increments('id');
+            $table->string('nome');
+            $table->string('cpf')->unique();
+            $table->string('curso');
+            $table->string('semestre_entrada');
+            $table->integer('id_user')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('alunos', function($table) {
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
