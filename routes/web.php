@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Rotas de autenticacao
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -39,3 +40,8 @@ Route::post('/alunos/edit/{id}', 'App\Http\Controllers\AlunosController@update')
 //Remover
 Route::get('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@delete');
 Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@destroy')->name('excluir_aluno');
+
+// Rotas de servidor
+// Criar e armazenar
+Route::get('/servidor/new', 'App\Http\Controllers\ServidorController@create');
+Route::post('/servidor/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
