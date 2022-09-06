@@ -13,7 +13,7 @@ class CreateServidorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('servidores', function (Blueprint $table) {
+        Schema::create('servidors', function (Blueprint $table) {
             $table->id();
             $table->string("nome", 100);
             $table->string("cpf", 11)->unique();
@@ -21,7 +21,7 @@ class CreateServidorsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('servidores', function($table) {
+        Schema::table('servidors', function($table) {
             $table->foreign('id_user')->references('id')->on('users');
         });
     }
@@ -33,6 +33,6 @@ class CreateServidorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servidores');
+        Schema::dropIfExists('servidors');
     }
 }
