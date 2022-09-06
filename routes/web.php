@@ -26,3 +26,16 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//Routes Aluno
+//Criar e Armazenar
+Route::get('/alunos/new', 'App\Http\Controllers\AlunosController@create');
+Route::post('/alunos/new', 'App\Http\Controllers\AlunosController@store')->name('cadastrar_aluno');
+//Visualizar
+Route::get('/alunos/show/{id}', 'App\Http\Controllers\AlunosController@show');
+//Editar e atualizar
+Route::get('/alunos/edit/{id}', 'App\Http\Controllers\AlunosController@edit');
+Route::post('/alunos/edit/{id}', 'App\Http\Controllers\AlunosController@update')->name('editar_aluno');
+//Remover
+Route::get('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@delete');
+Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@destroy')->name('excluir_aluno');
