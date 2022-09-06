@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Aluno;
+use App\Models\User;
 
 class AlunosController extends Controller
 {
@@ -12,14 +14,23 @@ class AlunosController extends Controller
     }
 
     public function store(Request $request){
-        Aluno::create([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            'email' => $request->email,
-            'senha' => $request->senha,
-            'curso' => $request->curso,
-            'semestre_entrada' => $request->semestre_entrada,
-        ]);
+
+        $usuario = new User();
+        $usuario->name = $request->input('nome');
+        $usuario->email = $request->input('email');
+        $usuario->password = Hash::make($request->input('senha'));
+        $usuario->tipo_usuario = 'aluno';
+        $usuario->status = 'ativo';
+        $usuario->save();
+
+        $aluno = new Aluno();
+        $aluno->nome = $request->input('nome');
+        $aluno->curso = $request->input('curso');
+        $aluno->semestre_entrada = $request->input('semestre_entrada'); 
+        $aluno->cpf = $request->input('cpf');
+        $aluno->id_user = $usuario->id;
+        $aluno->save();
+
         return "Aluno criado com Sucesso!";
     }
 
