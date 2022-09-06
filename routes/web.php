@@ -43,5 +43,5 @@ Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunosController@destro
 
 // Rotas de servidor
 // Criar e armazenar
-Route::get('/servidor/new', 'App\Http\Controllers\ServidorController@create');
-Route::post('/servidor/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
+Route::get('/servidores/new', 'App\Http\Controllers\ServidorController@create');
+Route::post('/servidores/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
