@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Aluno;
 use App\Models\User;
 
-class AlunosController extends Controller
+class AlunoController extends Controller
 {
     public function create() {
         return view('alunos.create');
