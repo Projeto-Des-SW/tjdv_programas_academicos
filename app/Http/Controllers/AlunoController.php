@@ -70,4 +70,10 @@ class AlunoController extends Controller
         return "Aluno excluido com Sucesso";
     }
 
+    public function index()
+    {
+        $aluno = Aluno::all();
+        return view("alunos.index", ['aluno' => $aluno]);
+    }
+
 }

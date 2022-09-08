@@ -16,7 +16,8 @@ class ServidorController extends Controller
      */
     public function index()
     {
-        return view("servidores.index");
+        $servidores = Servidor::all();
+        return view("servidores.index", compact('servidores'));
     }
 
     public function create() {
@@ -48,9 +49,10 @@ class ServidorController extends Controller
      * @param  \App\Models\Servidor  $servidor
      * @return \Illuminate\Http\Response
      */
-    public function show(Servidor $servidor)
+    public function show($id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        return view('servidores.show', ['servidor' => $servidor]);
     }
 
     /**
