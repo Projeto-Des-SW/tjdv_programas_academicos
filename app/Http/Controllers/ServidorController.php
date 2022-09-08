@@ -16,7 +16,8 @@ class ServidorController extends Controller
      */
     public function index()
     {
-        return view("servidores.index");
+        $servidores = Servidor::all();
+        return view("servidores.index", compact('servidores'));
     }
 
     public function create() {
