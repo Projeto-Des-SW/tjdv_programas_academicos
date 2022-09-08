@@ -35,6 +35,7 @@ Route::get('/alunos/new', 'App\Http\Controllers\AlunoController@create');
 Route::post('/alunos/new', 'App\Http\Controllers\AlunoController@store')->name('cadastrar_aluno');
 // Visualizar
 Route::get('/alunos/show/{id}', 'App\Http\Controllers\AlunoController@show');
+Route::get('/alunos/index', 'App\Http\Controllers\AlunoController@index');
 // Editar e atualizar
 Route::get('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@edit');
 Route::post('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@update')->name('editar_aluno');
