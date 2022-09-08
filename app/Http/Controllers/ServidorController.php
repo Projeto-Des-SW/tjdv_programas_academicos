@@ -49,9 +49,10 @@ class ServidorController extends Controller
      * @param  \App\Models\Servidor  $servidor
      * @return \Illuminate\Http\Response
      */
-    public function show(Servidor $servidor)
+    public function show($id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        return view('servidores.show', ['servidor' => $servidor]);
     }
 
     /**
