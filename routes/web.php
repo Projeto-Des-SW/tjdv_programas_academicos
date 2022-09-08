@@ -29,16 +29,16 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//Routes Aluno
-//Criar e Armazenar
+// Rotas de aluno
+// Criar e armazenar
 Route::get('/alunos/new', 'App\Http\Controllers\AlunoController@create');
 Route::post('/alunos/new', 'App\Http\Controllers\AlunoController@store')->name('cadastrar_aluno');
-//Visualizar
+// Visualizar
 Route::get('/alunos/show/{id}', 'App\Http\Controllers\AlunoController@show');
-//Editar e atualizar
+// Editar e atualizar
 Route::get('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@edit');
 Route::post('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@update')->name('editar_aluno');
-//Remover
+// Remover
 Route::get('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@delete');
 Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@destroy')->name('excluir_aluno');
 
@@ -46,7 +46,9 @@ Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@destroy
 // Criar e armazenar
 Route::get('/servidores/new', 'App\Http\Controllers\ServidorController@create');
 Route::post('/servidores/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
-
+// Visualizar
+Route::get('/servidores/index', 'App\Http\Controllers\ServidorController@index');
+Route::get('/servidores/show/{id}', 'App\Http\Controllers\ServidorController@show');
 
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"

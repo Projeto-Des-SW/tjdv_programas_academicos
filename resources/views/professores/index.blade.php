@@ -4,7 +4,7 @@
   <div class="container">
     <h1><strong>Professores</strong></h1>
     <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-align: left">
-      <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar Professor">
+      <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar professor">
     </a>
   
     @include("professores.componentes.modal_create")
@@ -12,7 +12,7 @@
     @if (sizeof($users) == 0)
       <div class="empty">
         <p>
-          Não há professores Cadastrados
+          Não há professores cadastrados
         </p>
       </div>
     @else
@@ -29,8 +29,8 @@
                 </p>
               </div>
               <div class="col-sm- 3 col-md-2 opcoes">
-                <img src="{{asset("images/editar.png")}}" class="add-button" alt="Adicionar Professor">
-                <img src="{{asset("images/excluir.png")}}" class="add-button" alt="Adicionar Professor" >
+                <img src="{{asset("images/editar.png")}}" class="add-button" alt="Adicionar professor">
+                <img src="{{asset("images/excluir.png")}}" class="add-button" alt="Adicionar professor" >
               </div>
             </div>
           </div>
