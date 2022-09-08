@@ -50,6 +50,9 @@ Route::post('/servidores/new', 'App\Http\Controllers\ServidorController@store')-
 // Visualizar
 Route::get('/servidores/index', 'App\Http\Controllers\ServidorController@index');
 Route::get('/servidores/show/{id}', 'App\Http\Controllers\ServidorController@show');
+// Editar e atualizar
+Route::get('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@edit');
+Route::post('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@update')->name('editar_servidor');
 
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"
