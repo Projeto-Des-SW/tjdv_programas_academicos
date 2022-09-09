@@ -12,6 +12,9 @@
         <label for="">CPF</label><br>
         <input type="text" name="cpf" value="{{ $aluno->cpf }}"><br>
 
+        <label for="">E-mail</label><br>
+        <input type="text" name="email" value="{{ $aluno->email }}"><br>
+
         <label for="">Curso</label><br>
         <input type="text" name="curso" value="{{ $aluno->curso }}"><br>
 

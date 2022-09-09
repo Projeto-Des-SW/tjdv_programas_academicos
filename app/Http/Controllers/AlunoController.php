@@ -50,8 +50,6 @@ class AlunoController extends Controller
         $aluno->update([
             'nome' => $request->nome,
             'cpf' => $request->cpf,
-            'email' => $request->email,
-            'senha' => $request->senha,
             'curso' => $request->curso,
             'semestre_entrada' => $request->semestre_entrada,
         ]);

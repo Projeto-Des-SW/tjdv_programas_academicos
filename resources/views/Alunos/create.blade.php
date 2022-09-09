@@ -14,6 +14,12 @@
             <label>Cpf</label><br>
             <input type="text" name="cpf"><br>
 
+            <label>E-mail</label><br>
+            <input type="text" name="email"><br>
+
+            <label>Senha</label><br>
+            <input type="password" name="senha"><br>
+
             <label>Curso</label><br>
             <input type="text" name="curso"><br>
 
