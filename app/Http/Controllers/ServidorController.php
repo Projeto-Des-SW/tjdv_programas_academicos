@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 
 class ServidorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $servidores = Servidor::all();
@@ -43,47 +39,30 @@ class ServidorController extends Controller
         return "Servidor cadastrado com sucesso!";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $servidor = Servidor::findOrFail($id);
         return view('servidores.show', ['servidor' => $servidor]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Servidor $servidor)
+    public function edit($id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        return view('servidores.edit', ['servidor' => $servidor]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Servidor $servidor)
+    public function update(Request $request, $id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+
+        $servidor->update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            // Alterar e-mail e senha de user
+        ]);
+        return "Servidor atualizado com sucesso!";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Servidor $servidor)
     {
         //
