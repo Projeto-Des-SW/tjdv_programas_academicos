@@ -11,7 +11,7 @@
             <label for="">Nome</label><br/>
             <input type="text" name="nome" value="{{ $aluno->nome }}"><br/>
 
-            <label for="">Cpf</label><br>
+            <label for="">CPF</label><br>
             <input type="text" name="cpf" value="{{ $aluno->cpf }}"><br>
 
             <label for="">Curso</label><br>
