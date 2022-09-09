@@ -9,14 +9,11 @@ use Illuminate\Http\Request;
 
 class ServidorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view("servidores.index");
+        $servidores = Servidor::all();
+        return view("servidores.index", compact('servidores'));
     }
 
     public function create() {
@@ -42,46 +39,36 @@ class ServidorController extends Controller
         return "Servidor cadastrado com sucesso!";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Servidor $servidor)
+    public function show($id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        return view('servidores.show', ['servidor' => $servidor]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Servidor $servidor)
+    public function edit($id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        return view('servidores.edit', ['servidor' => $servidor]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Servidor $servidor)
+    public function update(Request $request, $id)
     {
-        //
+        $servidor = Servidor::findOrFail($id);
+        $servidor->update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf
+        ]);
+
+        $user = $servidor->retornar_usuario($servidor->id_user);
+        $user->update([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => $request->senha,
+        ]);
+
+        return "Servidor atualizado com sucesso!";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Servidor  $servidor
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Servidor $servidor)
     {
         //

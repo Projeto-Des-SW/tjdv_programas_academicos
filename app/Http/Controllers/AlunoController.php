@@ -31,7 +31,7 @@ class AlunoController extends Controller
         $aluno->id_user = $usuario->id;
         $aluno->save();
 
-        return "Aluno criado com Sucesso!";
+        return "Aluno criado com sucesso!";
     }
 
     public function show($id) {
@@ -50,12 +50,10 @@ class AlunoController extends Controller
         $aluno->update([
             'nome' => $request->nome,
             'cpf' => $request->cpf,
-            'email' => $request->email,
-            'senha' => $request->senha,
             'curso' => $request->curso,
             'semestre_entrada' => $request->semestre_entrada,
         ]);
-        return "Aluno atualizado com Sucesso!";
+        return "Aluno atualizado com sucesso!";
     }
 
     public function delete($id) {
@@ -67,7 +65,13 @@ class AlunoController extends Controller
         $aluno = Aluno::findOrFail($id);
         $aluno->delete();
 
-        return "Aluno excluido com Sucesso";
+        return "Aluno excluido com sucesso";
+    }
+
+    public function index()
+    {
+        $aluno = Aluno::all();
+        return view("alunos.index", ['aluno' => $aluno]);
     }
 
 }

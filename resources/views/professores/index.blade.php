@@ -1,6 +1,7 @@
 @extends("templates.app")
 
 @section("body")
+  @extends("templates.componentes.header")
   <div class="container">
     <h1><strong>Professores</strong></h1>
     <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">

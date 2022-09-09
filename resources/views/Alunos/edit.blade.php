@@ -11,8 +11,14 @@
             <label for="">Nome</label><br/>
             <input type="text" name="nome" value="{{ $aluno->nome }}"><br/>
 
-            <label for="">Cpf</label><br>
+            <label for="">CPF</label><br>
             <input type="text" name="cpf" value="{{ $aluno->cpf }}"><br>
+
+            <label for="">Email</label><br>
+            <input type="text" name="email" value="{{ $aluno->email }}"><br>
+
+            <label for="">Senha</label><br>
+            <input type="password" name="senha"><br>
 
             <label for="">Curso</label><br>
             <input type="text" name="curso" value="{{ $aluno->curso }}"><br>
