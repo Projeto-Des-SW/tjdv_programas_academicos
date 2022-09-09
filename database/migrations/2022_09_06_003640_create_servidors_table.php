@@ -17,12 +17,7 @@ class CreateServidorsTable extends Migration
             $table->id();
             $table->string("nome", 100);
             $table->string("cpf", 11)->unique();
-            $table->integer('id_user')->unsigned();
             $table->timestamps();
-        });
-
-        Schema::table('servidors', function($table) {
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

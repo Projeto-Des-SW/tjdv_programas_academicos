@@ -11,4 +11,8 @@ class Servidor extends Model
         'nome',
         'cpf'
     ];
+
+    public function user(){
+        return $this->morphOne(User::class, "typage");
+    }
 }

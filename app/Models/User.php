@@ -41,4 +41,8 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
+
+    public function typage(){
+        return $this->morphTo();
+    }
 }
