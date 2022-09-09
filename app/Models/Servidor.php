@@ -13,8 +13,7 @@ class Servidor extends Model
         'cpf'
     ];
 
-    public function retornar_usuario($id_user){
-        $user = User::where('id', '=', $id_user)->firstOrFail();
-        return $user;
+    public function user(){
+        return $this->morphOne(User::class, "typage");
     }
 }

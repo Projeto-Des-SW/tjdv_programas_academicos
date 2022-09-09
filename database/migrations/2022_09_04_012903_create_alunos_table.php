@@ -19,12 +19,7 @@ class CreateAlunosTable extends Migration
             $table->string('cpf')->unique();
             $table->string('curso');
             $table->string('semestre_entrada');
-            $table->integer('id_user')->unsigned();
             $table->timestamps();
-        });
-
-        Schema::table('alunos', function($table) {
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
