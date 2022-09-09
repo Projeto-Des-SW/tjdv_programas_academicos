@@ -14,7 +14,11 @@
             <label for="">CPF</label><br>
             <input type="text" name="cpf" value="{{ $servidor->cpf }}"><br>
 
-             <!-- Alterar e-mail e senha de user -->
+            <label for="">Email</label><br>
+            <input type="text" name="email" value="{{ $servidor->retornar_usuario($servidor->id_user)->email }}"><br>
+
+            <label for="">Senha</label><br>
+            <input type="password" name="senha"><br>
 
             <button>Salvar</button>
         </form> 
