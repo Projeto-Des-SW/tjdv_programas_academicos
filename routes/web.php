@@ -53,6 +53,8 @@ Route::get('/servidores/show/{id}', 'App\Http\Controllers\ServidorController@sho
 // Editar e atualizar
 Route::get('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@edit');
 Route::post('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@update')->name('editar_servidor');
+// Remover
+Route::delete('/servidores/destroy', [ServidorController::class, 'destroy'])->name("servidores.destroy");
 
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"
