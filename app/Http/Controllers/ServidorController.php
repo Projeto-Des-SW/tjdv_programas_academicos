@@ -54,12 +54,18 @@ class ServidorController extends Controller
     public function update(Request $request, $id)
     {
         $servidor = Servidor::findOrFail($id);
-
         $servidor->update([
             'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            // Alterar e-mail e senha de user
+            'cpf' => $request->cpf
         ]);
+
+        $user = $servidor->retornar_usuario($servidor->id_user);
+        $user->update([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'password' => $request->senha,
+        ]);
+
         return "Servidor atualizado com sucesso!";
     }
 

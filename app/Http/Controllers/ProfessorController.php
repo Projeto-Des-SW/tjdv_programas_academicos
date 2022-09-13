@@ -14,8 +14,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $users = Professor::all();
-        return view("professores.index", compact('users'));
+        $professors = Professor::all();
+        return view("professores.index", compact('professors'));
     }
 
     /**
@@ -71,9 +71,15 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Professor $professor)
+    public function update(Request $request)
     {
-        //
+        $professor = Professor::find($request->id_edit);
+        $professor->nome = $request->nome_edit;
+        $professor->cpf = $request->cpf_edit;
+        $professor->siape = $request->siape_edit;
+        if ($professor->save()) {
+            return redirect(route("professores.index"));
+        }
     }
 
     /**
@@ -82,8 +88,12 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->only(['id_delete']);
+
+        if (Professor::destroy($id)) {
+            return redirect(route("professores.index"));
+        }
     }
 }

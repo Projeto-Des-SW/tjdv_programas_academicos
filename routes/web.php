@@ -57,5 +57,8 @@ Route::post('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@up
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"
 ]);
+Route::post('/professores/ajaxEditar', [ProfessorController::class, 'ajaxEditar'])->name('professores_ajaxEditar');
+Route::post('/professor/update', [ProfessorController::class, 'update'])->name("professor.update");
+Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->name("professores.destroy");
 
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");

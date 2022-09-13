@@ -15,4 +15,8 @@ class Aluno extends Model
         'curso',
         'semestre_entrada',
     ];
+
+    public function user(){
+        return $this->morphOne(User::class, "typage");
+    }
 }

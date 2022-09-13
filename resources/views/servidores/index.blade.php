@@ -17,7 +17,7 @@
             Nome: {{$servidor->nome}}
           </p>
           <p>
-            CPF: {{$servidor->cpf}}
+            E-mail: {{$servidor->retornar_usuario($servidor->id_user)->email}}
           </p>
           <p>
             ID: {{$servidor->id}}

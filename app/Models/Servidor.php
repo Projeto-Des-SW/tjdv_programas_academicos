@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Servidor extends Model
 {
@@ -11,4 +12,8 @@ class Servidor extends Model
         'nome',
         'cpf'
     ];
+
+    public function user(){
+        return $this->morphOne(User::class, "typage");
+    }
 }

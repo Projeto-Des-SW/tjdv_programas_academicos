@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('tipo_usuario', array('aluno', 'servidor'));
             $table->enum('status', array('ativo', 'inativo'));
+            $table->morphs("typage");
             $table->timestamps();
         });
     }
