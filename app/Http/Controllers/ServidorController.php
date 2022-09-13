@@ -69,8 +69,12 @@ class ServidorController extends Controller
         return "Servidor atualizado com sucesso!";
     }
 
-    public function destroy(Servidor $servidor)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->only(['id_delete']);
+
+        if (Professor::destroy($id)) {
+            return redirect(route("servidores.index"));
+        }
     }
 }
