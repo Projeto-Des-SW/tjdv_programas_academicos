@@ -48,7 +48,7 @@ Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@destroy
 Route::resource('/servidores', ServidorController::class)->only([
     "create", "index", "store"
 ]);
-
+Route::post('/servidor/update', [ServidorController::class, 'update'])->name("servidor.update");
 Route::delete('/servidores/destroy', [ServidorController::class, 'destroy'])->name("servidores.destroy");
 
 Route::resource('/professores', ProfessorController::class)->only([
