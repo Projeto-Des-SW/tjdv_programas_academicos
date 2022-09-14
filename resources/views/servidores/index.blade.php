@@ -23,7 +23,7 @@
             <div class="container">
               <div class="row justify-content-md-center">
                 <div class="col informacoes">
-                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}})">
+                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
                     <label class="labelIndex">{{$servidor->nome}}</label>
                   </a>
                   @include("servidores.components.modal_show")
@@ -72,10 +72,12 @@
 
     let nome_ver = $('#nome_ver');
     let cpf_ver = $('#cpf_ver');
+    let email_ver = $('#email_ver');
 
-    function exibirModalVer(servidor){
+    function exibirModalVer(servidor, user){
       nome_ver.text(servidor.nome);
       cpf_ver.text(servidor.cpf);
+      email_ver.text(user.email);
       $('#verModal').modal('show');
     }
   </script>
