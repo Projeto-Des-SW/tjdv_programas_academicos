@@ -23,7 +23,7 @@
               <input name="email" class="form-control input-modal-create" type="text" placeholder="Digite o e-mail">
             </div>
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="password" class="form-label">E-mail</label>
+              <label for="password" class="form-label">Senha</label>
               <input name="password" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
             </div>
 
