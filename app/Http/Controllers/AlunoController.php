@@ -61,15 +61,15 @@ class AlunoController extends Controller
         return view('alunos.delete', ['aluno' => $aluno]);
     }
 
-    public function destroy($id) {
-        $aluno = Aluno::findOrFail($id);
-        $aluno->delete();
+    public function destroy(Request $request) {
+        $id = $request->only(['id_delete']);
 
-        return "Aluno excluido com sucesso";
+        if (Aluno::destroy($id)) {
+            return redirect(route("alunos.index"));
+        }
     }
 
-    public function index()
-    {
+    public function index() {
         $aluno = Aluno::all();
         return view("alunos.index", ['aluno' => $aluno]);
     }
