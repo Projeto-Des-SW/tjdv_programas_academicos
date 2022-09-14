@@ -15,23 +15,20 @@ class AlunoController extends Controller
 
     public function store(Request $request){
 
-        $usuario = new User();
-        $usuario->name = $request->input('nome');
-        $usuario->email = $request->input('email');
-        $usuario->password = Hash::make($request->input('senha'));
-        $usuario->tipo_usuario = 'aluno';
-        $usuario->status = 'ativo';
-        $usuario->save();
+        $aluno = Aluno::create([
+            'nome' => $request->input('nome'),
+            'cpf' => $request->input('cpf'),
+            'curso' => $request->input('curso'),
+            'semestre_entrada' => $request->input('semestre_entrada')
+        ]);
 
-        $aluno = new Aluno();
-        $aluno->nome = $request->input('nome');
-        $aluno->curso = $request->input('curso');
-        $aluno->semestre_entrada = $request->input('semestre_entrada'); 
-        $aluno->cpf = $request->input('cpf');
-        $aluno->id_user = $usuario->id;
-        $aluno->save();
+        $aluno->user()->create([
+            'name' => $aluno->nome,
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
 
-        return "Aluno criado com sucesso!";
+        return redirect(route("alunos.index"));
     }
 
     public function show($id) {
