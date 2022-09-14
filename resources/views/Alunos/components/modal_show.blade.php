@@ -9,27 +9,27 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">Nome</label>
-              <div class="modal-ver" id="nome_ver" ></div>
+              <div class="modal-ver" id="nome_show" ></div>
             </div>
             
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">CPF</label>
-              <div class="modal-ver" id="cpf_ver" ></div>
+              <div class="modal-ver" id="cpf_show" ></div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">E-mail</label>
-              <div class="modal-ver" id="email_ver" ></div>
+              <div class="modal-ver" id="email_show" ></div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">Curso</label>
-              <div class="modal-ver" id="curso_ver" ></div>
+              <div class="modal-ver" id="curso_show" ></div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">Semestre de entrada</label>
-              <div class="modal-ver" id="semestre_entrada_ver" ></div>
+              <div class="modal-ver" id="semestre_entrada_show" ></div>
             </div> 
           </div>
           <p></p>

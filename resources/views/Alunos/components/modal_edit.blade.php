@@ -5,7 +5,7 @@
         <h5 class="modal-title title" >Editar Aluno</h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="form-edit" action="{{route('aluno.update')}}" method="post">
+      <form id="form-edit" action="{{route('alunos.update')}}" method="post">
         @csrf
         <input type="hidden" name="id_edit" id="id_edit">
         <div class="modal-body">
