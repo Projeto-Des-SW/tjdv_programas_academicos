@@ -22,21 +22,18 @@ class ServidorController extends Controller
 
     public function store(Request $request){
 
-        $usuario = new User();
-        $usuario->name = $request->input('nome');
-        $usuario->email = $request->input('email');
-        $usuario->password = Hash::make($request->input('senha'));
-        $usuario->tipo_usuario = 'servidor';
-        $usuario->status = 'ativo';
-        $usuario->save();
+        $servidor = Servidor::Create([
+            'nome' => $request->input('nome'),
+            'cpf' => $request->input('cpf')
+        ]);
 
-        $servidor = new Servidor();
-        $servidor->nome = $request->input('nome');
-        $servidor->cpf = $request->input('cpf');
-        $servidor->id_user = $usuario->id;
-        $servidor->save();
+        $servidor->user()->create([
+            'name' => $servidor->nome,
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
 
-        return "Servidor cadastrado com sucesso!";
+        return redirect(route("servidores.index"));
     }
 
     public function show($id)
@@ -73,7 +70,7 @@ class ServidorController extends Controller
     {
         $id = $request->only(['id_delete']);
 
-        if (Professor::destroy($id)) {
+        if (Servidor::destroy($id)) {
             return redirect(route("servidores.index"));
         }
     }
