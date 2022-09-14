@@ -21,12 +21,12 @@
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="" class="form-label">Email</label>
-              <input name="cpf" class="form-control input-modal-create" type="text" placeholder="Digite o email">
+              <input name="email" class="form-control input-modal-create" type="text" placeholder="Digite o email">
             </div>
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="" class="form-label">Senha</label>
-              <input name="cpf" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
+              <input name="senha" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
             </div>
               
             <div class="col-sm- 12 col-md-6 mb-3">
