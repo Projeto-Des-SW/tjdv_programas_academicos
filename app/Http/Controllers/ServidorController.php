@@ -69,9 +69,11 @@ class ServidorController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->only(['id_delete']);
+        $servidor = Servidor::find($id)->first();
 
-        if (Servidor::destroy($id)) {
+        if ($servidor->user->delete() && $servidor->delete()) {
             return redirect(route("servidores.index"));
         }
+        
     }
 }
