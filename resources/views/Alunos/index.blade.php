@@ -23,15 +23,15 @@
             <div class="container">
               <div class="row justify-content-md-center">
                 <div class="col informacoes">
-                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$aluno}})">
-                    <label class="labelIndex">{{$aluno->nome}} - {{$aluno->cpf}} - {{$aluno->email}} {{$aluno->cpf}} {{$aluno->curso}} {{$aluno->semestre_entrada}}</label>
+                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$aluno}}, {{$aluno->user}})">
+                    <label class="labelIndex">{{$aluno->nome}} - {{$aluno->cpf}} - {{$aluno->email}} {{$aluno->cpf}} {{$aluno->curso}} {{$aluno->semestre_entrada}} </label>
                     <hr class="labelIndex">
                     <label class="labelIndex">CPF: {{$aluno->cpf}} </label>
                   </a>
                   @include("alunos.components.modal_show")
                 </div>
                 <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}})">
+                  <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}}, {{$aluno->user}})">
                     <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Aluno">
                   </a>
                   <a type="button" class="delete" onclick="exibirModalDelete({{$aluno}})">
@@ -59,11 +59,11 @@
     let semestre_entrada_edit = $('#semestre_entrada_edit');
     let id_edit = $('#id_edit');
 
-    function exibirModalEditar(aluno){
+    function exibirModalEditar(aluno, user){
       nome_edit.val(aluno.nome);
       cpf_edit.val(aluno.cpf);
-      email_edit.val(aluno.email);
-      senha_edit.val(aluno.senha);
+      email_edit.val(user.email);
+      senha_edit.val(user.password);
       curso_edit.val(aluno.curso);
       semestre_entrada_edit.val(aluno.semestre_entrada);
       id_edit.val(aluno.id)
@@ -84,10 +84,10 @@
     let curso_show = $('#curso_show');
     let semestre_entrada_show = $('#semestre_entrada_show');
 
-    function exibirModalVer(aluno){
+    function exibirModalVer(aluno, user){
       nome_show.text(aluno.nome);
       cpf_show.text(aluno.cpf);
-      email_show.text(aluno.email);
+      email_show.text(user.email);
       curso_show.text(aluno.cpf);
       semestre_entrada_show.text(aluno.semestre_entrada);
       $('#verModal').modal('show');
