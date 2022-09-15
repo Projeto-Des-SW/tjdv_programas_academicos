@@ -16,61 +16,45 @@ class ServidorController extends Controller
         return view("servidores.index", compact('servidores'));
     }
 
-    public function create() {
-        return view('servidores.create');
-    }
-
     public function store(Request $request){
 
-        $usuario = new User();
-        $usuario->name = $request->input('nome');
-        $usuario->email = $request->input('email');
-        $usuario->password = Hash::make($request->input('senha'));
-        $usuario->tipo_usuario = 'servidor';
-        $usuario->status = 'ativo';
-        $usuario->save();
-
-        $servidor = new Servidor();
-        $servidor->nome = $request->input('nome');
-        $servidor->cpf = $request->input('cpf');
-        $servidor->id_user = $usuario->id;
-        $servidor->save();
-
-        return "Servidor cadastrado com sucesso!";
-    }
-
-    public function show($id)
-    {
-        $servidor = Servidor::findOrFail($id);
-        return view('servidores.show', ['servidor' => $servidor]);
-    }
-
-    public function edit($id)
-    {
-        $servidor = Servidor::findOrFail($id);
-        return view('servidores.edit', ['servidor' => $servidor]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $servidor = Servidor::findOrFail($id);
-        $servidor->update([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf
+        $servidor = Servidor::Create([
+            'nome' => $request->input('nome'),
+            'cpf' => $request->input('cpf')
         ]);
 
-        $user = $servidor->retornar_usuario($servidor->id_user);
-        $user->update([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => $request->senha,
+        $servidor->user()->create([
+            'name' => $servidor->nome,
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
         ]);
 
-        return "Servidor atualizado com sucesso!";
+        return redirect(route("servidores.index"));
     }
 
-    public function destroy(Servidor $servidor)
+    public function update(Request $request)
     {
-        //
+        $servidor = Servidor::find($request->id_edit);
+        $servidor->nome = $request->nome_edit;
+        $servidor->cpf = $request->cpf_edit;
+
+        $servidor->user->name = $servidor->nome;
+        $servidor->user->email = $request->email_edit;
+        $servidor->user->password = Hash::make($request->password_edit);
+
+        if ($servidor->save() && $servidor->user->save()) {
+            return redirect(route("servidores.index"));
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->only(['id_delete']);
+        $servidor = Servidor::find($id)->first();
+
+        if ($servidor->user->delete() && $servidor->delete()) {
+            return redirect(route("servidores.index"));
+        }
+        
     }
 }
