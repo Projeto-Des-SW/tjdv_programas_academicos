@@ -9,16 +9,17 @@
         @csrf
         <input type="hidden" name="id_edit" id="id_edit">
         <div class="modal-body">
-          <div class="mb-3" style="">
-            <label for="nome_edit" class="form-label">Nome</label>
-            <input name="nome_edit"id="nome_edit" class="form-control input-modal-create" type="text" placeholder="Digite o nome" >
-          </div>
           <div class="row">
+            <div class="col-sm- 12 col-md-6 mb-3">
+              <label for="nome_edit" class="form-label">Nome</label>
+              <input name="nome_edit"id="nome_edit" class="form-control input-modal-create" type="text" placeholder="Digite o nome" >
+            </div>
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf_edit" class="form-label">CPF</label>
               <input name="cpf_edit" id="cpf_edit" class="form-control input-modal-create" type="text" placeholder="Digite o CPF">
             </div> 
-
+          </div>
+          <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="email_edit" class="form-label">E-mail</label>
               <input name="email_edit" id="email_edit" class="form-control input-modal-create" type="text" placeholder="Digite o e-mail">
