@@ -9,51 +9,40 @@ use App\Models\User;
 
 class AlunoController extends Controller
 {
-    public function create() {
-        return view('alunos.create');
-    }
-
     public function store(Request $request){
 
-        $usuario = new User();
-        $usuario->name = $request->input('nome');
-        $usuario->email = $request->input('email');
-        $usuario->password = Hash::make($request->input('senha'));
-        $usuario->tipo_usuario = 'aluno';
-        $usuario->status = 'ativo';
-        $usuario->save();
-
-        $aluno = new Aluno();
-        $aluno->nome = $request->input('nome');
-        $aluno->curso = $request->input('curso');
-        $aluno->semestre_entrada = $request->input('semestre_entrada'); 
-        $aluno->cpf = $request->input('cpf');
-        $aluno->id_user = $usuario->id;
-        $aluno->save();
-
-        return "Aluno criado com sucesso!";
-    }
-
-    public function show($id) {
-        $aluno = Aluno::findOrFail($id);
-        return view('alunos.show', ['aluno' => $aluno]);
-    }
-
-    public function edit($id) {
-        $aluno = Aluno::findOrFail($id);
-        return view('alunos.edit', ['aluno' => $aluno]);
-    }
-
-    public function update(Request $request, $id) {
-        $aluno = Aluno::findOrFail($id);
-
-        $aluno->update([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            'curso' => $request->curso,
-            'semestre_entrada' => $request->semestre_entrada,
+        $aluno = Aluno::create([
+            'nome' => $request->input('nome'),
+            'cpf' => $request->input('cpf'),
+            'curso' => $request->input('curso'),
+            'semestre_entrada' => $request->input('semestre_entrada')
         ]);
-        return "Aluno atualizado com sucesso!";
+
+        $aluno->user()->create([
+            'name' => $aluno->nome,
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+        return redirect(route("alunos.index"));
+    }
+
+    public function update(Request $request) {
+        $aluno = Aluno::find($request->id_edit);
+
+        $aluno->nome = $request->nome_edit;
+        $aluno->cpf = $request->cpf_edit;
+        $aluno->curso = $request->curso_edit;
+        $aluno->semestre_entrada = $request->semestre_entrada_edit;
+
+        
+        $aluno->user->name = $aluno->nome;
+        $aluno->user->email = $request->email_edit;
+        $aluno->user->password = Hash::make($request->senha_edit);
+
+        if ($aluno->save() && $aluno->user->save()){
+            return redirect(route("alunos.index"));
+        }
     }
 
     public function delete($id) {
@@ -61,15 +50,16 @@ class AlunoController extends Controller
         return view('alunos.delete', ['aluno' => $aluno]);
     }
 
-    public function destroy($id) {
-        $aluno = Aluno::findOrFail($id);
-        $aluno->delete();
+    public function destroy(Request $request) {
+        $id = $request->only(['id_delete']);
+        $aluno = Aluno::findOrFail($id)->first();
 
-        return "Aluno excluido com sucesso";
+        if ($aluno->user->delete() && $aluno->delete()) {
+            return redirect(route("alunos.index"));
+        }
     }
 
-    public function index()
-    {
+    public function index() {
         $aluno = Aluno::all();
         return view("alunos.index", ['aluno' => $aluno]);
     }
