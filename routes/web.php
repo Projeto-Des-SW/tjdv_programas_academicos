@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\ServidorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,15 +39,11 @@ Route::post('/alunos/update', [AlunoController::class, 'update'])->name("alunos.
 Route::delete('/alunos/destroy', [AlunoController::class, 'destroy'])->name("alunos.destroy");
 
 // Rotas de servidor
-// Criar e armazenar
-Route::get('/servidores/new', 'App\Http\Controllers\ServidorController@create');
-Route::post('/servidores/new', 'App\Http\Controllers\ServidorController@store')->name('cadastrar_servidor');
-// Visualizar
-Route::get('/servidores/index', 'App\Http\Controllers\ServidorController@index');
-Route::get('/servidores/show/{id}', 'App\Http\Controllers\ServidorController@show');
-// Editar e atualizar
-Route::get('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@edit');
-Route::post('/servidores/edit/{id}', 'App\Http\Controllers\ServidorController@update')->name('editar_servidor');
+Route::resource('/servidores', ServidorController::class)->only([
+    "create", "index", "store"
+]);
+Route::post('/servidor/update', [ServidorController::class, 'update'])->name("servidor.update");
+Route::delete('/servidores/destroy', [ServidorController::class, 'destroy'])->name("servidores.destroy");
 
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"
