@@ -1,7 +1,6 @@
 @extends("templates.app")
 
 @section("body")
-  @extends("templates.componentes.header")
   <div class="container">
     <h1><strong>Alunos</strong></h1>
     <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
@@ -54,7 +53,6 @@
     let nome_edit = $('#nome_edit');
     let cpf_edit = $('#cpf_edit');
     let email_edit = $('#email_edit');
-    let senha_edit = $('#email_edit');
     let curso_edit = $('#curso_edit');
     let semestre_entrada_edit = $('#semestre_entrada_edit');
     let id_edit = $('#id_edit');
@@ -63,7 +61,6 @@
       nome_edit.val(aluno.nome);
       cpf_edit.val(aluno.cpf);
       email_edit.val(user.email);
-      senha_edit.val(user.password);
       curso_edit.val(aluno.curso);
       semestre_entrada_edit.val(aluno.semestre_entrada);
       id_edit.val(aluno.id)
