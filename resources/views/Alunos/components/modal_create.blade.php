@@ -20,6 +20,11 @@
             </div>
 
             <div class="col-sm- 12 col-md-6 mb-3">
+              <label for="" class="form-label">Curso</label>
+              <input name="curso" class="form-control input-modal-create" type="text" placeholder="Digite o curso">
+            </div>
+
+            <div class="col-sm- 12 col-md-6 mb-3">
               <label for="" class="form-label">Email</label>
               <input name="email" class="form-control input-modal-create" type="text" placeholder="Digite o email">
             </div>
@@ -29,10 +34,7 @@
               <input name="senha" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
             </div>
               
-            <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="" class="form-label">Curso</label>
-              <input name="curso" class="form-control input-modal-create" type="text" placeholder="Digite o curso">
-            </div>
+            
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="" class="form-label">Semestre de entrada</label>
