@@ -16,10 +16,6 @@ class ServidorController extends Controller
         return view("servidores.index", compact('servidores'));
     }
 
-    public function create() {
-        return view('servidores.create');
-    }
-
     public function store(Request $request){
 
         $servidor = Servidor::Create([
@@ -36,34 +32,19 @@ class ServidorController extends Controller
         return redirect(route("servidores.index"));
     }
 
-    public function show($id)
+    public function update(Request $request)
     {
-        $servidor = Servidor::findOrFail($id);
-        return view('servidores.show', ['servidor' => $servidor]);
-    }
+        $servidor = Servidor::find($request->id_edit);
+        $servidor->nome = $request->nome_edit;
+        $servidor->cpf = $request->cpf_edit;
 
-    public function edit($id)
-    {
-        $servidor = Servidor::findOrFail($id);
-        return view('servidores.edit', ['servidor' => $servidor]);
-    }
+        $servidor->user->name = $servidor->nome;
+        $servidor->user->email = $request->email_edit;
+        $servidor->user->password = Hash::make($request->password_edit);
 
-    public function update(Request $request, $id)
-    {
-        $servidor = Servidor::findOrFail($id);
-        $servidor->update([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf
-        ]);
-
-        $user = $servidor->retornar_usuario($servidor->id_user);
-        $user->update([
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => $request->senha,
-        ]);
-
-        return "Servidor atualizado com sucesso!";
+        if ($servidor->save() && $servidor->user->save()) {
+            return redirect(route("servidores.index"));
+        }
     }
 
     public function destroy(Request $request)

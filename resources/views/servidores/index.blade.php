@@ -29,7 +29,7 @@
                   @include("servidores.components.modal_show")
                 </div>
                 <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}})">
+                  <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}}, {{$servidor->user}})">
                     <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
                   </a>
                   <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
@@ -52,14 +52,12 @@
     let nome_edit = $('#nome_edit');
     let cpf_edit = $('#cpf_edit');
     let email_edit = $('#email_edit');
-    let password_edit = $('#password_edit');
     let id_edit = $('#id_edit');
 
-    function exibirModalEditar(servidor){
+    function exibirModalEditar(servidor, user){
       nome_edit.val(servidor.nome);
       cpf_edit.val(servidor.cpf);
-      email_edit.val(servidor.email);
-      password_edit.val(servidor.password);
+      email_edit.val(user.email);
       id_edit.val(servidor.id)
       $('#editModal').modal('show');
     }
