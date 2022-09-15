@@ -9,10 +9,6 @@ use App\Models\User;
 
 class AlunoController extends Controller
 {
-    public function create() {
-        return view('alunos.create');
-    }
-
     public function store(Request $request){
 
         $aluno = Aluno::create([
@@ -29,16 +25,6 @@ class AlunoController extends Controller
         ]);
 
         return redirect(route("alunos.index"));
-    }
-
-    public function show($id) {
-        $aluno = Aluno::findOrFail($id);
-        return view('alunos.show', ['aluno' => $aluno]);
-    }
-
-    public function edit($id) {
-        $aluno = Aluno::findOrFail($id);
-        return view('alunos.edit', ['aluno' => $aluno]);
     }
 
     public function update(Request $request, $id) {
