@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ServidorController;
+use App\Http\Controllers\VinculoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,9 +47,15 @@ Route::post('/servidor/update', [ServidorController::class, 'update'])->name("se
 Route::delete('/servidores/destroy', [ServidorController::class, 'destroy'])->name("servidores.destroy");
 
 Route::resource('/professores', ProfessorController::class)->only([
-    "create", "index", "store"
+    "index", "store"
 ]);
 Route::post('/professor/update', [ProfessorController::class, 'update'])->name("professor.update");
 Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->name("professores.destroy");
+
+Route::resource('/vinculos', VinculoController::class)->only([
+    "index", "store"
+]);
+
+Route::delete('/vinculos/destroy', [VinculoController::class, 'destroy'])->name("vinculos.destroy");
 
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
