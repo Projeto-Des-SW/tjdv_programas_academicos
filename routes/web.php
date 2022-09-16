@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ServidorController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,18 +32,11 @@ Route::middleware([
 });
 
 // Rotas de aluno
-// Criar e armazenar
-Route::get('/alunos/new', 'App\Http\Controllers\AlunoController@create');
-Route::post('/alunos/new', 'App\Http\Controllers\AlunoController@store')->name('cadastrar_aluno');
-// Visualizar
-Route::get('/alunos/show/{id}', 'App\Http\Controllers\AlunoController@show');
-Route::get('/alunos/index', 'App\Http\Controllers\AlunoController@index');
-// Editar e atualizar
-Route::get('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@edit');
-Route::post('/alunos/edit/{id}', 'App\Http\Controllers\AlunoController@update')->name('editar_aluno');
-// Remover
-Route::get('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@delete');
-Route::post('/alunos/delete/{id}', 'App\Http\Controllers\AlunoController@destroy')->name('excluir_aluno');
+Route::resource('/alunos', AlunoController::class)->only([
+    "create", "index", "store"
+]);
+Route::post('/alunos/update', [AlunoController::class, 'update'])->name("alunos.update");
+Route::delete('/alunos/destroy', [AlunoController::class, 'destroy'])->name("alunos.destroy");
 
 // Rotas de servidor
 Route::resource('/servidores', ServidorController::class)->only([
@@ -54,7 +48,6 @@ Route::delete('/servidores/destroy', [ServidorController::class, 'destroy'])->na
 Route::resource('/professores', ProfessorController::class)->only([
     "create", "index", "store"
 ]);
-Route::post('/professores/ajaxEditar', [ProfessorController::class, 'ajaxEditar'])->name('professores_ajaxEditar');
 Route::post('/professor/update', [ProfessorController::class, 'update'])->name("professor.update");
 Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->name("professores.destroy");
 

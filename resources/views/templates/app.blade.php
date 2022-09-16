@@ -46,7 +46,7 @@
     </header>
 
     <div>
-      <div>  
+      <div style="text-align: center">  
         @yield('body')
       </div>
     </div>
