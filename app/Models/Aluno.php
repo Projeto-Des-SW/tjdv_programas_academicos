@@ -16,7 +16,13 @@ class Aluno extends Model
         'semestre_entrada',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->morphOne(User::class, "typage");
+    }
+
+    public function vinculos()
+    {
+        return $this->hasMany(Vinculo::class);
     }
 }
