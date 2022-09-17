@@ -53,7 +53,7 @@ Route::post('/professor/update', [ProfessorController::class, 'update'])->name("
 Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->name("professores.destroy");
 
 Route::resource('/vinculos', VinculoController::class)->only([
-    "index", "store"
+    "index", "store", "create"
 ]);
 
 Route::delete('/vinculos/destroy', [VinculoController::class, 'destroy'])->name("vinculos.destroy");
