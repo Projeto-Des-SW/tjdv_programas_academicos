@@ -17,10 +17,10 @@ class CreateVinculosTable extends Migration
             $table->id();
             $table->enum('status', ['VIGOR', 'FINALIZADA'])->default('VIGOR')->nullable(false);
             $table->enum('bolsa', ['REMUNERADA', 'VOLUNTARIA'])->nullable(false);
-            $table->float('valor_bolsa')->default(null);
+            $table->float('valor_bolsa')->nullable();
             $table->enum('programa', ['PAV', 'BIA', 'MONITORIA', 'TUTORIA'])->nullable(false);
-            $table->string("disciplina")->default(null);
-            $table->string("curso")->default(null);
+            $table->string("disciplina")->nullable();
+            $table->string("curso")->nullable(false);
             $table->string("semestre")->nullable(false);
             $table->date("data_inicio")->nullable(false);
             $table->date("data_fim")->nullable(false);
