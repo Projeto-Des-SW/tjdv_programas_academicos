@@ -152,3 +152,10 @@ div.modal-ver{
   height: 27px; 
   border-radius: 10px;
 }
+
+/* Barra de pesquisa */
+
+.input-search{
+  width: 400px;
+  border: none;
+};
