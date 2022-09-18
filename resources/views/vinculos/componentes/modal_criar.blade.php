@@ -5,14 +5,14 @@
         <h5 class="modal-title title" >Cadastro de vínculo</h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{route("vinculos.create")}}" method="post">
+      <form action="{{route("vinculos.store")}}" method="post">
         @csrf
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label for="select-alunos" class="form-label">Selecione um aluno</label>
-                <select id="select-alunos" name="select-alunos" class="form-control input-modal-vinculo" >
+                <select id="select-alunos" name="alunos" class="form-control input-modal-vinculo" >
                   <option value=""></option>
                   @foreach ($alunos as $aluno)
                     <option value="{{$aluno->id}}">{{$aluno->nome}} - {{$aluno->cpf}}</option>
@@ -21,10 +21,10 @@
               </div>
               <div class="form-group">
                 <label for="select-programas" class="form-label">Selecione um programa</label>
-                <select name="select-programas" id="select-programas" class="form-control input-modal-vinculo">
+                <select name="programa" id="select-programas" class="form-control input-modal-vinculo">
                   <option value=""></option>
                   <option value="BIA">BIA</option>
-                  <option value="PAVI">PAVI</option>
+                  <option value="PAV">PAV</option>
                   <option value="TUTORIA">TUTORIA</option>
                   <option value="MONITORIA">MONITORIA</option>
                 </select>
@@ -32,7 +32,7 @@
 
               <div class="form-group">
                 <label for="select-bolsa" class="form-label">Selecione uma bolsa</label>
-                <select name="select-bolsa" id="select-bolsa" class="form-control input-modal-vinculo">
+                <select name="bolsa" id="select-bolsa" class="form-control input-modal-vinculo">
                   <option value=""></option>
                   <option value="VOLUNTARIA">Voluntária</option>
                   <option value="REMUNERADA">Remunerada</option>
@@ -53,7 +53,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label for="select-professores" class="form-label">Selecione um professor</label>
-                <select name="select-professores" id="select-professores" class="form-control input-modal-vinculo">
+                <select name="professores" id="select-professores" class="form-control input-modal-vinculo">
                   <option value=""></option>
                   @foreach ($professors as $professor)
                     <option value="{{$professor->id}}">{{$professor->nome}} - {{$professor->cpf}}</option>
@@ -68,7 +68,7 @@
 
               <div class="form-group">
                 <label for="valor-bolsa" class="form-label">Informe o valor da bolsa</label>
-                <input type="number" name="valor-bolsa" id="valor-bolsa" class="form-control input-modal-vinculo" placeholder="Informe o valor da bolsa" disabled/>
+                <input type="number" step="0.01" name="valor-bolsa" id="valor-bolsa" class="form-control input-modal-vinculo" placeholder="Informe o valor da bolsa" disabled/>
               </div>
 
               <div class="form-group">

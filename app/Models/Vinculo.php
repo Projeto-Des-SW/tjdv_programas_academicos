@@ -9,6 +9,19 @@ class Vinculo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'bolsa',
+        'programa',
+        'valor_bolsa',
+        'disciplina',
+        'curso',
+        'semestre',
+        'data_inicio',
+        'data_fim',
+        'aluno_id',
+        'professor_id'
+    ];
+
     public function aluno()
     {
         return $this->belongsTo(Aluno::class);

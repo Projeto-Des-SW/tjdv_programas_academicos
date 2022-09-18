@@ -55,7 +55,6 @@ Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->
 Route::resource('/vinculos', VinculoController::class)->only([
      "index", "store"
 ]);
-Route::post('/vinculos', [VinculoController::class, 'create'])->name("vinculos.create");
 Route::delete('/vinculos/destroy', [VinculoController::class, 'destroy'])->name("vinculos.destroy");
 
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
