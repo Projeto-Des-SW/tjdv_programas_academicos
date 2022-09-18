@@ -1,13 +1,24 @@
 @extends("templates.app")
 
 @section("body")
-  <div class="container">
-    <h1><strong>Vinculos</strong></h1>
-    <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
-      <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar Professor">
-    </a>
-    @include("vinculos.componentes.modal_criar")
 
+
+  <div class="container">
+    <div>
+      <h1><strong>Vinculos</strong></h1>
+      <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
+        <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar Professor">
+      </a>
+      @include("vinculos.componentes.modal_criar")
+    </div>
+
+    <div style="text-align: right; margin-top: 20px">
+      <form action="{{ route("vinculos.index" )}}" method="get">
+        <input class="input-modal-create input-search" type="text" name="search" placeholder="Pesquisar por">
+        <button class="btn btn-primary submit">Pesquisar</button>
+      </form>
+    </div>
+    
     @if (sizeof($vinculos) == 0)
       <div class="empty">
         <p>
