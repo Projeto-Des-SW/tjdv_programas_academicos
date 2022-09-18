@@ -52,11 +52,11 @@
       </div>
     </div>
 
-    <footer class="bg-light footer-card" style="margin-top: 0px;">
+    {{-- <footer class="bg-light footer-card" style="margin-top: 0px;">
       <div class="text-center" style="padding-bottom: 20px">
         <label style="font-size: 10px;">Desenvolvido por:</label><br/>
         <strong><label style="font-size: 20px; font-family: fantasy;">TJDV</label></strong>
       </div>
-    </footer>
+    </footer> --}}
   </body>
 </html>

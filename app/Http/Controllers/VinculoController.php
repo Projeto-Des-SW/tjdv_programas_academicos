@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use App\Models\Aluno;
+use App\Models\Vinculo;
 use Illuminate\Http\Request;
 
 class VinculoController extends Controller
@@ -13,7 +14,8 @@ class VinculoController extends Controller
     {
         $professors = Professor::all();
         $alunos = Aluno::all();
-        return view("vinculos.index", compact('professors', 'alunos'));
+        $vinculos = Vinculo::all();
+        return view("vinculos.index", compact('vinculos', 'professors', 'alunos'));
     }
 
     public function create (Request $request)
@@ -34,6 +36,10 @@ class VinculoController extends Controller
 
     public function destroy(Request $request)
     {
-        dd($request);
+        $id = $request->only(['id_delete']);
+
+        if (Vinculo::destroy($id)) {
+            return redirect(route("vinculos.index"));
+        }
     }
 }
