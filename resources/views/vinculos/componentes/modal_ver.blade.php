@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content modal-create">
       <div class="modal-header" >
-        <h5 id="nome_ver" class="modal-title title">PIBIC</h5>
+        <h5 id="programa_ver" class="modal-title title"></h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <div class="modal-body">
@@ -50,3 +50,41 @@
     </div>
   </div>
 </div>
+<script>
+  let status_ver = $('#status_ver');
+  let bolsa_ver = $('#bolsa_ver');
+  let nome_aluno_ver = $('#nome_aluno_ver');
+  let nome_professor_ver = $('#nome_professor_ver');
+  let data_inicio_ver = $('#data_inicio_ver');
+  let data_fim_ver = $('#data_fim_ver');
+  let programa_ver = $('#programa_ver')
+
+  function exibirModalVer(vinculo, professor, aluno){
+    status_ver.text(vinculo.status)
+    
+    if (vinculo.status == "VIGOR"){
+      document.getElementById("status_ver").style.color = "blue";
+    }else{
+      document.getElementById("status_ver").style.color = "red";
+
+    }
+
+    if (vinculo.bolsa == "REMUNERADA"){
+      bolsa_ver.text("R$ " + vinculo.valor_bolsa)
+    }else{
+      bolsa_ver.text(vinculo.bolsa)
+    }
+    programa_ver.text(vinculo.programa)
+    nome_aluno_ver.text(aluno.nome)
+    nome_professor_ver.text(professor.nome)
+    
+    let data = new Date(vinculo.data_inicio);
+    data_inicio_ver.text(data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear())
+    
+    data = new Date(vinculo.data_fim);
+    data_fim_ver.text(data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear())
+    $('#verModal').modal('show');
+  }
+
+</script>
+

@@ -49,6 +49,12 @@ input {
   padding-bottom: 200px;
 }
 
+.status-card{
+  background-color: yellow;
+  border-radius: 50px;
+  width: 20px;
+}
+
 /* Ícon para criar um registro (professor, aluno, bolsa e servidor) */
 .add-button{
   width: 50px;

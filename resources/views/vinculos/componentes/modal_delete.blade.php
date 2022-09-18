@@ -20,3 +20,10 @@
     </div>
   </div>
 </div>
+<script>
+  let id_delete = $("#id_delete")
+  function exibirModalDelete(id){
+    id_delete.val(id)
+    $('#deleteModal').modal('show');
+  }
+</script>
