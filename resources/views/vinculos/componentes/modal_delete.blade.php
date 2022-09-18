@@ -13,7 +13,7 @@
         <form action="{{route("vinculos.destroy")}}" method="post">
           @method("DELETE")
           @csrf
-          <input type="hidden" name="id_delete" id="id_delete" value="1">
+          <input type="hidden" name="id_delete" id="id_delete">
           <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
         </form>
       </div>
