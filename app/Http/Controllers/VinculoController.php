@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class VinculoController extends Controller
@@ -11,7 +12,13 @@ class VinculoController extends Controller
     public function index()
     {
         $professors = Professor::all();
-        return view("vinculos.index", compact('professors'));
+        $alunos = Aluno::all();
+        return view("vinculos.index", compact('professors', 'alunos'));
+    }
+
+    public function create (Request $request)
+    {
+        dd("FALTA FAZER");
     }
 
 
