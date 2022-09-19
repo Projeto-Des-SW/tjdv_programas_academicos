@@ -36,17 +36,6 @@
                                 <span class="ml-2 text-sm text-gray-600">Lembre-se de mim</span>
                             </label>
                         </div>
-                        <div class="col" style="text-align: right">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipo_usuario" id="inlineRadio1" value="aluno" />
-                                <label class="form-check-label" for="inlineRadio1">Aluno</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipo_usuario" id="inlineRadio2" value="servidor" />
-                                <label class="form-check-label" for="inlineRadio2">Servidor</label>
-                            </div>
-                        </div>
                     </div>
                     
                     <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px; width: 100%">Entrar</button>
