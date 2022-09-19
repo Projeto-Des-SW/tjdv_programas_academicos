@@ -26,7 +26,7 @@
 
                     <div class="mb-3" style="text-align: center">
                         <label for="password" class="form-label">Password</label>
-                        <input id="password" name="password" class="form-control input-modal-create" type="text" placeholder="Digite sua senha" >
+                        <input id="password" name="password" class="form-control input-modal-create" type="password" placeholder="Digite sua senha" >
                     </div>
 
                     <div class="row">
