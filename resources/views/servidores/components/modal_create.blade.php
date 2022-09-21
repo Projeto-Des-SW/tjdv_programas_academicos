@@ -11,11 +11,23 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="nome" class="form-label">Nome</label>
-              <input name="nome" class="form-control input-modal-create" type="text" placeholder="Digite o nome" >
+              <input name="nome" id = "nome" type="text" placeholder="Digite o nome" 
+                class="form-control input-modal-create @error('nome') is-invalid @enderror" value="{{ old('nome') }}">
+                @error('nome')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }} </strong>
+                  </span>
+                @enderror
             </div>
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf" class="form-label">CPF</label>
-              <input name="cpf" class="form-control input-modal-create" type="text" placeholder="Digite o CPF">
+              <input name="cpf" id = "cpf" type="text" placeholder="Digite o CPF" 
+               class="form-control input-modal-create @error('cpf') is-invalid @enderror" value="{{ old('cpf') }}">
+              @error('cpf')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }} </strong>
+                  </span>
+              @enderror
             </div>
           </div>
           <div class="row">
