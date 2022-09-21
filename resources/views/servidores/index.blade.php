@@ -79,6 +79,13 @@
     }
   </script>
  
- 
+ @if($errors->any())
+  <script type="text/javascript">
+    $(function () {
+      $("#criarModal").modal('show');
+    });
+  </script>
+  @endif
+
  @endsection
  
