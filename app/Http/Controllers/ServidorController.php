@@ -6,6 +6,7 @@ use App\Models\Servidor;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ServidorController extends Controller
 {
@@ -18,6 +19,7 @@ class ServidorController extends Controller
 
     public function store(Request $request){
 
+        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validate();
         $servidor = Servidor::Create([
             'nome' => $request->input('nome'),
             'cpf' => $request->input('cpf')
