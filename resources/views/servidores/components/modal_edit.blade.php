@@ -9,15 +9,21 @@
         @csrf
         <input type="hidden" name="id_edit" id="id_edit">
         <div class="modal-body">
-          <div class="row">
-            <div class="col-sm- 12 col-md-6 mb-3">
+        <div class="row">
+            <div class="">
               <label for="nome_edit" class="form-label">Nome</label>
               <input name="nome_edit"id="nome_edit" class="form-control input-modal-create" type="text" placeholder="Digite o nome" >
             </div>
+          </div>
+          <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf_edit" class="form-label">CPF</label>
               <input name="cpf_edit" id="cpf_edit" class="form-control input-modal-create" type="text" placeholder="Digite o CPF">
             </div> 
+            <div class="col-sm- 12 col-md-6 mb-3">
+              <label for="setor_edit" class="form-label">Setor</label>
+              <input name="setor_edit"id="setor_edit" class="form-control input-modal-create" type="text" placeholder="Digite o setor" >
+            </div>
           </div>
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
