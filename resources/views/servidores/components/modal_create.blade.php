@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="nome" class="form-label">Nome</label>
-              <input name="nome" id = "nome" type="text" placeholder="Digite o nome" 
+              <input name="nome" id="nome" type="text" placeholder="Digite o nome" 
                 class="form-control input-modal-create @error('nome') is-invalid @enderror" value="{{ old('nome') }}">
                 @error('nome')
                   <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf" class="form-label">CPF</label>
-              <input name="cpf" id = "cpf" type="text" placeholder="Digite o CPF" 
+              <input name="cpf" id="cpf" type="text" placeholder="Digite o CPF" 
                class="form-control input-modal-create @error('cpf') is-invalid @enderror" value="{{ old('cpf') }}">
               @error('cpf')
                   <span class="invalid-feedback" role="alert">
@@ -33,11 +33,23 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="email" class="form-label">E-mail</label>
-              <input name="email" class="form-control input-modal-create" type="text" placeholder="Digite o e-mail">
+              <input name="email" id="email" type="text" placeholder="Digite o e-mail"
+                class="form-control input-modal-create @error('email') is-invalid @enderror" value="{{ old('email') }}">
+              @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }} </strong>
+                  </span>
+              @enderror
             </div>
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="password" class="form-label">Senha</label>
-              <input name="password" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
+              <input name="password" id="password" type="password" placeholder="Digite a senha"
+                class="form-control input-modal-create @error('password') is-invalid @enderror" value="{{ old('password') }}">
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }} </strong>
+                  </span>
+              @enderror
             </div>
           </div>
           <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Cadastrar servidor</button>
