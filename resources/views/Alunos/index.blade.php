@@ -18,29 +18,26 @@
     @else
       <div id="list">
       @foreach ($aluno as $aluno)
-          <div class="listing-card">
-            <div class="container">
-              <div class="row justify-content-md-center">
-                <div class="col informacoes">
-                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$aluno}}, {{$aluno->user}})">
-                    <label class="labelIndex">{{$aluno->nome}} - {{$aluno->cpf}} - {{$aluno->email}} {{$aluno->cpf}} {{$aluno->curso}} {{$aluno->semestre_entrada}} </label>
-                    <hr class="labelIndex">
-                    <label class="labelIndex">CPF: {{$aluno->cpf}} </label>
-                  </a>
-                  @include("alunos.components.modal_show")
-                </div>
-                <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}}, {{$aluno->user}})">
-                    <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Aluno">
-                  </a>
-                  <a type="button" class="delete" onclick="exibirModalDelete({{$aluno}})">
-                    <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Aluno">
-                  </a>
-                </div>
-              </div>
+          <div class="row justify-content-md-center listing-card">
+            <div class="col-md-8 col-lg-8 informacoes">
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$aluno}}, {{$aluno->user}})">
+                <label class="labelIndex">{{$aluno->nome}} - {{$aluno->cpf}} - {{$aluno->email}} {{$aluno->cpf}} {{$aluno->curso}} {{$aluno->semestre_entrada}} </label>
+                <hr class="labelIndex">
+                <label class="labelIndex">CPF: {{$aluno->cpf}} </label>
+              </a>
+              @include("alunos.components.modal_show")
+            </div>
+            <div class="col-md-3 col-lg-3 opcoes">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}}, {{$aluno->user}})">
+                <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Aluno">
+              </a>
+              <a type="button" class="delete" onclick="exibirModalDelete({{$aluno}})">
+                <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Aluno">
+              </a>
             </div>
           </div>
-        @endforeach
+          <br>
+      @endforeach
         @include("alunos.components.modal_show")
         @include("alunos.components.modal_delete")
         @include("alunos.components.modal_edit")
