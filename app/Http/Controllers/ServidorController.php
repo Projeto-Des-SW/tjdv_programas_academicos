@@ -38,6 +38,10 @@ class ServidorController extends Controller
 
     public function update(Request $request)
     {
+
+        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validate();
+        Validator::make($request->all(), User::$rules, User::$messages)->validate();
+        
         $servidor = Servidor::find($request->id_edit);
         $servidor->nome = $request->nome_edit;
         $servidor->cpf = $request->cpf_edit;
