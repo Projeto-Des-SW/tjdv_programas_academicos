@@ -26,7 +26,7 @@
 
                     <div class="mb-3" style="text-align: center">
                         <label for="password" class="form-label">Password</label>
-                        <input id="password" name="password" class="form-control input-modal-create" type="text" placeholder="Digite sua senha" >
+                        <input id="password" name="password" class="form-control input-modal-create" type="password" placeholder="Digite sua senha" >
                     </div>
 
                     <div class="row">
@@ -35,17 +35,6 @@
                                 <x-jet-checkbox id="remember_me" name="remember" />
                                 <span class="ml-2 text-sm text-gray-600">Lembre-se de mim</span>
                             </label>
-                        </div>
-                        <div class="col" style="text-align: right">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipo_usuario" id="inlineRadio1" value="aluno" />
-                                <label class="form-check-label" for="inlineRadio1">Aluno</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipo_usuario" id="inlineRadio2" value="servidor" />
-                                <label class="form-check-label" for="inlineRadio2">Servidor</label>
-                            </div>
                         </div>
                     </div>
                     
