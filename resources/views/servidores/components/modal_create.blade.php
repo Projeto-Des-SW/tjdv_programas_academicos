@@ -56,7 +56,7 @@
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="password" class="form-label">Senha</label>
               <input name="password" id="password" type="password" placeholder="Digite a senha"
-                class="form-control input-modal-create @error('password') is-invalid @enderror" value="{{ old('password') }}">
+                class="form-control input-modal-create @error('password') is-invalid @enderror">
               @error('password')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }} </strong>
