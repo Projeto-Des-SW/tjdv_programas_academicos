@@ -9,29 +9,29 @@
         @csrf
         <div class="modal-body">
           <div class="mb-3" style="">
-            <label for="" class="form-label">Nome</label>
+            <label for="nome" class="form-label">Nome</label>
             <input name="nome" class="form-control input-modal-create" type="text" placeholder="Digite o nome" >
           </div>
 
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="" class="form-label">CPF</label>
+              <label for="cpf" class="form-label">CPF</label>
               <input name="cpf" class="form-control input-modal-create" type="text" placeholder="Digite o CPF">
             </div>
 
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="" class="form-label">Curso</label>
+              <label for="curso" class="form-label">Curso</label>
               <input name="curso" class="form-control input-modal-create" type="text" placeholder="Digite o curso">
             </div>
 
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="" class="form-label">Email</label>
+              <label for="email" class="form-label">Email</label>
               <input name="email" class="form-control input-modal-create" type="text" placeholder="Digite o email">
             </div>
 
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="" class="form-label">Senha</label>
-              <input name="senha" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
+              <label for="password" class="form-label">Senha</label>
+              <input name="password" class="form-control input-modal-create" type="password" placeholder="Digite a senha">
             </div>
               
             
