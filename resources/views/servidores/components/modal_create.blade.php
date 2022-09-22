@@ -3,22 +3,24 @@
     <div class="modal-content modal-create">
       <div class="modal-header" >
         <h5 class="modal-title title" >Cadastro de servidor</h5>
-        <button class="btn-close" data-bs-dismiss="modal" onClick="window.location.reload();" aria-label="Close"></button>
+        <button class="btn-close" data-bs-dismiss="modal" onClick="window.location.reload();" aria-label="Close";></button>
       </div>
       <form action="{{route("servidores.store")}}" method="post">
         @csrf
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="nome" class="form-label">Nome</label>
-              <input name="nome" id="nome" type="text" placeholder="Digite o nome" 
-                class="form-control input-modal-create @error('nome') is-invalid @enderror" value="{{ old('nome') }}">
-                @error('nome')
+            <div class="">
+              <label for="name" class="form-label">Nome</label>
+              <input name="name" id="name" type="text" placeholder="Digite o nome" 
+                class="form-control input-modal-create @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                @error('name')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }} </strong>
                   </span>
                 @enderror
             </div>
+          </div>
+          <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf" class="form-label">CPF</label>
               <input name="cpf" id="cpf" type="text" placeholder="Digite o CPF" 
@@ -28,6 +30,16 @@
                     <strong>{{ $message }} </strong>
                   </span>
               @enderror
+            </div>
+            <div class="col-sm- 12 col-md-6 mb-3">
+                <label for="setor" class="form-label">Setor</label>
+                <input name="setor" id="setor" type="text" placeholder="Digite o setor"
+                  class="form-control input-modal-create @error('setor') is-invalid @enderror" value="{{ old('setor') }}">
+                @error('setor')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }} </strong>
+                    </span>
+                @enderror
             </div>
           </div>
           <div class="row">

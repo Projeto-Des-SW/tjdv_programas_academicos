@@ -20,15 +20,15 @@ class ServidorController extends Controller
     public function store(Request $request){
 
         Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validate();
-        Validator::make($request->all(), User::$rules, User::$messages)->validate();
+        //Validator::make($request->all(), User::$rules, User::$messages)->validate();
 
         $servidor = Servidor::Create([
-            'nome' => $request->input('nome'),
-            'cpf' => $request->input('cpf')
+            'cpf' => $request->input('cpf'),
+            'setor' => $request->input('setor')
         ]);
 
         $servidor->user()->create([
-            'name' => $servidor->nome,
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
         ]);

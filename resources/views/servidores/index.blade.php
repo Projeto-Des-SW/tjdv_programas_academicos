@@ -23,7 +23,7 @@
               <div class="row justify-content-md-center">
                 <div class="col informacoes">
                   <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
-                    <label class="labelIndex">{{$servidor->nome}}</label>
+                    <label class="labelIndex">{{$servidor->user->name}}</label>
                   </a>
                   @include("servidores.components.modal_show")
                 </div>
@@ -50,12 +50,14 @@
     //editar servidor
     let nome_edit = $('#nome_edit');
     let cpf_edit = $('#cpf_edit');
+    let setor_edit = $('#setor_edit');
     let email_edit = $('#email_edit');
     let id_edit = $('#id_edit');
 
     function exibirModalEditar(servidor, user){
-      nome_edit.val(servidor.nome);
+      nome_edit.val(user.name);
       cpf_edit.val(servidor.cpf);
+      setor_edit.val(servidor.setor);
       email_edit.val(user.email);
       id_edit.val(servidor.id)
       $('#editModal').modal('show');
@@ -69,11 +71,13 @@
 
     let nome_ver = $('#nome_ver');
     let cpf_ver = $('#cpf_ver');
+    let setor_ver = $('#cpf_ver');
     let email_ver = $('#email_ver');
 
     function exibirModalVer(servidor, user){
-      nome_ver.text(servidor.nome);
+      nome_ver.text(user.name);
       cpf_ver.text(servidor.cpf);
+      setor_ver.text(servidor.setor);
       email_ver.text(user.email);
       $('#verModal').modal('show');
     }
