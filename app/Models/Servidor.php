@@ -30,7 +30,7 @@ class Servidor extends Model
         'cpf.required' => 'CPF é obrigatório',
         'cpf.formato_cpf' => 'Padrão deve ser 999.999.999-99',
         'cpf.cpf' => 'CPF inválido',
-        'cpf.unique' => 'CPF já cadastrado',
+        'cpf.unique' => 'CPF já cadastrado'
     ];
 
 }
