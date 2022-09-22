@@ -18,28 +18,25 @@
     @else
       <div id="list">
         @foreach ($professors as $professor)
-          <div class="listing-card">
-            <div class="container">
-              <div class="row justify-content-md-center">
-                <div class="col informacoes">
-                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$professor}})">
-                    <label class="labelIndex">{{$professor->nome}} - {{$professor->siape}}</label>
-                    <hr class="labelIndex">
-                    <label class="labelIndex">CPF: {{$professor->cpf}} </label>
-                  </a>
-                  @include("professores.componentes.modal_ver")
-                </div>
-                <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">
-                    <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Professor">
-                  </a>
-                  <a type="button" class="delete" onclick="exibirModalDelete({{$professor}})">
-                    <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Professor">
-                  </a>
-                </div>
-              </div>
+          <div class="row justify-content-md-center listing-card">
+            <div class="col-md-6 col-lg-6 informacoes">
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$professor}})">
+                <label class="labelIndex">{{$professor->nome}} - {{$professor->siape}}</label>
+                <hr class="labelIndex">
+                <label class="labelIndex">CPF: {{$professor->cpf}} </label>
+              </a>
+              @include("professores.componentes.modal_ver")
+            </div>
+            <div class="col-md-4 col-lg-4 opcoes">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">
+                <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Professor">
+              </a>
+              <a type="button" class="delete" onclick="exibirModalDelete({{$professor}})">
+                <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Professor">
+              </a>
             </div>
           </div>
+          <br>
         @endforeach
         @include("professores.componentes.modal_ver")
         @include("professores.componentes.modal_delete")
