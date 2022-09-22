@@ -24,6 +24,8 @@
                 <div class="col informacoes">
                   <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
                     <label class="labelIndex">{{$servidor->user->name}}</label>
+                    <hr class="labelIndex">
+                    <label class="labelIndex">Setor: {{$servidor->setor}} </label>
                   </a>
                   @include("servidores.components.modal_show")
                 </div>
