@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('email', 100)->unique();
-            $table->string('password', 30);
+            $table->string('password');
             $table->enum('status', array('ativo', 'inativo'));
             $table->morphs("typage");
             $table->timestamps();
