@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public static $messages = [
         'name.required' => 'Nome é obrigatório',
-        'name.min' => 'Nome deve possuir pelo menos 10 caracteres',
+        'name.min' => 'Nome deve possuir no mínimo 10 caracteres',
         'name.max' => 'Nome deve possuir no máximo 100 caracteres',
         'name.regex' => 'Nome deve conter apenas letras',
         'email.required' => 'E-mail é obrigatório',
@@ -62,7 +62,7 @@ class User extends Authenticatable
         'email.max' => 'E-mail deve possuir no máximo 100 caracteres',
         'email.unique' => 'E-mail já cadastrado',
         'password.required' => 'Senha é obrigatória',
-        'password.min' => 'Senha deve possuir pelo menos 8 caracteres',
+        'password.min' => 'Senha deve possuir no mínimo 8 caracteres',
         'password.max' => 'Senha deve possuir no máximo 30 caracteres'
     ];
 }

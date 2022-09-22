@@ -24,7 +24,7 @@ class Servidor extends Model
 
     public static $messages = [
         'nome.required' => 'Nome é obrigatório',
-        'nome.min' => 'Nome deve possuir pelo menos 10 caracteres',
+        'nome.min' => 'Nome deve possuir no mínimo 10 caracteres',
         'nome.max' => 'Nome deve possuir no máximo 100 caracteres',
         'nome.regex' => 'Nome deve conter apenas letras',
         'cpf.required' => 'CPF é obrigatório',
