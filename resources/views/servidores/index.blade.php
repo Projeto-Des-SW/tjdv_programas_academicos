@@ -71,7 +71,7 @@
 
     let nome_ver = $('#nome_ver');
     let cpf_ver = $('#cpf_ver');
-    let setor_ver = $('#cpf_ver');
+    let setor_ver = $('#setor_ver');
     let email_ver = $('#email_ver');
 
     function exibirModalVer(servidor, user){

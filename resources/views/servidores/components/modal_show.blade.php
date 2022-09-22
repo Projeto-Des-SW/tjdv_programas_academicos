@@ -13,9 +13,15 @@
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="email_ver" class="form-label">E-mail</label>
-              <div class="modal-ver" id="email_ver" ></div>
+              <label for="email_ver" class="form-label">Setor</label>
+              <div class="modal-ver" id="setor_ver" ></div>
             </div>
+          </div>
+          <div class="row">
+            <div class="">
+              <label class="form-label">E-mail</label>
+              <div class="modal-ver" id="email_ver" ></div>
+            </div> 
           </div>
           <p></p>
           <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 200px" role="button">Voltar</a>
