@@ -15,8 +15,8 @@ class CreateServidorsTable extends Migration
     {
         Schema::create('servidors', function (Blueprint $table) {
             $table->id();
-            $table->string("nome", 100);
             $table->string("cpf", 14)->unique();
+            $table->string("setor", 100);
             $table->timestamps();
         });
     }
