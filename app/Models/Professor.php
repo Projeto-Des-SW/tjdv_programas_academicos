@@ -10,4 +10,9 @@ class Professor extends Model
     use HasFactory;
 
     protected $fillable = array('nome', 'cpf', 'siape');
+
+    public function vinculos()
+    {
+        return $this->hasMany(Vinculo::class);
+    }
 }
