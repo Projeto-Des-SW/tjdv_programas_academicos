@@ -90,6 +90,8 @@
 </div>
 
 <script>
+  let alunos = <?= $alunos ?>;
+
   //Criando select de alunos
   $("#select-alunos").chosen({
     placeholder_text_single: "Selecione um aluno",
@@ -127,15 +129,6 @@
     width: "95%"
   });
 
-  //caso a bolsa selecionada seja remunerada, habilita o campo de valor_bolsa
-  $("#select-bolsa").change(function(){
-    if ($(this).val() == "REMUNERADA"){
-      $("#valor-bolsa").attr("disabled", false);
-    } else {
-      $("#valor-bolsa").val("").attr("disabled", true);
-    }
-  });
-
   //caso a bolsa programa selecionado seja tutoria ou monitoria, habilita o campo disciplina e curso
   $("#select-programas").change(function(){
     if ($(this).val() == "TUTORIA" || $(this).val() == "MONITORIA"){
@@ -146,6 +139,40 @@
       $("#disciplina").val("").attr("disabled", true);
     }
   });
+
+  //verificar se o aluno selecionado já tem bolsa remunerada
+  $("#select-alunos").change(function(){
+    if ($("#select-bolsa").val() == "REMUNERADA"){
+      alunos.forEach(aluno => {
+        if ($("#select-alunos").val() == aluno.id && aluno.proibido == true){
+          alert("Aluno selecionado já tem vínculo remunerado.");
+          $(this).val('').trigger('chosen:updated');
+        }
+      });
+    } 
+  });
+
+  //verificar se o aluno selecionado já tem bolsa remunerada
+  $("#select-bolsa").change(function(){
+    if ($("#select-alunos").val() == ""){
+      alert("Deve ser selecionado um aluno primeiro.");
+      $(this).val('').trigger('chosen:updated');
+      $('#valor-bolsa').val("").attr('disabled', true);
+    } else { 
+      if ($(this).val() == "REMUNERADA"){
+        $("#valor-bolsa").attr("disabled", false);
+        alunos.forEach(aluno => {
+          if ($("#select-alunos").val() == aluno.id && aluno.proibido == true){
+            $(this).val('').trigger('chosen:updated');
+            $("#valor-bolsa").val("").attr("disabled", true);
+            alert("Aluno selecionado já tem vínculo remunerado.");
+          }
+        });
+      } else {
+        $("#valor-bolsa").val("").attr("disabled", true);
+      }
+    }
+  })
 
 </script>
 
