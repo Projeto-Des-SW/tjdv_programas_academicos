@@ -1,4 +1,4 @@
-<div class="modal fade" id="verModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modalShow" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-create">
       <div class="modal-header" >

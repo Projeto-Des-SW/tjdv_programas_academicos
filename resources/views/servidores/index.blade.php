@@ -3,7 +3,7 @@
 @section("body")
   <div class="container">
     <h1><strong>Servidores</strong></h1>
-    <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#modalCreate">
       <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar servidor">
     </a>
   
@@ -62,13 +62,13 @@
       setor_edit.val(servidor.setor);
       email_edit.val(user.email);
       id_edit.val(servidor.id)
-      $('#editModal').modal('show');
+      $('#modalUpdate').modal('show');
     }
 
     let id_delete = $('#id_delete');
     function exibirModalDelete(servidor){
       id_delete.val(servidor.id)
-      $('#deleteModal').modal('show');
+      $('#modalDelete').modal('show');
     }
 
     let nome_ver = $('#nome_ver');
@@ -81,14 +81,14 @@
       cpf_ver.text(servidor.cpf);
       setor_ver.text(servidor.setor);
       email_ver.text(user.email);
-      $('#verModal').modal('show');
+      $('#modalShow').modal('show');
     }
   </script>
 
  @if(count($errors->create) > 0)
   <script type="text/javascript">
     $(function () {
-      $("#criarModal").modal('show');
+      $("#modalCreate").modal('show');
     });
   </script>
   @endif
