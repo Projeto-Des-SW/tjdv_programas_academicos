@@ -11,10 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-    <title>Document</title>
+    <title>TJDV</title>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <header>
       <nav class="navbar navbar-dark d-flex" style="background-color: #0D2579">
         <div class="container-fluid">
@@ -30,7 +30,7 @@
         </div>
       </nav>
       
-      <div class="collapse" id="navbarToggleExternalContent" style="background-color: #0D2579; width: 110px; text-color: white; float: left;">
+      <div class="collapse" id="navbarToggleExternalContent" style="background-color: #0D2579; width: 110px; text-color: white; float: left;z-index: 9999">
         <nav id="navbar-exemplo3" class="navbar">
           <a class="navbar-brand" style="color:white;" href="#">Menu</a>
           <nav class="nav flex-column">
@@ -61,11 +61,11 @@
       </div>
     </div>
 
-    {{-- <footer class="bg-light footer-card" style="margin-top: 0px;">
-      <div class="text-center" style="padding-bottom: 20px">
+    <footer class="mt-auto">
+      <div class="text-center"">
         <label style="font-size: 10px;">Desenvolvido por:</label><br/>
         <strong><label style="font-size: 20px; font-family: fantasy;">TJDV</label></strong>
       </div>
-    </footer> --}}
+    </footer>
   </body>
 </html>

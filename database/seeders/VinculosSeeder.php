@@ -9,6 +9,19 @@ class VinculosSeeder extends Seeder
 {
     public function run()
     {
+
+        Vinculo::create([
+            'status' => 'FINALIZADA',
+            'bolsa' => 'REMUNERADA',
+            'programa' => 'PAV',
+            'valor_bolsa' => 800,
+            'curso' => 'BCC',
+            'semestre' => '2021.1',
+            'data_inicio' => "2021-02-10",
+            'data_fim' => '2021-08-10',
+            'aluno_id' => 4,
+            'professor_id' => 1
+        ]);
         Vinculo::create([
             'status' => 'VIGOR',
             'bolsa' => 'REMUNERADA',
@@ -47,19 +60,6 @@ class VinculosSeeder extends Seeder
             'data_fim' => '2022-11-17',
             'aluno_id' => 3,
             'professor_id' => 5
-        ]);
-
-        Vinculo::create([
-            'status' => 'FINALIZADA',
-            'bolsa' => 'REMUNERADA',
-            'programa' => 'PAV',
-            'valor_bolsa' => 800,
-            'curso' => 'BCC',
-            'semestre' => '2021.1',
-            'data_inicio' => "2021-02-10",
-            'data_fim' => '2021-08-10',
-            'aluno_id' => 4,
-            'professor_id' => 1
         ]);
     }
 }

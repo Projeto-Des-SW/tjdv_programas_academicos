@@ -25,7 +25,6 @@
                 <hr class="labelIndex">
                 <label class="labelIndex">CPF: {{$professor->cpf}} </label>
               </a>
-              @include("professores.componentes.modal_ver")
             </div>
             <div class="col-md-4 col-lg-4 opcoes">
               <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">

@@ -13,7 +13,7 @@
         <form action="{{route("vinculos.destroy")}}" method="post">
           @method("DELETE")
           @csrf
-          <input type="hidden" name="id_delete" id="id_delete">
+          <input type="hidden" name="id" id="id_delete">
           <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
         </form>
       </div>
@@ -22,8 +22,9 @@
 </div>
 <script>
   let id_delete = $("#id_delete")
-  function exibirModalDelete(id){
-    id_delete.val(id)
+  function exibirModalDelete(vinculo){
+    console.log(vinculo);
+    id_delete.val(vinculo.id)
     $('#deleteModal').modal('show');
   }
 </script>

@@ -14,18 +14,16 @@ class VinculoController extends Controller
     {
         $professors = Professor::all();
         $alunos = Aluno::all();
-        for ($i = 0; $i < count($alunos); $i++){
+        for ($i = 0; $i < count($alunos); $i++) {
             $vinculosDoAluno = $alunos[$i]->vinculos;
-            foreach ($vinculosDoAluno as $vinculo){
-                if ($vinculo->status == "VIGOR" and $vinculo->bolsa == "REMUNERADA"){
+            foreach ($vinculosDoAluno as $vinculo) {
+                if ($vinculo->status == "VIGOR" and $vinculo->bolsa == "REMUNERADA") {
                     unset($alunos[$i]);
                     break;
                 }
             }
         }
-        $vinculos = Vinculo::all();
-        return view("vinculos.index", compact('vinculos', 'professors', 'alunos'));
-        
+
         $search = $request->search;
         $programa = $request->programa;
 
@@ -42,19 +40,12 @@ class VinculoController extends Controller
             }
 
             if ($programa) {
-                $programa = strtoupper($programa);
-                $query->where("vinculos.bolsa", "LIKE", "%{$search}%");
+                $query->where("vinculos.programa", "=", "{$search}");
             }
-        })->get();
+        })->orderBy('vinculos.created_at', 'desc')->select("vinculos.*")->get();
 
-        return view("vinculos.index", compact('vinculos', 'professors', 'alunos'));
+        return view("vinculos.index", compact('vinculos', 'professors', 'alunos', 'search'));
     }
-
-    public function create(Request $request)
-    {
-        dd("FALTA FAZER");
-    }
-
 
     public function store(Request $request)
     {
@@ -77,7 +68,7 @@ class VinculoController extends Controller
                 'curso.required_if' => 'O campo curso é obrigatório.'
             ]
         );
-        
+
         $vinculo = Vinculo::Create([
             'bolsa' => $request->input('bolsa'),
             'programa' =>  $request->input('programa'),
@@ -91,10 +82,9 @@ class VinculoController extends Controller
             'professor_id' => $request->input('professores')
         ]);
 
-        if ($vinculo){
+        if ($vinculo) {
             return redirect(route("vinculos.index"));
         }
-
     }
 
     public function update(Request $request, $id)
@@ -104,7 +94,7 @@ class VinculoController extends Controller
 
     public function destroy(Request $request)
     {
-        $id = $request->only(['id_delete']);
+        $id = $request->id;
 
         if (Vinculo::destroy($id)) {
             return redirect(route("vinculos.index"));
