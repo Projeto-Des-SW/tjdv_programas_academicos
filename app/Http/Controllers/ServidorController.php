@@ -19,8 +19,8 @@ class ServidorController extends Controller
 
     public function store(Request $request){
 
-        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validate();
-        Validator::make($request->all(), User::$rules, User::$messages)->validate();
+        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validateWithBag('create');
+        Validator::make($request->all(), User::$rules, User::$messages)->validateWithBag('create');
 
         $servidor = Servidor::Create([
             'cpf' => $request->input('cpf'),
@@ -39,8 +39,8 @@ class ServidorController extends Controller
     public function update(Request $request)
     {
 
-        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validate();
-        Validator::make($request->all(), User::$rules, User::$messages)->validate();
+        Validator::make($request->all(), Servidor::$rules, Servidor::$messages)->validateWithBag('update');
+        Validator::make($request->all(), User::$rules, User::$messages)->validateWithBag('update');
         
         $servidor = Servidor::find($request->id_edit);
         $servidor->nome = $request->nome_edit;
