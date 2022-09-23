@@ -84,8 +84,8 @@
       $('#verModal').modal('show');
     }
   </script>
- 
- @if($errors->any())
+
+ @if(count($errors->create) > 0)
   <script type="text/javascript">
     $(function () {
       $("#criarModal").modal('show');
