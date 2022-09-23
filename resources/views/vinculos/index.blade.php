@@ -38,7 +38,6 @@
                     <hr class="labelIndex">
                     <label class="labelIndex">{{$vinculo->programa}} </label>
                   </a>
-                  @include("vinculos.componentes.modal_ver")
                 </div>
                 <div class="col opcoes">
                   <a type="button" class="edit" onclick="exibirModalEditar({{$vinculo}})">
@@ -59,5 +58,22 @@
     @endif
   </div>
 
+  <script>
+    function exibirModalEditar(vinculo){
+      $('#id_edit').val(vinculo.id);
+      $("#select-alunos-edit").find("option[value=" + vinculo.aluno_id + "]").attr("selected", true).trigger("chosen:updated");
+      $("#select-professores-edit").find("option[value=" + vinculo.professor_id + "]").attr("selected", true).trigger("chosen:updated");
+      $("#select-bolsa-edit").find("option[value=" + vinculo.bolsa + "]").attr("selected", true).trigger("chosen:updated");
+      $("#select-programas-edit").find("option[value=" + vinculo.programa + "]").attr("selected", true).trigger("chosen:updated");
+      $("#semestre-edit").val(vinculo.semestre);
+      vinculo.valor_bolsa ? $("#valor-bolsa-edit").val(vinculo.valor_bolsa).attr("disabled", false) : $("#valor-bolsa-edit").val('').attr("disabled", true);
+      vinculo.curso ? $("#curso-edit").val(vinculo.curso).attr("disabled", false) : $("#curso-edit").val('').attr("disabled", true);
+      vinculo.disciplina ? $("#disciplina-edit").val(vinculo.disciplina).attr("disabled", false) : $("#disciplina-edit").val('').attr("disabled", true);
+      vinculo.data_inicio ? $("#data-inicio-edit").val(vinculo.data_inicio).attr("disabled", false) : $("#data-inicio-edit").val('').attr("disabled", true);
+      vinculo.data_fim ? $("#data-fim-edit").val(vinculo.data_fim).attr("disabled", false) : $("#data-fim-edit").val('').attr("disabled", true);
+
+      $("#editarModal").modal("show");
+    }
+  </script>
+
 @endsection
- 
