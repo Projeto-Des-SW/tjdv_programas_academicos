@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ServidorController extends Controller
 {
@@ -37,16 +38,29 @@ class ServidorController extends Controller
 
     public function update(Request $request)
     {
+        $servidor = Servidor::find($request->id);
+        $usuario = User::find($servidor->user->id);
 
-        Validator::make($request->all(), array_merge(Servidor::$rules, User::$rules), array_merge(Servidor::$messages, User::$messages))->validateWithBag('update');
+        $rulesUser = User::$rules;
+        $rulesUser['email'] = [
+            'bail', 'required', 'email', 'max:100',
+            Rule::unique('users')->ignore($usuario->id)
+        ];
+
+        $rulesServidor = Servidor::$rules;
+        $rulesServidor['cpf'] = [
+            'bail', 'required', 'formato_cpf', 'cpf',
+            Rule::unique('servidors')->ignore($servidor->id)
+        ];
+
+        Validator::make($request->all(), array_merge($rulesServidor, $rulesUser), array_merge(Servidor::$messages, User::$messages))->validateWithBag('update');
         
-        $servidor = Servidor::find($request->id_edit);
-        $servidor->nome = $request->nome_edit;
-        $servidor->cpf = $request->cpf_edit;
+        $servidor->cpf = $request->cpf;
+        $servidor->setor = $request->setor;
 
-        $servidor->user->name = $servidor->nome;
-        $servidor->user->email = $request->email_edit;
-        $servidor->user->password = Hash::make($request->password_edit);
+        $servidor->user->name = $request->name;
+        $servidor->user->email = $request->email;
+        $servidor->user->password = Hash::make($request->password);
 
         if ($servidor->save() && $servidor->user->save()) {
             return redirect(route("servidores.index"));
