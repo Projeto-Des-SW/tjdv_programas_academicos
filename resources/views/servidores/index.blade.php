@@ -51,7 +51,7 @@
       </div>
     @endif
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  
   <script type="text/javascript">
 
     function exibirModalEditar(servidor){
@@ -78,6 +78,7 @@
     }
   </script>
 
+ <!-- Exibindo erros de validacao ao criar -->
  @if(count($errors->create) > 0)
   <script type="text/javascript">
     $(function () {
@@ -86,9 +87,12 @@
   </script>
   @endif
 
+  <!-- Exibindo erros de validacao ao editar -->
   @if(count($errors->update) > 0)
   <script type="text/javascript">
     $(function () {
+      // Bloqueando o usuário na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
       $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
       $("#modal_edit_{{old( 'id' )}}").modal('show');
     });
