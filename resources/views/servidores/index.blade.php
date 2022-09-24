@@ -30,7 +30,7 @@
                   @include("servidores.components.modal_show")
                 </div>
                 <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}}, {{$servidor->user}})">
+                  <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}})">
                     <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
                   </a>
                   <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
@@ -41,6 +41,10 @@
             </div>
           </div>
         @endforeach
+        @foreach ($servidores as $servidor)
+          @include("servidores.components.modal_edit", ['servidor' => $servidor])
+        @endforeach
+
         @include("servidores.components.modal_show")
         @include("servidores.components.modal_delete")
         @include("servidores.components.modal_edit")
@@ -49,20 +53,9 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script type="text/javascript">
-    //editar servidor
-    let nome_edit = $('#nome_edit');
-    let cpf_edit = $('#cpf_edit');
-    let setor_edit = $('#setor_edit');
-    let email_edit = $('#email_edit');
-    let id_edit = $('#id_edit');
 
-    function exibirModalEditar(servidor, user){
-      nome_edit.val(user.name);
-      cpf_edit.val(servidor.cpf);
-      setor_edit.val(servidor.setor);
-      email_edit.val(user.email);
-      id_edit.val(servidor.id)
-      $('#modalUpdate').modal('show');
+    function exibirModalEditar(servidor){
+      $('#modal_edit_' + servidor.id).modal('show');
     }
 
     let id_delete = $('#id_delete');
@@ -93,5 +86,14 @@
   </script>
   @endif
 
+  @if(count($errors->update) > 0)
+  <script type="text/javascript">
+    $(function () {
+      $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
+      $("#modal_edit_{{old( 'id' )}}").modal('show');
+    });
+  </script>
+  @endif
+  
  @endsection
  
