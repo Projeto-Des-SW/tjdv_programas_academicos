@@ -3,7 +3,7 @@
 @section("body")
   <div class="container">
     <h1><strong>Servidores</strong></h1>
-    <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#modal_create">
       <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar servidor">
     </a>
   
@@ -20,61 +20,69 @@
         @foreach ($servidores as $servidor)
           <div class="row justify-content-md-center listing-card">
             <div class="col-md-6 col-lg-6 informacoes">
-              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
-                <label class="labelIndex">{{$servidor->nome}}</label>
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$servidor->id}})">
+                <label class="labelIndex">{{$servidor->user->name}}</label>
+                <hr class="labelIndex">
+                <label class="labelIndex">Setor: {{$servidor->setor}}</label>
               </a>
-              @include("servidores.components.modal_show")
             </div>
             <div class="col-md-4 col-lg-4 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}}, {{$servidor->user}})">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
               </a>
-              <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
+              <a type="button" class="delete" onclick="exibirModalDeletar({{$servidor->id}})">
                 <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir servidor">
               </a>
             </div>
           </div>
         @endforeach
-        @include("servidores.components.modal_show")
-        @include("servidores.components.modal_delete")
-        @include("servidores.components.modal_edit")
+        @foreach ($servidores as $servidor)
+          @include("servidores.components.modal_edit", ['servidor' => $servidor])
+          @include("servidores.components.modal_show")
+          @include("servidores.components.modal_delete")
+        @endforeach
       </div>
     @endif
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+  
   <script type="text/javascript">
-    //editar servidor
-    let nome_edit = $('#nome_edit');
-    let cpf_edit = $('#cpf_edit');
-    let email_edit = $('#email_edit');
-    let id_edit = $('#id_edit');
 
-    function exibirModalEditar(servidor, user){
-      nome_edit.val(servidor.nome);
-      cpf_edit.val(servidor.cpf);
-      email_edit.val(user.email);
-      id_edit.val(servidor.id)
-      $('#editModal').modal('show');
+    function exibirModalEditar(id){
+      $('#modal_edit_' + id).modal('show');
     }
 
-    let id_delete = $('#id_delete');
-    function exibirModalDelete(servidor){
-      id_delete.val(servidor.id)
-      $('#deleteModal').modal('show');
+    function exibirModalDeletar(id){
+      $('#modal_delete_' + id).modal('show');
     }
 
-    let nome_ver = $('#nome_ver');
-    let cpf_ver = $('#cpf_ver');
-    let email_ver = $('#email_ver');
-
-    function exibirModalVer(servidor, user){
-      nome_ver.text(servidor.nome);
-      cpf_ver.text(servidor.cpf);
-      email_ver.text(user.email);
-      $('#verModal').modal('show');
+    function exibirModalVisualizar(id){
+      $('#modal_show_' + id).modal('show');
     }
   </script>
- 
- 
+
+ <!-- Exibindo erros de validacao ao criar -->
+ @if(count($errors->create) > 0)
+  <script type="text/javascript">
+    $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_create").modal({backdrop:"static", keyboard:false});
+      $("#modal_create").modal('show');
+    });
+  </script>
+  @endif
+
+  <!-- Exibindo erros de validacao ao editar -->
+  @if(count($errors->update) > 0)
+  <script type="text/javascript">
+    $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
+      $("#modal_edit_{{old( 'id' )}}").modal('show');
+    });
+  </script>
+  @endif
+  
  @endsection
  
