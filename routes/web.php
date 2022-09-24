@@ -51,4 +51,5 @@ Route::resource('/professores', ProfessorController::class)->only([
 Route::post('/professor/update', [ProfessorController::class, 'update'])->name("professor.update");
 Route::delete('/professores/destroy', [ProfessorController::class, 'destroy'])->name("professores.destroy");
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
