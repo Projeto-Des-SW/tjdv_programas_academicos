@@ -3,7 +3,7 @@
 @section("body")
   <div class="container">
     <h1><strong>Servidores</strong></h1>
-    <a type="button" data-bs-toggle="modal" data-bs-target="#modalCreate">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#modal_create">
       <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar servidor">
     </a>
   
