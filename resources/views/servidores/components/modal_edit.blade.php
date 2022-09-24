@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf_edit" class="form-label">CPF</label>
-              <input name="cpf" type="text" placeholder="Digite o CPF" value="{{old('cpf', $servidor->cpf)}}"
+              <input name="cpf" id="cpf_edit" type="text" placeholder="Digite o CPF" value="{{old('cpf', $servidor->cpf)}}"
                 class="form-control input-modal-create @if(!empty($errors->update->first('cpf'))) is-invalid @endif">
                 @if(!empty($errors->update->first('cpf')))
                   <span class="invalid-feedback d-block">
@@ -71,3 +71,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+      $('#cpf_edit').mask('000.000.000-00');
+    });
+</script>
