@@ -58,10 +58,8 @@
       $('#modal_edit_' + servidor.id).modal('show');
     }
 
-    let id_delete = $('#id_delete');
     function exibirModalDelete(servidor){
-      id_delete.val(servidor.id)
-      $('#modalDelete').modal('show');
+      $('#modalDelete_' + servidor.id).modal('show');
     }
 
     let nome_ver = $('#nome_ver');
