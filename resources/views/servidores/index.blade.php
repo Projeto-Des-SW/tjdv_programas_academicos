@@ -18,26 +18,22 @@
     @else
       <div id="list">
         @foreach ($servidores as $servidor)
-          <div class="listing-card">
-            <div class="container">
-              <div class="row justify-content-md-center">
-                <div class="col informacoes">
-                  <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
-                    <label class="labelIndex">{{$servidor->user->name}}</label>
-                    <hr class="labelIndex">
-                    <label class="labelIndex">Setor: {{$servidor->setor}} </label>
-                  </a>
-                  @include("servidores.components.modal_show")
-                </div>
-                <div class="col opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}})">
-                    <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
-                  </a>
-                  <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
-                    <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir servidor">
-                  </a>
-                </div>
-              </div>
+          <div class="row justify-content-md-center listing-card">
+            <div class="col-md-6 col-lg-6 informacoes">
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
+                <label class="labelIndex">{{$servidor->user->name}}</label>
+                <hr class="labelIndex">
+                <label class="labelIndex">Setor: {{$servidor->setor}} </label>
+              </a>
+              @include("servidores.components.modal_show")
+            </div>
+            <div class="col-md-4 col-lg-4 opcoes">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}})">
+                <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
+              </a>
+              <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
+                <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir servidor">
+              </a>
             </div>
           </div>
         @endforeach
