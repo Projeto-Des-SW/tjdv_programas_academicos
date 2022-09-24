@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-create">
       <div class="modal-header" >
-        <h5 class="modal-title title" >Editar servidor</h5>
+        <h5 class="modal-title title">Editar servidor</h5>
         <button class="btn-close" data-bs-dismiss="modal" onClick="window.location.reload();" aria-label="Close"></button>
       </div>
       <form action="{{route('servidor.update')}}" method="post">

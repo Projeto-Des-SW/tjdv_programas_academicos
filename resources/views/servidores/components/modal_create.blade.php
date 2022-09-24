@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalCreate" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modal_create" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-create">
       <div class="modal-header" >

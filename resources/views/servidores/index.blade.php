@@ -20,18 +20,17 @@
         @foreach ($servidores as $servidor)
           <div class="row justify-content-md-center listing-card">
             <div class="col-md-6 col-lg-6 informacoes">
-              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$servidor}}, {{$servidor->user}})">
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$servidor->id}})">
                 <label class="labelIndex">{{$servidor->user->name}}</label>
                 <hr class="labelIndex">
-                <label class="labelIndex">Setor: {{$servidor->setor}} </label>
+                <label class="labelIndex">Setor: {{$servidor->setor}}</label>
               </a>
-              @include("servidores.components.modal_show")
             </div>
             <div class="col-md-4 col-lg-4 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor}})">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
               </a>
-              <a type="button" class="delete" onclick="exibirModalDelete({{$servidor}})">
+              <a type="button" class="delete" onclick="exibirModalDeletar({{$servidor->id}})">
                 <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir servidor">
               </a>
             </div>
@@ -39,36 +38,25 @@
         @endforeach
         @foreach ($servidores as $servidor)
           @include("servidores.components.modal_edit", ['servidor' => $servidor])
+          @include("servidores.components.modal_show")
+          @include("servidores.components.modal_delete")
         @endforeach
-
-        @include("servidores.components.modal_show")
-        @include("servidores.components.modal_delete")
-        @include("servidores.components.modal_edit")
       </div>
     @endif
   </div>
   
   <script type="text/javascript">
 
-    function exibirModalEditar(servidor){
-      $('#modal_edit_' + servidor.id).modal('show');
+    function exibirModalEditar(id){
+      $('#modal_edit_' + id).modal('show');
     }
 
-    function exibirModalDelete(servidor){
-      $('#modalDelete_' + servidor.id).modal('show');
+    function exibirModalDeletar(id){
+      $('#modal_delete_' + id).modal('show');
     }
 
-    let nome_ver = $('#nome_ver');
-    let cpf_ver = $('#cpf_ver');
-    let setor_ver = $('#setor_ver');
-    let email_ver = $('#email_ver');
-
-    function exibirModalVer(servidor, user){
-      nome_ver.text(user.name);
-      cpf_ver.text(servidor.cpf);
-      setor_ver.text(servidor.setor);
-      email_ver.text(user.email);
-      $('#modalShow').modal('show');
+    function exibirModalVisualizar(id){
+      $('#modal_show_' + id).modal('show');
     }
   </script>
 
@@ -76,7 +64,7 @@
  @if(count($errors->create) > 0)
   <script type="text/javascript">
     $(function () {
-      $("#modalCreate").modal('show');
+      $("#modal_create").modal('show');
     });
   </script>
   @endif
@@ -85,7 +73,7 @@
   @if(count($errors->update) > 0)
   <script type="text/javascript">
     $(function () {
-      // Bloqueando o usuário na tela de modal apos falha na validacao.
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
       // Forcando ele a clicar no botao de fechar, para limpar os erros
       $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
       $("#modal_edit_{{old( 'id' )}}").modal('show');
