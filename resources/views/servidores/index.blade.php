@@ -64,6 +64,9 @@
  @if(count($errors->create) > 0)
   <script type="text/javascript">
     $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_create").modal({backdrop:"static", keyboard:false});
       $("#modal_create").modal('show');
     });
   </script>
