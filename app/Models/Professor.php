@@ -14,7 +14,7 @@ class Professor extends Model
     public static $rules = [
         'nome' => 'bail|required|min:10|max:100|regex:/^[a-zA-Z\']+(?:\s[a-zA-Z\']+)+$/',
         'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos|unique:professors',
-        'siape' => 'bail|required|min:7|max:7',
+        'siape' => 'bail|required|min:7|max:7|unique:professors',
     ];
 
     public static $messages = [
@@ -27,6 +27,7 @@ class Professor extends Model
         'cpf.cpf' => 'CPF inválido',
         'cpf.unique' => 'CPF já cadastrado',
         'siape.required' => 'Siape é obrigatório',
+        'siape.unique' => 'SIAPE já cadastrado',
         'siape.min' => 'Siape deve possuir 7 caracteres',
         'siape.max' => 'Siape deve possuir 7 caracteres'
     ];
