@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProfessorController extends Controller
 {
@@ -36,6 +38,7 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($request->all(), Professor::$rules, Professor::$messages)->validateWithBag('create');
         $params = $request->except(array('_token'));
         if (Professor::create($params)) {
             return redirect(route("professores.index"));

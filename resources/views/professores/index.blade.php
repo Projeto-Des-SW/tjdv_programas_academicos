@@ -3,16 +3,16 @@
 @section("body")
   <div class="container">
     <h1><strong>Professores</strong></h1>
-    <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
+    <a type="button" data-bs-toggle="modal" data-bs-target="#modal_create">
       <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar Professor">
     </a>
   
-    @include("professores.componentes.modal_criar")
+    @include("professores.componentes.modal_create")
   
     @if (sizeof($professors) == 0)
       <div class="empty">
         <p>
-          Não há professores Cadastrados
+          Não há professores cadastrados
         </p>
       </div>
     @else
@@ -78,6 +78,17 @@
     }
   </script>
  
+  <!-- Exibindo erros de validacao ao criar -->
+  @if(count($errors->create) > 0)
+  <script type="text/javascript">
+    $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_create").modal({backdrop:"static", keyboard:false});
+      $("#modal_create").modal('show');
+    });
+  </script>
+  @endif
  
  @endsection
  
