@@ -21,7 +21,7 @@ class AlunosSeeder extends Seeder
         $aluno1->user()->create([
             'name' => $aluno1->nome,
             'email' => "victor@gmail.com",
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
 
         $aluno2 = Aluno::create([
@@ -34,7 +34,7 @@ class AlunosSeeder extends Seeder
         $aluno2->user()->create([
             'name' => $aluno2->nome,
             'email' => "davi@gmail.com",
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
 
         $aluno3 = Aluno::create([
@@ -47,7 +47,7 @@ class AlunosSeeder extends Seeder
         $aluno3->user()->create([
             'name' => $aluno3->nome,
             'email' => "thiago@gmail.com",
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
 
         $aluno4 = Aluno::create([
@@ -60,7 +60,7 @@ class AlunosSeeder extends Seeder
         $aluno4->user()->create([
             'name' => $aluno4->nome,
             'email' => "jack@gmail.com",
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
     }
 }

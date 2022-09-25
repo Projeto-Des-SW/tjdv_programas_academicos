@@ -11,7 +11,7 @@ class VinculosSeeder extends Seeder
     {
 
         Vinculo::create([
-            'status' => 'FINALIZADA',
+            'status' => 'CANCELADA',
             'bolsa' => 'REMUNERADA',
             'programa' => 'PAV',
             'valor_bolsa' => 800,
@@ -23,7 +23,7 @@ class VinculosSeeder extends Seeder
             'professor_id' => 1
         ]);
         Vinculo::create([
-            'status' => 'VIGOR',
+            'status' => 'ANDAMENTO',
             'bolsa' => 'REMUNERADA',
             'valor_bolsa' => 350,
             'programa' => 'Tutoria',
@@ -37,7 +37,7 @@ class VinculosSeeder extends Seeder
         ]);
 
         Vinculo::create([
-            'status' => 'VIGOR',
+            'status' => 'CONCLUIDA',
             'bolsa' => 'VOLUNTARIA',
             'programa' => 'MONITORIA',
             'disciplina' => 'POO',
@@ -50,7 +50,7 @@ class VinculosSeeder extends Seeder
         ]);
 
         Vinculo::create([
-            'status' => 'VIGOR',
+            'status' => 'ANDAMENTO',
             'bolsa' => 'REMUNERADA',
             'programa' => 'BIA',
             'valor_bolsa' => 500,

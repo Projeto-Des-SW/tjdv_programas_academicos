@@ -18,7 +18,7 @@
     <header>
       <nav class="navbar navbar-dark d-flex" style="background-color: #0D2579">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
         
@@ -29,20 +29,27 @@
           </ul>
         </div>
       </nav>
-      
-      <div class="collapse" id="navbarToggleExternalContent" style="background-color: #0D2579; width: 110px; text-color: white; float: left;z-index: 9999">
-        <nav id="navbar-exemplo3" class="navbar">
-          <a class="navbar-brand" style="color:white;" href="#">Menu</a>
-          <nav class="nav flex-column">
-            <a class="nav-link" style="color:white;" href="#item-1">Alunos</a>
-            <a class="nav-link" style="color:white;" href="#item-2">Professores</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Servidores</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Vínculos</a>
-            <hr style="color:white; width: 100%">
-            <a class="nav-link" style="color:white;" href="#item-3">Usuário</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Logout</a>
-          </nav>
-        </nav>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          </div>
+          <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
 
