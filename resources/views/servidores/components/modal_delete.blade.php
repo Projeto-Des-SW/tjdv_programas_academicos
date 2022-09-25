@@ -13,7 +13,7 @@
         <form action="{{route("servidores.destroy")}}" method="post">
           @method("DELETE")
           @csrf
-          <input type="hidden" name="id" value="{{ $servidor->id }}">
+          <input type="hidden" name="id" value="{{$servidor->id}}">
           <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
         </form>
       </div>

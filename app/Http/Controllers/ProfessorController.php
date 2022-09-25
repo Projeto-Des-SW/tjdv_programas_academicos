@@ -93,7 +93,7 @@ class ProfessorController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request->only(['id_delete']);
+        $id = $request->only(['id']);
 
         if (Professor::destroy($id)) {
             return redirect(route("professores.index"));

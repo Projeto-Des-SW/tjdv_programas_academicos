@@ -30,16 +30,16 @@
               <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Professor">
               </a>
-              <a type="button" class="delete" onclick="exibirModalDelete({{$professor}})">
+              <a type="button" class="delete" onclick="exibirModalDeletar({{$professor->id}})">
                 <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Professor">
               </a>
             </div>
           </div>
           <br>
-        @endforeach
-        @include("professores.componentes.modal_edit")
-        @include("professores.componentes.modal_show")
-        @include("professores.componentes.modal_delete")        
+          @include("professores.componentes.modal_edit")
+          @include("professores.componentes.modal_show")
+          @include("professores.componentes.modal_delete")
+        @endforeach   
       </div>
     @endif
   </div>
@@ -58,10 +58,8 @@
       $('#editModal').modal('show');
     }
 
-    let id_delete = $('#id_delete');
-    function exibirModalDelete(professor){
-      id_delete.val(professor.id)
-      $('#deleteModal').modal('show');
+    function exibirModalDeletar(id){
+      $('#modal_delete_' + id).modal('show');
     }
 
     function exibirModalVisualizar(id){
