@@ -20,12 +20,11 @@
         @foreach ($professors as $professor)
           <div class="row justify-content-md-center listing-card">
             <div class="col-md-6 col-lg-6 informacoes">
-              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$professor}})">
-                <label class="labelIndex">{{$professor->nome}} - {{$professor->siape}}</label>
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$professor->id}})">
+                <label class="labelIndex">{{$professor->nome}}</label>
                 <hr class="labelIndex">
-                <label class="labelIndex">CPF: {{$professor->cpf}} </label>
+                <label class="labelIndex">SIAPE: {{$professor->siape}}</label>
               </a>
-              @include("professores.componentes.modal_ver")
             </div>
             <div class="col-md-4 col-lg-4 opcoes">
               <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">
@@ -38,15 +37,14 @@
           </div>
           <br>
         @endforeach
-        @include("professores.componentes.modal_ver")
-        @include("professores.componentes.modal_delete")
         @include("professores.componentes.modal_edit")
+        @include("professores.componentes.modal_show")
+        @include("professores.componentes.modal_delete")        
       </div>
     @endif
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script type="text/javascript">
-    //editar professor
     let nome_edit = $('#nome_edit');
     let cpf_edit = $('#cpf_edit');
     let siape_edit = $('#siape_edit');
@@ -66,15 +64,8 @@
       $('#deleteModal').modal('show');
     }
 
-    let nome_ver = $('#nome_ver');
-    let cpf_ver = $('#cpf_ver');
-    let siape_ver = $('#siape_ver');
-
-    function exibirModalVer(professor){
-      nome_ver.text(professor.nome);
-      cpf_ver.text(professor.cpf);
-      siape_ver.text(professor.siape);
-      $('#verModal').modal('show');
+    function exibirModalVisualizar(id){
+      $('#modal_show_' + id).modal('show');
     }
   </script>
  
