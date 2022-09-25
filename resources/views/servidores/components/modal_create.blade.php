@@ -3,7 +3,7 @@
     <div class="modal-content modal-create">
       <div class="modal-header" >
         <h5 class="modal-title title" >Cadastro de servidor</h5>
-        <button class="btn-close" data-bs-dismiss="modal" onClick="window.location.reload();" aria-label="Close";></button>
+        <button class="btn-close" data-bs-dismiss="modal" onClick="window.location.reload();" aria-label="Close"></button>
       </div>
       <form action="{{route("servidores.store")}}" method="post">
         @csrf
