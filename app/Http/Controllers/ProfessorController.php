@@ -76,10 +76,23 @@ class ProfessorController extends Controller
      */
     public function update(Request $request)
     {
-        $professor = Professor::find($request->id_edit);
-        $professor->nome = $request->nome_edit;
-        $professor->cpf = $request->cpf_edit;
-        $professor->siape = $request->siape_edit;
+        $professor = Professor::find($request->id);
+        
+        $rules = Professor::$rules;
+        $rules['cpf'] = [
+            'bail', 'required', 'formato_cpf', 'cpf',
+            Rule::unique('professors')->ignore($professor->id)
+        ];
+        $rules['siape'] = [
+            'bail', 'required', 'min:7', 'max:7',
+            Rule::unique('professors')->ignore($professor->id)
+        ];
+
+        Validator::make($request->all(), $rules, Professor::$messages)->validateWithBag('update');
+        
+        $professor->nome = $request->nome;
+        $professor->cpf = $request->cpf;
+        $professor->siape = $request->siape;
         if ($professor->save()) {
             return redirect(route("professores.index"));
         }
