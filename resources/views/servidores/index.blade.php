@@ -35,8 +35,6 @@
               </a>
             </div>
           </div>
-        @endforeach
-        @foreach ($servidores as $servidor)
           @include("servidores.components.modal_edit", ['servidor' => $servidor])
           @include("servidores.components.modal_show")
           @include("servidores.components.modal_delete")
