@@ -27,7 +27,7 @@
               </a>
             </div>
             <div class="col-md-4 col-lg-4 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$professor}})">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$professor->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Professor">
               </a>
               <a type="button" class="delete" onclick="exibirModalDeletar({{$professor->id}})">
@@ -36,26 +36,16 @@
             </div>
           </div>
           <br>
-          @include("professores.componentes.modal_edit")
+          @include("professores.componentes.modal_edit", ['professor' => $professor])
           @include("professores.componentes.modal_show")
           @include("professores.componentes.modal_delete")
         @endforeach   
       </div>
     @endif
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script type="text/javascript">
-    let nome_edit = $('#nome_edit');
-    let cpf_edit = $('#cpf_edit');
-    let siape_edit = $('#siape_edit');
-    let id_edit = $('#id_edit');
-
-    function exibirModalEditar(professor){
-      nome_edit.val(professor.nome);
-      cpf_edit.val(professor.cpf);
-      siape_edit.val(professor.siape);
-      id_edit.val(professor.id)
-      $('#editModal').modal('show');
+    function exibirModalEditar(id){
+      $('#modal_edit_' + id).modal('show');
     }
 
     function exibirModalDeletar(id){
@@ -75,6 +65,18 @@
       // Forcando ele a clicar no botao de fechar, para limpar os erros
       $("#modal_create").modal({backdrop:"static", keyboard:false});
       $("#modal_create").modal('show');
+    });
+  </script>
+  @endif
+
+  <!-- Exibindo erros de validacao ao editar -->
+  @if(count($errors->update) > 0)
+  <script type="text/javascript">
+    $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_edit_{{old('id')}}").modal({backdrop:"static", keyboard:false});
+      $("#modal_edit_{{old('id')}}").modal('show');
     });
   </script>
   @endif

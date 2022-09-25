@@ -76,8 +76,8 @@
     $(function () {
       // Bloqueando o usuario na tela de modal apos falha na validacao.
       // Forcando ele a clicar no botao de fechar, para limpar os erros
-      $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
-      $("#modal_edit_{{old( 'id' )}}").modal('show');
+      $("#modal_edit_{{old('id')}}").modal({backdrop:"static", keyboard:false});
+      $("#modal_edit_{{old('id')}}").modal('show');
     });
   </script>
   @endif

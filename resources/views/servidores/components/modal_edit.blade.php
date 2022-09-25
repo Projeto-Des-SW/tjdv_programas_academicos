@@ -7,7 +7,7 @@
       </div>
       <form action="{{route('servidor.update')}}" method="post">
         @csrf
-        <input type="hidden" name="id" value="{{ $servidor->id }}">
+        <input type="hidden" name="id" value="{{$servidor->id}}">
         <div class="modal-body">
         <div class="row">
             <div class="">
