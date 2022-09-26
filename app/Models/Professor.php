@@ -12,7 +12,7 @@ class Professor extends Model
     protected $fillable = array('nome', 'cpf', 'siape');
 
     public static $rules = [
-        'nome' => 'bail|required|min:10|max:100|regex:/^[a-zA-Z\']+(?:\s[a-zA-Z\']+)+$/',
+        'nome' => 'bail|required|min:10|max:100|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\' ]+$/',
         'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos|unique:professors',
         'siape' => 'bail|required|min:7|max:7|unique:professors',
     ];
