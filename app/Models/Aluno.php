@@ -26,7 +26,7 @@ class Aluno extends Model
 
     public static $rules = [
         'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos',
-        'curso' => 'bail|required|max:50',
+        'curso' => 'bail|required|min:2|max:100',
         'semestre_entrada' => 'bail|required|min:6|max:6',
     ];
 
@@ -36,8 +36,10 @@ class Aluno extends Model
         'cpf.cpf' => 'CPF inválido',
         'cpf.unique' => 'CPF já cadastrado',
         'curso.required' => 'Curso é obrigatório',
-        'curso.max' => 'Curso deve possuir no máximo 50 caracteres',
+        'curso.min' => 'Curso deve possuir no mínimo 2 caracteres',
+        'curso.max' => 'Curso deve possuir no máximo 100 caracteres',
         'semestre_entrada.required' => 'Semestre de entrada é obrigatório',
+        'semestre_entrada.min' => 'Semestre de entrada deve possuir 6 caracteres',
         'semestre_entrada.max' => 'Semestre de entrada deve possuir 6 caracteres',
     ];
 }
