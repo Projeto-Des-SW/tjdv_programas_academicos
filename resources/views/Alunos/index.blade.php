@@ -20,12 +20,11 @@
       @foreach ($aluno as $aluno)
           <div class="row justify-content-md-center listing-card">
             <div class="col-md-8 col-lg-8 informacoes">
-              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$aluno}}, {{$aluno->user}})">
-                <label class="labelIndex">{{$aluno->user->name}} - {{$aluno->cpf}} - {{$aluno->user->email}} {{$aluno->cpf}} {{$aluno->curso}} {{$aluno->semestre_entrada}} </label>
+              <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$aluno->id}})">
+                <label class="labelIndex">{{$aluno->user->name}}</label>
                 <hr class="labelIndex">
-                <label class="labelIndex">CPF: {{$aluno->cpf}} </label>
+                <label class="labelIndex">Curso: {{$aluno->curso}}</label>
               </a>
-              @include("alunos.components.modal_show")
             </div>
             <div class="col-md-3 col-lg-3 opcoes">
               <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}}, {{$aluno->user}})">
@@ -37,14 +36,14 @@
             </div>
           </div>
           <br>
-      @endforeach
         @include("alunos.components.modal_show")
         @include("alunos.components.modal_delete")
         @include("alunos.components.modal_edit")
+      @endforeach
       </div>
     @endif
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+
   <script type="text/javascript">
     //Editar aluno
     let nome_edit = $('#nome_edit');
@@ -71,20 +70,8 @@
       $('#deleteModal').modal('show');
     }
 
-    //Visualizar aluno
-    let nome_show = $('#nome_show');
-    let cpf_show = $('#cpf_show');
-    let email_show = $('#email_show');
-    let curso_show = $('#curso_show');
-    let semestre_entrada_show = $('#semestre_entrada_show');
-
-    function exibirModalVer(aluno, user){
-      nome_show.text(aluno.nome);
-      cpf_show.text(aluno.cpf);
-      email_show.text(user.email);
-      curso_show.text(aluno.cpf);
-      semestre_entrada_show.text(aluno.semestre_entrada);
-      $('#verModal').modal('show');
+    function exibirModalVisualizar(id){
+      $('#modal_show_' + id).modal('show');
     }
   </script>
 
