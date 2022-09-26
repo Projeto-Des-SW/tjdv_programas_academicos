@@ -27,7 +27,7 @@
               </a>
             </div>
             <div class="col-md-3 col-lg-3 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$aluno}}, {{$aluno->user}})">
+              <a type="button" class="edit" onclick="exibirModalEditar({{$aluno->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar aluno">
               </a>
               <a type="button" class="delete" onclick="exibirModalDeletar({{$aluno->id}})">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <br>
-        @include("alunos.components.modal_edit")
+        @include("alunos.components.modal_edit", ['aluno' => $aluno])
         @include("alunos.components.modal_show")
         @include("alunos.components.modal_delete")
       @endforeach
@@ -45,22 +45,9 @@
   </div>
 
   <script type="text/javascript">
-    //Editar aluno
-    let nome_edit = $('#nome_edit');
-    let cpf_edit = $('#cpf_edit');
-    let email_edit = $('#email_edit');
-    let curso_edit = $('#curso_edit');
-    let semestre_entrada_edit = $('#semestre_entrada_edit');
-    let id_edit = $('#id_edit');
 
-    function exibirModalEditar(aluno, user){
-      nome_edit.val(aluno.nome);
-      cpf_edit.val(aluno.cpf);
-      email_edit.val(user.email);
-      curso_edit.val(aluno.curso);
-      semestre_entrada_edit.val(aluno.semestre_entrada);
-      id_edit.val(aluno.id)
-      $('#editModal').modal('show');
+    function exibirModalEditar(id){
+      $('#modal_edit_' + id).modal('show');
     }
 
     function exibirModalDeletar(id){
@@ -80,6 +67,18 @@
       // Forcando ele a clicar no botao de fechar, para limpar os erros
       $("#modal_create").modal({backdrop:"static", keyboard:false});
       $("#modal_create").modal('show');
+    });
+  </script>
+  @endif
+
+  <!-- Exibindo erros de validacao ao editar -->
+  @if(count($errors->update) > 0)
+  <script type="text/javascript">
+    $(function () {
+      // Bloqueando o usuario na tela de modal apos falha na validacao.
+      // Forcando ele a clicar no botao de fechar, para limpar os erros
+      $("#modal_edit_{{old( 'id' )}}").modal({backdrop:"static", keyboard:false});
+      $("#modal_edit_{{old( 'id' )}}").modal('show');
     });
   </script>
   @endif
