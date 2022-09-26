@@ -40,12 +40,11 @@ class ServidorController extends Controller
     public function update(Request $request)
     {
         $servidor = Servidor::find($request->id);
-        $usuario = User::find($servidor->user->id);
 
         $rulesUser = User::$rules;
         $rulesUser['email'] = [
             'bail', 'required', 'email', 'max:100',
-            Rule::unique('users')->ignore($usuario->id)
+            Rule::unique('users')->ignore($servidor->user->id)
         ];
 
         $rulesServidor = Servidor::$rules;
