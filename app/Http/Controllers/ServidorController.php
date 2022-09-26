@@ -49,7 +49,7 @@ class ServidorController extends Controller
 
         $rulesServidor = Servidor::$rules;
         $rulesServidor['cpf'] = [
-            'bail', 'required', 'formato_cpf', 'cpf',
+            'bail', 'required', 'formato_cpf', 'cpf', 'unique:professors', 'unique:alunos',
             Rule::unique('servidors')->ignore($servidor->id)
         ];
 
