@@ -15,10 +15,9 @@ class CreateAlunosTable extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('cpf')->unique();
-            $table->string('curso');
-            $table->string('semestre_entrada');
+            $table->string('cpf', 14)->unique();
+            $table->string('curso', 50);
+            $table->string('semestre_entrada', 6);
             $table->timestamps();
         });
     }
