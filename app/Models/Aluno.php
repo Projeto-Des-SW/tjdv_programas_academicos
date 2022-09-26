@@ -27,7 +27,7 @@ class Aluno extends Model
     public static $rules = [
         'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos',
         'curso' => 'bail|required|min:2|max:100',
-        'semestre_entrada' => 'bail|required|min:6|max:6',
+        'semestre_entrada' => 'bail|required|min:6|max:6|regex: /^[0-9][0-9][0-9][0-9].[0-9]/',
     ];
 
     public static $messages = [
@@ -39,6 +39,7 @@ class Aluno extends Model
         'curso.min' => 'Curso deve possuir no mínimo 2 caracteres',
         'curso.max' => 'Curso deve possuir no máximo 100 caracteres',
         'semestre_entrada.required' => 'Semestre de entrada é obrigatório',
+        'semestre_entrada.regex' => 'Formato deve ser 9999.9',
         'semestre_entrada.min' => 'Formato deve ser 9999.9',
         'semestre_entrada.max' => 'Formato deve ser 9999.9',
     ];
