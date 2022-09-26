@@ -39,7 +39,7 @@ class Aluno extends Model
         'curso.min' => 'Curso deve possuir no mínimo 2 caracteres',
         'curso.max' => 'Curso deve possuir no máximo 100 caracteres',
         'semestre_entrada.required' => 'Semestre de entrada é obrigatório',
-        'semestre_entrada.min' => 'Semestre de entrada deve possuir 6 caracteres',
-        'semestre_entrada.max' => 'Semestre de entrada deve possuir 6 caracteres',
+        'semestre_entrada.min' => 'Formato deve ser 9999.9',
+        'semestre_entrada.max' => 'Formato deve ser 9999.9',
     ];
 }
