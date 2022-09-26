@@ -18,7 +18,8 @@ class ServidorController extends Controller
         return view("servidores.index", compact('servidores'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         Validator::make($request->all(), array_merge(Servidor::$rules, User::$rules), array_merge(Servidor::$messages, User::$messages))->validateWithBag('create');
 
@@ -54,7 +55,7 @@ class ServidorController extends Controller
         ];
 
         Validator::make($request->all(), array_merge($rulesServidor, $rulesUser), array_merge(Servidor::$messages, User::$messages))->validateWithBag('update');
-        
+
         $servidor->cpf = $request->cpf;
         $servidor->setor = $request->setor;
 
@@ -76,6 +77,5 @@ class ServidorController extends Controller
         if ($servidor->user->delete() && $servidor->delete()) {
             return redirect(route("servidores.index"));
         }
-        
     }
 }

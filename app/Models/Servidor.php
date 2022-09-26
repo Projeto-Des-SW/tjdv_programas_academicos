@@ -18,7 +18,7 @@ class Servidor extends Model
     }
 
     public static $rules = [
-        'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos',
+        'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos|unique:professors',
         'setor' => 'bail|required|max:100',
     ];
 
