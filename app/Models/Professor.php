@@ -31,4 +31,9 @@ class Professor extends Model
         'siape.min' => 'Siape deve possuir 7 caracteres',
         'siape.max' => 'Siape deve possuir 7 caracteres'
     ];
+
+    public function vinculos()
+    {
+        return $this->hasMany(Vinculo::class);
+    }
 }
