@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Aluno;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AlunoController extends Controller
 {
@@ -30,17 +31,30 @@ class AlunoController extends Controller
     }
 
     public function update(Request $request) {
-        $aluno = Aluno::find($request->id_edit);
+        $aluno = Aluno::find($request->id);
 
-        $aluno->nome = $request->nome_edit;
-        $aluno->cpf = $request->cpf_edit;
-        $aluno->curso = $request->curso_edit;
-        $aluno->semestre_entrada = $request->semestre_entrada_edit;
+        $rulesUser = User::$rules;
+        $rulesUser['email'] = [
+            'bail', 'required', 'email', 'max:100',
+            Rule::unique('users')->ignore($aluno->user->id)
+        ];
+
+        $rulesAluno = Aluno::$rules;
+        $rulesAluno['cpf'] = [
+            'bail', 'required', 'formato_cpf', 'cpf',
+            Rule::unique('alunos')->ignore($aluno->id)
+        ];
+
+        Validator::make($request->all(), array_merge($rulesAluno, $rulesUser), array_merge(Aluno::$messages, User::$messages))->validateWithBag('update');
+
+        $aluno->cpf = $request->cpf;
+        $aluno->curso = $request->curso;
+        $aluno->semestre_entrada = $request->semestre_entrada;
 
         
-        $aluno->user->name = $aluno->nome;
-        $aluno->user->email = $request->email_edit;
-        $aluno->user->password = Hash::make($request->senha_edit);
+        $aluno->user->name = $request->name;
+        $aluno->user->email = $request->email;
+        $aluno->user->password = Hash::make($request->password);
 
         if ($aluno->save() && $aluno->user->save()){
             return redirect(route("alunos.index"));
