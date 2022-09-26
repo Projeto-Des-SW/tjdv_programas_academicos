@@ -26,7 +26,7 @@
         
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
             <a href="#" type="button" style="color: white;text-decoration: none; margin-left: 50px">
-              TJDV - Programas Acadêmicos
+              TJDV - Programas acadêmicos
             </a>
           </ul>
         </div>
