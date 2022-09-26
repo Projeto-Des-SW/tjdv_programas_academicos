@@ -53,7 +53,7 @@ class AlunoController extends Controller
     }
 
     public function destroy(Request $request) {
-        $id = $request->only(['id_delete']);
+        $id = $request->only(['id']);
         $aluno = Aluno::findOrFail($id)->first();
 
         if ($aluno->user->delete() && $aluno->delete()) {
