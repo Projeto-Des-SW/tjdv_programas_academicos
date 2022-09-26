@@ -15,6 +15,7 @@ class AlunoController extends Controller
         Validator::make($request->all(), array_merge(Aluno::$rules, User::$rules), array_merge(Aluno::$messages, User::$messages))->validateWithBag('create');
 
         $aluno = Aluno::create([
+            'cpf' => $request->input('cpf'),
             'curso' => $request->input('curso'),
             'semestre_entrada' => $request->input('semestre_entrada')
         ]);
