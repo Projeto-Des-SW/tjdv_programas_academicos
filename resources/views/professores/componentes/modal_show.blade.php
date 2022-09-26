@@ -1,20 +1,20 @@
-<div class="modal fade" id="verModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modal_show_{{$professor->id}}" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-create">
       <div class="modal-header" >
-        <h5 id="nome_ver" class="modal-title title"></h5>
+        <h5 class="modal-title title">{{$professor->nome}}</h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">CPF</label>
-              <div class="modal-ver" id="cpf_ver" ></div>
+              <div class="modal-ver">{{$professor->cpf}}</div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
-              <label for="siape_ver" class="form-label">SIAPE</label>
-              <div class="modal-ver" id="siape_ver" ></div>
+              <label class="form-label">SIAPE</label>
+              <div class="modal-ver">{{$professor->siape}}</div>
             </div>
           </div>
           <p></p>

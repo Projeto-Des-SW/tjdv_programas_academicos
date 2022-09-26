@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProfessorController extends Controller
 {
@@ -36,6 +38,7 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($request->all(), Professor::$rules, Professor::$messages)->validateWithBag('create');
         $params = $request->except(array('_token'));
         if (Professor::create($params)) {
             return redirect(route("professores.index"));
@@ -73,10 +76,23 @@ class ProfessorController extends Controller
      */
     public function update(Request $request)
     {
-        $professor = Professor::find($request->id_edit);
-        $professor->nome = $request->nome_edit;
-        $professor->cpf = $request->cpf_edit;
-        $professor->siape = $request->siape_edit;
+        $professor = Professor::find($request->id);
+        
+        $rules = Professor::$rules;
+        $rules['cpf'] = [
+            'bail', 'required', 'formato_cpf', 'cpf',
+            Rule::unique('professors')->ignore($professor->id)
+        ];
+        $rules['siape'] = [
+            'bail', 'required', 'min:7', 'max:7',
+            Rule::unique('professors')->ignore($professor->id)
+        ];
+
+        Validator::make($request->all(), $rules, Professor::$messages)->validateWithBag('update');
+        
+        $professor->nome = $request->nome;
+        $professor->cpf = $request->cpf;
+        $professor->siape = $request->siape;
         if ($professor->save()) {
             return redirect(route("professores.index"));
         }
@@ -90,7 +106,7 @@ class ProfessorController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request->only(['id_delete']);
+        $id = $request->only(['id']);
 
         if (Professor::destroy($id)) {
             return redirect(route("professores.index"));
