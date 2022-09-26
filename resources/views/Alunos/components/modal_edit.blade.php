@@ -23,7 +23,7 @@
           <div class="row">
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="cpf_edit" class="form-label">CPF</label>
-              <input name="cpf" type="text" placeholder="Digite o CPF" value="{{old('cpf', $aluno->cpf)}}"
+              <input name="cpf" id="cpf_edit" type="text" placeholder="Digite o CPF" value="{{old('cpf', $aluno->cpf)}}"
               class="form-control input-modal-create @if(!empty($errors->update->first('cpf'))) is-invalid @endif">
               @if(!empty($errors->update->first('cpf')))
                   <span class="invalid-feedback d-block">
@@ -67,7 +67,8 @@
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label for="semestre_entrada_edit" class="form-label">Semestre de entrada</label>
-              <input name="semestre_entrada" type="text" placeholder="Digite o semestre de entrada" value="{{old('semestre_entrada', $aluno->semestre_entrada)}}"
+              <input name="semestre_entrada" id="semestre_entrada_edit" type="text" 
+              placeholder="Digite o semestre de entrada" value="{{old('semestre_entrada', $aluno->semestre_entrada)}}"
               class="form-control input-modal-create @if(!empty($errors->update->first('semestre_entrada'))) is-invalid @endif">
               @if(!empty($errors->update->first('semestre_entrada')))
                   <span class="invalid-feedback d-block">
@@ -91,6 +92,6 @@
 
 <script type="text/javascript">
     $(function () {
-      $('#semestre_entrada').mask('0000.0');
+      $('#semestre_entrada_edit').mask('0000.0');
     });
 </script>
