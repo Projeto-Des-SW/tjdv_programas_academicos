@@ -6,20 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Aluno;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class AlunoController extends Controller
 {
     public function store(Request $request){
 
+        Validator::make($request->all(), array_merge(Aluno::$rules, User::$rules), array_merge(Aluno::$messages, User::$messages))->validateWithBag('create');
+
         $aluno = Aluno::create([
-            'nome' => $request->input('nome'),
-            'cpf' => $request->input('cpf'),
             'curso' => $request->input('curso'),
             'semestre_entrada' => $request->input('semestre_entrada')
         ]);
 
         $aluno->user()->create([
-            'name' => $aluno->nome,
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
         ]);
