@@ -41,7 +41,7 @@ class AlunoController extends Controller
 
         $rulesAluno = Aluno::$rules;
         $rulesAluno['cpf'] = [
-            'bail', 'required', 'formato_cpf', 'cpf',
+            'bail', 'required', 'formato_cpf', 'cpf', 'unique:servidors', 'unique:professors',
             Rule::unique('alunos')->ignore($aluno->id)
         ];
 
