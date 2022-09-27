@@ -22,7 +22,7 @@ class AlunoController extends Controller
             'name' => $aluno->nome,
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
-        ]);
+        ])->givePermissionTo('aluno');
 
         return redirect(route("alunos.index"));
     }

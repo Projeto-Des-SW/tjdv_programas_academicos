@@ -32,7 +32,7 @@ class ServidorController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
-        ]);
+        ])->givePermissionTo('servidor');
 
         return redirect(route("servidores.index"));
     }
