@@ -80,7 +80,7 @@ class ProfessorController extends Controller
         
         $rules = Professor::$rules;
         $rules['cpf'] = [
-            'bail', 'required', 'formato_cpf', 'cpf',
+            'bail', 'required', 'formato_cpf', 'cpf', 'unique:servidors', 'unique:alunos',
             Rule::unique('professors')->ignore($professor->id)
         ];
         $rules['siape'] = [
