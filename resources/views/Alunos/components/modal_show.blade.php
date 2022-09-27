@@ -1,35 +1,31 @@
-<div class="modal fade" id="verModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modal_show_{{$aluno->id}}" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-create">
-      <div class="modal-header" >
-        <h5 id="nome_ver" class="modal-title title"></h5>
+      <div class="modal-header">
+        <h5 class="modal-title title">{{$aluno->user->name}}</h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm- 12 col-md-6 mb-3">
-              <label class="form-label">Nome</label>
-              <div class="modal-ver" id="nome_show" ></div>
-            </div>
-            
+           
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">CPF</label>
-              <div class="modal-ver" id="cpf_show" ></div>
+              <div class="modal-ver">{{$aluno->cpf}}</div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">E-mail</label>
-              <div class="modal-ver" id="email_show" ></div>
+              <div class="modal-ver">{{$aluno->user->email}}</div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">Curso</label>
-              <div class="modal-ver" id="curso_show" ></div>
+              <div class="modal-ver">{{$aluno->curso}}</div>
             </div> 
 
             <div class="col-sm- 12 col-md-6 mb-3">
               <label class="form-label">Semestre de entrada</label>
-              <div class="modal-ver" id="semestre_entrada_show" ></div>
+              <div class="modal-ver">{{$aluno->semestre_entrada}}</div>
             </div> 
           </div>
           <p></p>
