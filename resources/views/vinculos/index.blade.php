@@ -5,11 +5,11 @@
 
   <div class="container">
     <div>
-      <h1><strong>Vinculos</strong></h1>
+      <h1><strong>Vínculos</strong></h1>
       @auth
         @if (auth()->user()->typage_type == "App\Models\Servidor")
           <a type="button" data-bs-toggle="modal" data-bs-target="#criarModal">
-            <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar Professor">
+            <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar professor">
           </a>
           @include("vinculos.componentes.modal_criar")
         @endif
@@ -26,7 +26,7 @@
     @if (sizeof($vinculos) == 0)
       <div class="empty">
         <p>
-          Não há vinculos Cadastrados
+          Não há vínculos cadastrados
         </p>
       </div>
     @else
