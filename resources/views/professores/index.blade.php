@@ -1,6 +1,7 @@
 @extends("templates.app")
 
 @section("body")
+  @can('servidor')
   <div class="container">
     <h1><strong>Professores</strong></h1>
     <a type="button" data-bs-toggle="modal" data-bs-target="#modal_create">
@@ -80,6 +81,8 @@
     });
   </script>
   @endif
- 
+  @elsecan('aluno')
+    <h3>Você não possui permissão!</h3>
+  @endcan
  @endsection
  
