@@ -7,8 +7,6 @@ use App\Models\Aluno;
 use App\Models\Vinculo;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Barryvdh\DomPDF\PDF;
 
 class VinculoController extends Controller
 {
