@@ -20,6 +20,6 @@ class ServidorSeeder extends Seeder
             'name' => "Vanessa",
             'email' => "vanessa@gmail.com",
             'password' => Hash::make('123456')
-        ]);
+        ])->givePermissionTo('servidor');
     }
 }
