@@ -24,6 +24,7 @@ class CreateVinculosTable extends Migration
             $table->string("semestre")->nullable(false);
             $table->date("data_inicio")->nullable(false);
             $table->date("data_fim")->nullable(false);
+            $table->integer('quantidade_horas')->default(0)->nullable(false);
             $table->timestamps();
         });
 

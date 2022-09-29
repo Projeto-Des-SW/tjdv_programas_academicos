@@ -31,4 +31,9 @@ class Vinculo extends Model
     {
         return $this->belongsTo(Professor::class);
     }
+
+    public function frenquenciasMensais()
+    {
+        return $this->hasMany(Frequencia_mensal::class);
+    }
 }

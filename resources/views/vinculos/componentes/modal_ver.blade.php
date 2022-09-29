@@ -56,7 +56,7 @@
           </div>
         
           <div style="margin-bottom: 15px; margin-top: 15px">
-            <a class="btn btn-success" role="button" style="width: 230px">Formulário de Frequência</a>
+            <a id="frequencia_mensal" class="btn btn-success" role="button" style="width: 230px">Formulário de Frequência</a>
             <p></p>
             <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 230px" role="button">Voltar</a>
           </div> 
@@ -109,6 +109,7 @@
     }else{
       disciplina_ver.text("Não foi necessário disciplina.")
     }
+    $("#frequencia_mensal").attr('href', `/vinculos/frequencia/${vinculo.id}`)
     $('#verModal').modal('show');
   }
 
