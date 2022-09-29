@@ -7,6 +7,8 @@ use App\Models\Aluno;
 use App\Models\Vinculo;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class VinculoController extends Controller
 {
@@ -153,5 +155,32 @@ class VinculoController extends Controller
         $pdf = FacadePdf::loadView('vinculos/pdfs/teste', compact("vinculo"));
 
         return $pdf->setPaper("a4")->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
+    }
+
+    public function relatorio(Request $request)
+    {
+        $request->validate(
+
+            [
+                "relatorio" => [
+                    'max: 2048',
+                    'mimes:pdf'
+                ]
+            ],
+            [
+                'max' => 'Arquivo muito grande!',
+                'mimes' => 'Arquivo precisa ser uma extensão .pdf!'
+            ]
+
+        );
+        $vinculo = Vinculo::find($request->id);
+        if ($request->relatorio) {
+            if (Storage::exists($vinculo->relatorio)) {
+                Storage::delete($vinculo->relatorio);
+            }
+            $relatorio = $request->relatorio->storeAs($vinculo->aluno->cpf, "{$vinculo->id}.pdf");
+            $vinculo->update(["relatorio" => $relatorio]);
+        }
+        return redirect(route("vinculos.index"));
     }
 }

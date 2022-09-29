@@ -58,6 +58,9 @@ Route::resource('/vinculos', VinculoController::class)->only([
 
 Route::delete('/vinculos/destroy', [VinculoController::class, 'destroy'])->name("vinculos.destroy");
 Route::post('/vinculos/update', [VinculoController::class, 'update'])->name("vinculos.update");
+Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->name("vinculos.relatorio");
+
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
