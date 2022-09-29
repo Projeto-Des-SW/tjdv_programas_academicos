@@ -1,4 +1,4 @@
-{{-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,4 +27,4 @@
     id_delete.val(vinculo.id)
     $('#deleteModal').modal('show');
   }
-</script> --}}
+</script>

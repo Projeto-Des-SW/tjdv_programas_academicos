@@ -15,7 +15,7 @@ class CreateVinculosTable extends Migration
     {
         Schema::create('vinculos', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['VIGOR', 'FINALIZADA'])->default('VIGOR')->nullable(false);
+            $table->enum('status', ['ANDAMENTO', 'CONCLUIDA', 'CANCELADA'])->default('ANDAMENTO')->nullable(false);
             $table->enum('bolsa', ['REMUNERADA', 'VOLUNTARIA'])->nullable(false);
             $table->float('valor_bolsa')->nullable();
             $table->enum('programa', ['PAV', 'BIA', 'MONITORIA', 'TUTORIA'])->nullable(false);
