@@ -26,18 +26,17 @@
     @if (sizeof($vinculos) == 0)
       <div class="empty">
         <p>
-          Não há vínculos cadastrados
+          Não há vinculos em andamento!
         </p>
       </div>
     @else
         <br>
-        @foreach ($vinculos as $vinculo)
+        @foreach ($vinculos as $vinculo) 
           <div class="row justify-content-md-center listing-card">
-            {{-- <div class="col-100 status-card"></div> --}}
             <div class="col-md-1 col-lg-1 status">
               <img src="{{asset("images/$vinculo->status.png")}}" class="status-icon">
             </div>
-            <div class="col-md-9 col-lg-9 informacoes">
+            <div class="col-md-8 col-lg-8 informacoes">
               <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}})">
                 <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->nome}}</label>
                 <hr class="labelIndex">
@@ -46,20 +45,29 @@
             </div>
             @auth
               @if (auth()->user()->typage_type == "App\Models\Servidor")          
-                <div class="col-md-2 col-lg-2 opcoes">
-                  <a type="button" class="edit" onclick="exibirModalEditar({{$vinculo}})">
+                <div id="opcoes" class="col-md-3 col-lg-3 opcoes row">
+                  <a type="button" class="col-md-auto edit" onclick="exibirModalEditar({{$vinculo}})">
                     <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Vinculo">
                   </a>
-                  <a type="button" class="delete" onclick="exibirModalDelete({{$vinculo}})">
+                  <a type="button" class="col-md-auto delete" onclick="exibirModalDelete({{$vinculo}})">
                     <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Vinculo">
                   </a>
+                  <form id="cert_form" class="col-md-auto" action="{{route("vinculos.certificado", $vinculo->id)}}" method="get">
+                    @csrf
+                    <input name="programa" type="hidden" value={{$vinculo->programa}}>
+                    <button type="submit" formtarget="_balnk" style="border: none; background-color: inherit">
+                      <img src="{{asset("images/certificado.png")}}" class="option-button" alt="Certificado">
+                    </button>
+                  </form>
                 </div>
               @endif
             @endauth
           </div>
           <br>
         @endforeach
+
         @include("vinculos.componentes.modal_ver")
+
         @auth
           @if (auth()->user()->typage_type == "App\Models\Servidor")  
             @include("vinculos.componentes.modal_delete")

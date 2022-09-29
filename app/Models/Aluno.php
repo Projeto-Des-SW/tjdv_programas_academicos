@@ -10,6 +10,7 @@ class Aluno extends Model
 {
     protected $fillable = [
         'cpf',
+        'nome',
         'curso',
         'semestre_entrada',
     ];

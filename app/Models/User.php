@@ -20,11 +20,6 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
         'name',
         'email',
@@ -44,7 +39,8 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    public function typage(){
+    public function typage()
+    {
         return $this->morphTo();
     }
 
