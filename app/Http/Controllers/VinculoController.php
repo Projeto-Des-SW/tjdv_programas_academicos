@@ -160,16 +160,18 @@ class VinculoController extends Controller
     public function relatorio(Request $request)
     {
         $request->validate(
+
             [
                 "relatorio" => [
                     'max: 2048',
                     'mimes:pdf'
-                ],
-                [
-                    'max' => 'Arquivo muito grande!',
-                    'mimes' => 'Arquivo precisa ser uma extensão .pdf!'
                 ]
+            ],
+            [
+                'max' => 'Arquivo muito grande!',
+                'mimes' => 'Arquivo precisa ser uma extensão .pdf!'
             ]
+
         );
         $vinculo = Vinculo::find($request->id);
         if ($request->relatorio) {
