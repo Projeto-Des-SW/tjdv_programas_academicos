@@ -9,8 +9,8 @@
             @csrf
             <input type="hidden" id="idVinculo" name="idVinculo" value="{{$idVinculo}}"/>
             <div class="row">
-                <div class="form-group col-lg-4 col-md-4 col-sm-3">
-                    <label for="mes" class="form-label">Selecione o mês</label>
+                <div class="container form-group col-lg-4  ">
+                    <label for="mes" class="teste-1">Selecione o mês</label>
                     <select name="mes" id="mes" class="input-modal-create form-control">
                         <option value=""></option>
                         <option value="1">Janeiro</option>
@@ -33,7 +33,7 @@
 
             </div>
 
-            <br/><br/><input class="btn btn-success" type="submit" style="width: 200px;" value="salvar"/>
+            <br/><br/><input class="btn btn-success" type="submit" style="width: 200px;" value="Salvar"/>
 
         </form>
     </div>
@@ -73,40 +73,41 @@
     
             //fazendo colunas do formulario
             formulario += `
-                <div class="row">
-                    <div class="col-2">
+                <div class="container row" style="margin-left: 5rem">
+                    <div class="col-2" style="background-color: #0D2579">
+                        <label class="text-light">Dias/Horas</label>
                     </div>
-                    <div class="col-2">
-                        <label>1h</label>
+                    <div class="col-2 " style="background-color: #0D2579">
+                        <label class="text-light">1h</label>
                     </div>
-                    <div class="col-2">
-                        <label>2h</label>
+                    <div class="col-2" style="background-color: #0D2579">
+                        <label class="text-light">2h</label>
                     </div>
-                    <div class="col-2">
-                        <label>3h</label>
+                    <div class="col-2" style="background-color: #0D2579">
+                        <label class="text-light">3h</label>
                     </div>
-                    <div class="col-2">
-                        <label>4h</label>
+                    <div class="col-2" style="background-color: #0D2579">
+                        <label class="text-light">4h</label>
                     </div>    
                 </div>
             `;
 
             for (i = 0; i < qntDias; i++){
                 formulario += `
-                <div class="row"">
-                    <div class="col-2">
-                        <label> Dia ${i + 1}</label>
+                <div class="container row" style="margin-left: 5rem">
+                    <div class="col-2 p-3" style="background-color: #0D2579">
+                        <label class="text-white"> Dia ${i + 1}</label>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 bg-light p-3 ">
                         <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="1">
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 bg-light p-3 ">
                         <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="2">
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 bg-light p-3 ">
                         <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="3">
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 bg-light p-3 ">
                         <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="4">
                     </div>    
                 </div><br/>
