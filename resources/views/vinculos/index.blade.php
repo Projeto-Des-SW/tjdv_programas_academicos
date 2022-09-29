@@ -33,13 +33,12 @@
         <br>
         @foreach ($vinculos as $vinculo)
           <div class="row justify-content-md-center listing-card">
-            {{-- <div class="col-100 status-card"></div> --}}
             <div class="col-md-1 col-lg-1 status">
               <img src="{{asset("images/$vinculo->status.png")}}" class="status-icon">
             </div>
             <div class="col-md-9 col-lg-9 informacoes">
-              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}})">
-                <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->nome}}</label>
+              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}}, {{$vinculo->aluno->user}})">
+                <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->user->name}}</label>
                 <hr class="labelIndex">
                 <label class="labelIndex">{{$vinculo->programa}} - {{$vinculo->bolsa}} - {{$vinculo->semestre}}</label>
               </a>
@@ -54,6 +53,12 @@
                     <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Vinculo">
                   </a>
                 </div>
+              @else
+                <div class="col-md-2 col-lg-2 opcoes">
+                  <a type="button" class="edit" onclick="exibirModalRelatorio({{$vinculo->id}})">
+                    <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Editar Vinculo">
+                  </a>
+                </div>
               @endif
             @endauth
           </div>
@@ -61,9 +66,11 @@
         @endforeach
         @include("vinculos.componentes.modal_ver")
         @auth
-          @if (auth()->user()->typage_type == "App\Models\Servidor")  
+          @if (auth()->user()->typage_type == "App\Models\Servidor")
             @include("vinculos.componentes.modal_delete")
             @include("vinculos.componentes.modal_edit")
+          @else
+            @include("vinculos.componentes.modal_relatorio")
           @endif
         @endauth
     @endif
@@ -84,6 +91,10 @@
       vinculo.data_fim ? $("#data-fim-edit").val(vinculo.data_fim).attr("disabled", false) : $("#data-fim-edit").val('').attr("disabled", true);
 
       $("#editarModal").modal("show");
+    }
+
+    function exibirModalRelatorio(id){
+      $("#modal_show_" + id).modal("show");
     }
   </script>
 

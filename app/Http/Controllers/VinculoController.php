@@ -7,6 +7,7 @@ use App\Models\Aluno;
 use App\Models\Vinculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class VinculoController extends Controller
 {
@@ -143,5 +144,30 @@ class VinculoController extends Controller
         if (Vinculo::destroy($id)) {
             return redirect(route("vinculos.index"));
         }
+    }
+
+    public function relatorio(Request $request)
+    {
+        $request->validate(
+            [
+                "relatorio" => [
+                    'max: 2048',
+                    'mimes:pdf'
+                ],
+                [
+                    'max' => 'Arquivo muito grande!',
+                    'mimes' => 'Arquivo precisa ser uma extensão .pdf!'
+                ]
+            ]
+        );
+        $vinculo = Vinculo::find($request->id);
+        if ($request->relatorio) {
+            if (Storage::exists($vinculo->relatorio)) {
+                Storage::delete($vinculo->relatorio);
+            }
+            $relatorio = $request->relatorio->storeAs($vinculo->aluno->cpf, "{$vinculo->id}.pdf");
+            $vinculo->update(["relatorio" => $relatorio]);
+        }
+        return redirect(route("vinculos.index"));
     }
 }
