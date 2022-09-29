@@ -37,8 +37,8 @@
               <img src="{{asset("images/$vinculo->status.png")}}" class="status-icon">
             </div>
             <div class="col-md-8 col-lg-8 informacoes">
-              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}})">
-                <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->nome}}</label>
+              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}}, {{$vinculo->aluno->user}})">
+                <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->user->name}}</label>
                 <hr class="labelIndex">
                 <label class="labelIndex">{{$vinculo->programa}} - {{$vinculo->bolsa}} - {{$vinculo->semestre}}</label>
               </a>
