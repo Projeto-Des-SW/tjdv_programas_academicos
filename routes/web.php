@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Rotas de autenticacao
 Route::middleware([
     'auth:sanctum',

@@ -180,7 +180,6 @@ div.modal-ver{
   margin-top: 2.5rem;
 }
 
-
 /* usados apenas no modal de editar e cadastrar vinculo */
 .input-modal-vinculo{
   height: 27px; 
@@ -194,4 +193,3 @@ div.modal-ver{
   border: none;
 };
 
-/* Form submit buttom */
