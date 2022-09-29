@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Professor;
 use App\Models\Aluno;
 use App\Models\Vinculo;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class VinculoController extends Controller
 {
@@ -143,5 +143,15 @@ class VinculoController extends Controller
         if (Vinculo::destroy($id)) {
             return redirect(route("vinculos.index"));
         }
+    }
+
+    public function certificacao(Request $request, $id)
+    {
+
+        $vinculo = Vinculo::find($id);
+
+        $pdf = FacadePdf::loadView('vinculos/pdfs/teste', compact("vinculo"));
+
+        return $pdf->setPaper("a4")->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
     }
 }
