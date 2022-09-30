@@ -42,7 +42,11 @@
             <a class="nav-link" style="color:white;" href="#item-3">Vínculos</a>
             <hr style="color:white; width: 100%">
             <a class="nav-link" style="color:white;" href="#item-3">Usuário</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Logout</a>
+            <form action="/logout" method="POST">
+              @csrf
+              <a href="/logout" class="nav-link" style="color:white;" onclick="event.preventDefault(); this.closest('form').submit()">logout</a>
+            </form>
+            
           </nav>
         </nav>
       </div>
