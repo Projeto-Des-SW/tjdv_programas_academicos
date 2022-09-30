@@ -20,36 +20,21 @@
     <header>
       <nav class="navbar navbar-dark d-flex" style="background-color: #0D2579">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          @auth
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            @include('templates.menu_lateral')
+          @endauth
         
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-            <a href="#" type="button" style="color: white;text-decoration: none; margin-left: 50px">
+            <a href="{{route("vinculos.index")}}" type="button" style="color: white;text-decoration: none; margin-left: 50px">
               TJDV - Programas acadêmicos
             </a>
           </ul>
         </div>
       </nav>
-      
-      <div class="collapse" id="navbarToggleExternalContent" style="background-color: #0D2579; width: 110px; text-color: white; float: left;z-index: 9999">
-        <nav id="navbar-exemplo3" class="navbar">
-          <a class="navbar-brand" style="color:white;" href="#">Menu</a>
-          <nav class="nav flex-column">
-            <a class="nav-link" style="color:white;" href="#item-1">Alunos</a>
-            <a class="nav-link" style="color:white;" href="#item-2">Professores</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Servidores</a>
-            <a class="nav-link" style="color:white;" href="#item-3">Vínculos</a>
-            <hr style="color:white; width: 100%">
-            <a class="nav-link" style="color:white;" href="#item-3">Usuário</a>
-            <form action="/logout" method="POST">
-              @csrf
-              <a href="/logout" class="nav-link" style="color:white;" onclick="event.preventDefault(); this.closest('form').submit()">logout</a>
-            </form>
-            
-          </nav>
-        </nav>
-      </div>
     </header>
 
     <div>

@@ -19,7 +19,8 @@ class Vinculo extends Model
         'data_inicio',
         'data_fim',
         'aluno_id',
-        'professor_id'
+        'professor_id',
+        'relatorio'
     ];
 
     public function aluno()

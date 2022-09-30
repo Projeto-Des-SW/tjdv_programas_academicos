@@ -50,16 +50,16 @@ input {
   margin-right: 20px;
 }
 
+.relatorio-icon{
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
 
 .empty{
   padding-top: 200px;
   padding-bottom: 200px;
-}
-
-.status-card{
-  background-color: yellow;
-  border-radius: 50px;
-  width: 20px;
 }
 
 /* Ícon para criar um registro (professor, aluno, bolsa e servidor) */
@@ -180,7 +180,6 @@ div.modal-ver{
   margin-top: 2.5rem;
 }
 
-
 /* usados apenas no modal de editar e cadastrar vinculo */
 .input-modal-vinculo{
   height: 27px; 
@@ -193,3 +192,4 @@ div.modal-ver{
   width: 400px;
   border: none;
 };
+
