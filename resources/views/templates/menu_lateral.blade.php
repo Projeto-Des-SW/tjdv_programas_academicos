@@ -61,7 +61,7 @@
 
     <form action="/logout" method="POST">
       @csrf
-      <a href="/logout" class="nav-link" style="color:white;" onclick="event.preventDefault(); this.closest('form').submit()">sair</a>
+      <a href="/logout"  onclick="event.preventDefault(); this.closest('form').submit()">sair</a>
     </form>
   </div>
 </div>
