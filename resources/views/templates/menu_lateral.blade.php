@@ -59,6 +59,9 @@
       @endif
     @endauth
 
-    <a href="#" style="text-align:unset">Sair</a>
+    <form action="/logout" method="POST">
+      @csrf
+      <a href="/logout" class="nav-link" style="color:white;" onclick="event.preventDefault(); this.closest('form').submit()">sair</a>
+    </form>
   </div>
 </div>
