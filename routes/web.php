@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -59,6 +59,8 @@ Route::resource('/vinculos', VinculoController::class)->only([
 
 Route::delete('/vinculos/destroy', [VinculoController::class, 'destroy'])->name("vinculos.destroy");
 Route::post('/vinculos/update', [VinculoController::class, 'update'])->name("vinculos.update");
+Route::get('/vinculos/frequencia/{idVinculo}', [VinculoController::class, 'frequenciaMensal'])->name("vinculos.frequenciaMensal");
+Route::post('/vinculos/frequencia', [VinculoController::class, 'salvarfrequenciaMensal'])->name("vinculos.salvarFrequenciaMensal");
 Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->name("vinculos.relatorio");
 
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
