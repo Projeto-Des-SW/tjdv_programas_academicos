@@ -6,39 +6,55 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Aluno;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AlunoController extends Controller
 {
     public function store(Request $request){
 
+        Validator::make($request->all(), array_merge(Aluno::$rules, User::$rules), array_merge(Aluno::$messages, User::$messages))->validateWithBag('create');
+
         $aluno = Aluno::create([
-            'nome' => $request->input('nome'),
             'cpf' => $request->input('cpf'),
             'curso' => $request->input('curso'),
             'semestre_entrada' => $request->input('semestre_entrada')
         ]);
 
         $aluno->user()->create([
-            'name' => $aluno->nome,
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
-        ]);
+        ])->givePermissionTo('aluno');
 
         return redirect(route("alunos.index"));
     }
 
     public function update(Request $request) {
-        $aluno = Aluno::find($request->id_edit);
+        $aluno = Aluno::find($request->id);
 
-        $aluno->nome = $request->nome_edit;
-        $aluno->cpf = $request->cpf_edit;
-        $aluno->curso = $request->curso_edit;
-        $aluno->semestre_entrada = $request->semestre_entrada_edit;
+        $rulesUser = User::$rules;
+        $rulesUser['email'] = [
+            'bail', 'required', 'email', 'max:100',
+            Rule::unique('users')->ignore($aluno->user->id)
+        ];
+
+        $rulesAluno = Aluno::$rules;
+        $rulesAluno['cpf'] = [
+            'bail', 'required', 'formato_cpf', 'cpf', 'unique:servidors', 'unique:professors',
+            Rule::unique('alunos')->ignore($aluno->id)
+        ];
+
+        Validator::make($request->all(), array_merge($rulesAluno, $rulesUser), array_merge(Aluno::$messages, User::$messages))->validateWithBag('update');
+
+        $aluno->cpf = $request->cpf;
+        $aluno->curso = $request->curso;
+        $aluno->semestre_entrada = $request->semestre_entrada;
 
         
-        $aluno->user->name = $aluno->nome;
-        $aluno->user->email = $request->email_edit;
-        $aluno->user->password = Hash::make($request->senha_edit);
+        $aluno->user->name = $request->name;
+        $aluno->user->email = $request->email;
+        $aluno->user->password = Hash::make($request->password);
 
         if ($aluno->save() && $aluno->user->save()){
             return redirect(route("alunos.index"));
@@ -51,7 +67,7 @@ class AlunoController extends Controller
     }
 
     public function destroy(Request $request) {
-        $id = $request->only(['id_delete']);
+        $id = $request->only(['id']);
         $aluno = Aluno::findOrFail($id)->first();
 
         if ($aluno->user->delete() && $aluno->delete()) {

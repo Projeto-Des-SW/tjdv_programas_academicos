@@ -14,11 +14,10 @@ class CreateAlunosTable extends Migration
     public function up()
     {
         Schema::create('alunos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome');
-            $table->string('cpf')->unique();
-            $table->string('curso');
-            $table->string('semestre_entrada');
+            $table->id();
+            $table->string('cpf', 14)->unique();
+            $table->string('curso', 100);
+            $table->string('semestre_entrada', 6);
             $table->timestamps();
         });
     }
