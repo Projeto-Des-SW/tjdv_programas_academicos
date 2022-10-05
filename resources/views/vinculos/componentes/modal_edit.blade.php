@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Cadastrar vínculo</button>
+          <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Editar vínculo</button>
         </div>
       </form>
     </div>

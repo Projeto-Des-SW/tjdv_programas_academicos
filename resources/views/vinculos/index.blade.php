@@ -63,7 +63,7 @@
               @else
                 <div class="col-md-2 col-lg-2 opcoes">
                   <a type="button" class="edit" onclick="exibirModalRelatorio({{$vinculo->id}})">
-                    <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Editar Vinculo">
+                    <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Relatorio final">
                   </a>
                 </div>
               @endif
