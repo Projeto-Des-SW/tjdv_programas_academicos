@@ -56,7 +56,7 @@
           </div>
         
           <div style="margin-bottom: 15px; margin-top: 15px">
-            <a class="btn btn-success" role="button" style="width: 230px">Formulário de Frequência</a>
+            <a id="frequencia_mensal" class="btn btn-success" role="button" style="width: 230px">Formulário de Frequência</a>
             <p></p>
             <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 230px" role="button">Voltar</a>
           </div> 
@@ -77,7 +77,7 @@
   let curso_ver = $('#curso_ver')
   let disciplina_ver = $('#disciplina_ver')
 
-  function exibirModalVer(vinculo, professor, aluno){
+  function exibirModalVer(vinculo, professor, aluno, user){
     status_ver.text(vinculo.status)
     
     if (vinculo.status == "VIGOR"){
@@ -93,7 +93,7 @@
       bolsa_ver.text(vinculo.bolsa)
     }
     programa_ver.text(vinculo.programa)
-    nome_aluno_ver.text(aluno.nome)
+    nome_aluno_ver.text(user.name)
     nome_professor_ver.text(professor.nome)
     
     let data = new Date(vinculo.data_inicio);
@@ -109,6 +109,7 @@
     }else{
       disciplina_ver.text("Não foi necessário disciplina.")
     }
+    $("#frequencia_mensal").attr('href', `/vinculos/frequencia/${vinculo.id}`)
     $('#verModal').modal('show');
   }
 

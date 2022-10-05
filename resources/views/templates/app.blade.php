@@ -20,39 +20,21 @@
     <header>
       <nav class="navbar navbar-dark d-flex" style="background-color: #0D2579">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          @auth
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            @include('templates.menu_lateral')
+          @endauth
         
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-            <a href="#" type="button" style="color: white;text-decoration: none; margin-left: 50px">
+            <a href="{{route("vinculos.index")}}" type="button" style="color: white;text-decoration: none; margin-left: 50px">
               TJDV - Programas acadêmicos
             </a>
           </ul>
         </div>
       </nav>
-
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-          </div>
-          <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </header>
 
     <div>

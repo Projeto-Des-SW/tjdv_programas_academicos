@@ -20,10 +20,12 @@ class CreateVinculosTable extends Migration
             $table->float('valor_bolsa')->nullable();
             $table->enum('programa', ['PAV', 'BIA', 'MONITORIA', 'TUTORIA'])->nullable(false);
             $table->string("disciplina")->nullable();
+            $table->string("relatorio")->nullable();
             $table->string("curso")->nullable();
             $table->string("semestre")->nullable(false);
             $table->date("data_inicio")->nullable(false);
             $table->date("data_fim")->nullable(false);
+            $table->integer('quantidade_horas')->default(0)->nullable(false);
             $table->timestamps();
         });
 

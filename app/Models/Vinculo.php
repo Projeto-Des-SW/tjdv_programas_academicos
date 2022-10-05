@@ -19,7 +19,8 @@ class Vinculo extends Model
         'data_inicio',
         'data_fim',
         'aluno_id',
-        'professor_id'
+        'professor_id',
+        'relatorio'
     ];
 
     public function aluno()
@@ -30,5 +31,10 @@ class Vinculo extends Model
     public function professor()
     {
         return $this->belongsTo(Professor::class);
+    }
+
+    public function frenquenciasMensais()
+    {
+        return $this->hasMany(Frequencia_mensal::class);
     }
 }
