@@ -12,7 +12,7 @@ class AlunosSeeder extends Seeder
     public function run()
     {
         $aluno1 = Aluno::create([
-            'cpf' => "12345678978",
+            'cpf' => "656.032.798-18",
             'curso' => "BCC",
             'semestre_entrada' => "2018.2"
         ]);
@@ -20,11 +20,11 @@ class AlunosSeeder extends Seeder
         $aluno1->user()->create([
             'name' => "Victor Francisco",
             'email' => "victor@gmail.com",
-            'password' =>  Hash::make('123456')
+            'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
         $aluno2 = Aluno::create([
-            'cpf' => "12345678977",
+            'cpf' => "954.960.878-64",
             'curso' => "BCC",
             'semestre_entrada' => "2019.1"
         ]);
@@ -32,23 +32,23 @@ class AlunosSeeder extends Seeder
         $aluno2->user()->create([
             'name' => "Luiz Davi",
             'email' => "davi@gmail.com",
-            'password' =>  Hash::make('123456')
+            'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
         $aluno3 = Aluno::create([
-            'cpf' => "12345678976",
+            'cpf' => "986.985.088-04",
             'curso' => "BCC",
             'semestre_entrada' => "2019.1"
         ]);
 
         $aluno3->user()->create([
-            'name' => "Thiago Silva",
+            'name' => "Thiago Cavalcanti",
             'email' => "thiago@gmail.com",
-            'password' =>  Hash::make('123456')
+            'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
         $aluno4 = Aluno::create([
-            'cpf' => "12345678975",
+            'cpf' => "519.690.528-64",
             'curso' => "BCC",
             'semestre_entrada' => "2018.1"
         ]);
@@ -56,7 +56,7 @@ class AlunosSeeder extends Seeder
         $aluno4->user()->create([
             'name' => "Jackson Lima",
             'email' => "jack@gmail.com",
-            'password' =>  Hash::make('123456')
+            'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
     }
 }

@@ -27,7 +27,7 @@ class VinculosSeeder extends Seeder
             'bolsa' => 'REMUNERADA',
             'valor_bolsa' => 350,
             'programa' => 'Tutoria',
-            'disciplina' => 'Logica Matematica',
+            'disciplina' => 'Lógica matemática',
             'curso' => 'BCC',
             'semestre' => '2022.2',
             'data_inicio' => "2022-08-17",
