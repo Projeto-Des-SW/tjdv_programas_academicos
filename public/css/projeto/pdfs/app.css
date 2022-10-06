@@ -1,0 +1,85 @@
+body{
+  color: #090948; 
+  font-family: Arial;
+  margin: 0px;
+}
+
+.certificado{
+  float: right;
+  margin-left: 190px;
+}
+
+.head{
+  font-size: 20px;
+  width: 100%;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.title{
+  font-size: 70px;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.text{
+  font-size: 23px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.cidade{
+  margin-right: 30px;
+  text-align: right;
+}
+
+.assinaturas{
+  margin-top: 125px;
+  text-align: center;
+}
+
+.assinatura-coord{
+  margin-top: 0px;
+  text-align: center;
+  margin-left: 45px;
+  float: left;
+}
+
+.assinatura-reit{
+  margin-top: 0px;
+  text-align: center;
+  margin-right: 45px;
+  float: right;
+}
+
+.line-ass{
+  width: 400px;
+  color: grey;
+  margin-bottom: 0px;
+}
+
+.line{
+  margin-top: 0px;
+  border: none;
+  border-top: 3px solid #090948;
+}
+
+.lateral{
+  background-color: #090948;
+  height: 100%;
+  width: 190px;
+  float: left;
+  color: white;
+}
+
+.ufape{
+  transform: rotate(45deg)
+}
+
+.footer{
+  font-size: 15px;
+  text-align: center;
+  margin-top: 770px;
+}

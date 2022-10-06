@@ -8,7 +8,6 @@ use App\Models\Vinculo;
 use App\Models\Frequencia_mensal;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class VinculoController extends Controller
@@ -306,12 +305,21 @@ class VinculoController extends Controller
 
     public function certificacao(Request $request, $id)
     {
+        $request->validate(
+            [
+                "programa" => ['required']
+            ],
+            [
+                'required' => 'O campo :attribute é obrigatório.'
+            ]
+        );
 
+        $programa = strtolower($request->programa);
         $vinculo = Vinculo::find($id);
 
-        $pdf = FacadePdf::loadView('vinculos/pdfs/teste', compact("vinculo"));
+        $pdf = FacadePdf::loadView("vinculos/pdfs/{$programa}", compact("vinculo"));
 
-        return $pdf->setPaper("a4")->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
+        return $pdf->setPaper('A4', 'landscape')->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
     }
 
     public function relatorio(Request $request)
