@@ -16,7 +16,7 @@
                 <select id="select-alunos-edit" name="alunos" class="form-control input-modal-vinculo" >
                   <option value=""></option>
                   @foreach ($alunos as $aluno)
-                    <option value="{{$aluno->id}}">{{$aluno->nome}} - {{$aluno->cpf}}</option>
+                    <option value="{{$aluno->id}}">{{$aluno->user->name}} - {{$aluno->cpf}}</option>
                   @endforeach
                 </select>
               </div>
@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Cadastrar vínculo</button>
+          <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Editar vínculo</button>
         </div>
       </form>
     </div>
