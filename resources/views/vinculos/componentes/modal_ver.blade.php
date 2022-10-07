@@ -80,11 +80,12 @@
   function exibirModalVer(vinculo, professor, aluno, user){
     status_ver.text(vinculo.status)
     
-    if (vinculo.status == "VIGOR"){
+    if (vinculo.status == "ANDAMENTO"){
+      document.getElementById("status_ver").style.color = "yellow";
+    }else if(vinculo.status == "CONCLUIDA"){
       document.getElementById("status_ver").style.color = "green";
-    }else{
+    } else {
       document.getElementById("status_ver").style.color = "red";
-
     }
 
     if (vinculo.bolsa == "REMUNERADA"){
