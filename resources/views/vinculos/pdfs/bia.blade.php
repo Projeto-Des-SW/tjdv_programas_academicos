@@ -12,7 +12,7 @@
     Federal do Agreste de Pernambuco”</strong>, no período de outubro de <strong>{{$vinculo->data_inicio}} a {{$vinculo->data_fim}}</strong>,
     totalizando <strong>{{$vinculo->quantidade_horas}}</strong> horas, sob orientação do(a) Professor(a) <strong>{{$vinculo->professor->nome}}</strong>.
   </div>
-  <div class="cidade" style="margin-right: 50px; margin-top: 10px">
+  <div class="cidade">
     Garanhuns-PE, <?php 
       echo date('d/m/Y');
     ?>

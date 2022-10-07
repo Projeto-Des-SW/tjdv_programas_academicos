@@ -1,6 +1,5 @@
 body{
-  color: #090948; 
-  font-family: Arial;
+  color: #19395F; 
   margin: 0px;
 }
 
@@ -56,30 +55,44 @@ body{
 
 .line-ass{
   width: 400px;
-  color: grey;
   margin-bottom: 0px;
 }
 
 .line{
   margin-top: 0px;
   border: none;
-  border-top: 3px solid #090948;
+  border-top: 3px solid #19395F;
 }
 
 .lateral{
-  background-color: #090948;
+  position: relative;
+  background-color: #19395F;
   height: 100%;
   width: 190px;
   float: left;
   color: white;
 }
 
-.ufape{
-  transform: rotate(45deg)
-}
-
 .footer{
   font-size: 15px;
   text-align: center;
   margin-top: 770px;
+}
+
+.ufape{
+  font-size: 170px;
+  font-weight: bold;
+  position: absolute;
+  color: #16365D;
+  width: 100%;
+  margin-top: 450px;
+  transform: rotate(-90deg)
+}
+
+.logo{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  margin-bottom: 5px
 }
