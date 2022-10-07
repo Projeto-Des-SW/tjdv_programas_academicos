@@ -15,7 +15,7 @@
                 <select id="select-alunos" name="alunos" class="form-control input-modal-vinculo" >
                   <option value=""></option>
                   @foreach ($alunos as $aluno)
-                    <option value="{{$aluno->id}}">{{$aluno->nome}} - {{$aluno->cpf}}</option>
+                    <option value="{{$aluno->id}}">{{$aluno->user->name}} - {{$aluno->cpf}}</option>
                   @endforeach
                 </select>
               </div>

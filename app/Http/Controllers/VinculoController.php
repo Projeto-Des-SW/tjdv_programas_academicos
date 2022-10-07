@@ -22,7 +22,7 @@ class VinculoController extends Controller
             for ($i = 0; $i < count($alunos); $i++) {
                 $vinculosDoAluno = $alunos[$i]->vinculos;
                 foreach ($vinculosDoAluno as $vinculo) {
-                    if ($vinculo->status == "VIGOR" and $vinculo->bolsa == "REMUNERADA") {
+                    if ($vinculo->status == "ANDAMENTO" and $vinculo->bolsa == "REMUNERADA") {
                         $alunos[$i]['proibido'] = true; //variável que vai indicar que aluno está proibido de ter outro vinculo remunerado
                         break;
                     }
