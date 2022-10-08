@@ -45,7 +45,7 @@ class VinculoController extends Controller
                 }
 
                 if ($programa) {
-                    $query->where("vinculos.programa", "=", "{$programa}");
+                    $query->where("vinculos.programa", "=", "{$search}");
                 }
             })->orderBy('vinculos.created_at', 'desc')->select("vinculos.*")->get();
 
