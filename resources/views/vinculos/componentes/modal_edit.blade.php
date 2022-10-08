@@ -25,7 +25,7 @@
                 <select name="programa" id="select-programas-edit" class="form-control input-modal-vinculo">
                   <option value=""></option>
                   <option value="BIA">BIA</option>
-                  <option value="PAV">PAV</option>
+                  <option value="PAVI">PAVI</option>
                   <option value="TUTORIA">TUTORIA</option>
                   <option value="MONITORIA">MONITORIA</option>
                 </select>
