@@ -2,6 +2,30 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content modal-create">
       <div class="modal-header" >
+        <div class="btn-group">
+          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background-color: inherit; padding: 0px;">
+            <img src="{{asset("images/menu_tres_pontos.svg")}}" class="option-button" alt="Menu">
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <form id="cert_form" class="dropdown-item" action="{{route("vinculos.certificado", $vinculo->id)}}" method="get">
+                @csrf
+                <input name="programa" type="hidden" value={{$vinculo->programa}}>
+                <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
+                  Certificado
+                </button>
+              </form>
+            </li>
+            <li><a class="dropdown-item" href="#">Visualizar frequência</a></li>
+            @if (auth()->user()->typage_type == "App\Models\Aluno")  
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Preencher frequência</a></li>
+            @endif
+            @if (auth()->user()->typage_type == "App\Models\Servidor")
+              <li><a class="dropdown-item" target="_blank" id="relatorio_final">Relatório final</a></li>
+            @endif
+          </ul>
+        </div>
         <h5 id="programa_ver" class="modal-title title"></h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -56,7 +80,6 @@
           </div>
         
           <div style="margin-bottom: 15px; margin-top: 15px">
-            <a id="frequencia_mensal" class="btn btn-success" role="button" style="width: 230px">Formulário de frequência</a>
             <p></p>
             <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 230px" role="button">Voltar</a>
           </div> 
@@ -77,7 +100,7 @@
   let curso_ver = $('#curso_ver')
   let disciplina_ver = $('#disciplina_ver')
 
-  function exibirModalVer(vinculo, professor, aluno, user){
+  function exibirModalVer(vinculo, professor, aluno, user, auth){
     status_ver.text(vinculo.status)
     
     if (vinculo.status == "ANDAMENTO"){
@@ -111,6 +134,19 @@
       disciplina_ver.text("Não foi necessário disciplina.")
     }
     $("#frequencia_mensal").attr('href', `/vinculos/frequencia/${vinculo.id}`)
+
+    // Habilitando botao de ver relatorio apenas quando existir relatorio
+    if(auth.typage_type == "App\\Models\\Servidor"){
+      if(vinculo.relatorio){
+        // Exibe
+        $("#relatorio_final").attr('href', `storage/${aluno.cpf}/${vinculo.id}.pdf`)
+        document.getElementById("relatorio_final").style.display = "block";
+      } else{
+        // Oculta
+        document.getElementById("relatorio_final").style.display = "none";
+      }
+    }
+
     $('#verModal').modal('show');
   }
 
