@@ -47,15 +47,14 @@ class VinculoController extends Controller
                     $query->where("vinculos.programa", "=", "{$search}");
                 }
             })->orderBy('vinculos.created_at', 'desc')->select("vinculos.*")->get();
-
-            return view("vinculos.index", compact('vinculos', 'professors', 'alunos', 'search'));
         } else if (auth()->user()->typage_type == "App\Models\Aluno") {
             $vinculos = auth()->user()->typage->vinculos;
             $professors = [];
             $alunos = [];
             $search = $request->search;
-            return view("vinculos.index", compact('vinculos', 'professors', 'alunos', 'search'));
         }
+        $auth = auth()->user();
+        return view("vinculos.index", compact('vinculos', 'professors', 'alunos', 'search', 'auth'));
     }
 
     public function store(Request $request)
