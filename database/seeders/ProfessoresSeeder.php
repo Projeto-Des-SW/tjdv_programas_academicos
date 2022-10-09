@@ -11,31 +11,31 @@ class ProfessoresSeeder extends Seeder
     {
         Professor::create([
             'nome' => 'Rodrigo Gusmão',
-            'cpf' => '12345678978',
+            'cpf' => '996.889.168-11',
             'siape' => '1234567'
         ]);
 
         Professor::create([
             'nome' => 'Marcius',
-            'cpf' => '12345678977',
+            'cpf' => '017.197.098-58',
             'siape' => '1234566'
         ]);
 
         Professor::create([
-            'nome' => 'Thais Buirity',
-            'cpf' => '12345678976',
+            'nome' => 'Thais Burity',
+            'cpf' => '699.493.378-44',
             'siape' => '1234565'
         ]);
 
         Professor::create([
-            'nome' => 'Icaro Lins',
-            'cpf' => '12345678975',
+            'nome' => 'Ícaro Lins',
+            'cpf' => '107.409.038-10',
             'siape' => '1234564'
         ]);
 
         Professor::create([
             'nome' => 'Jean Carlos',
-            'cpf' => '12345678974',
+            'cpf' => '910.096.198-10',
             'siape' => '1234563'
         ]);
     }

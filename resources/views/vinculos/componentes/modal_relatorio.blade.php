@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_show_{{$vinculo->id}}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modal_relatorio_{{$vinculo->id}}" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content modal-create">
       <div class="modal-header">

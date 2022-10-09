@@ -3,7 +3,7 @@
 @section("body")
 
     <div class="container">
-        <h1><strong>Frequencia mensal</strong></h1><br/>
+        <h1><strong>Frequência mensal</strong></h1><br/>
 
         <form action="{{route('vinculos.salvarFrequenciaMensal')}}" method="post">
             @csrf
