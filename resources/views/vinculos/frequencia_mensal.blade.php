@@ -75,23 +75,23 @@
             </div>
         `;
 
-            for (i = 0; i < qntDias; i++){
+            for (i = 1; i <= qntDias; i++){
                 formulario += `
                 <div class="container row" style="margin-left: 5rem">
                     <div class="col-2 p-3" style="background-color: #0D2579">
-                        <label class="text-white"> Dia ${i + 1}</label>
+                        <label class="text-white"> Dia ${i}</label>
                     </div>
                     <div class="col-2 bg-light p-3 ">
-                        <input type="radio" class="dia" id="dia${i + 1}_1" name="dia${i + 1}" value="1">
+                        <input type="radio" class="dia" id="dia${i}_1" name="dia${i}" value="1">
                     </div>
                     <div class="col-2 bg-light p-3 ">
-                        <input type="radio" class="dia" id="dia${i + 1}_2" name="dia${i + 1}" value="2">
+                        <input type="radio" class="dia" id="dia${i}_2" name="dia${i}" value="2">
                     </div>
                     <div class="col-2 bg-light p-3 ">
-                        <input type="radio" class="dia" id="dia${i + 1}_3" name="dia${i + 1}" value="3">
+                        <input type="radio" class="dia" id="dia${i}_3" name="dia${i}" value="3">
                     </div>
                     <div class="col-2 bg-light p-3 ">
-                        <input type="radio" class="dia" id="dia${i + 1}_4" name="dia${i + 1}" value="4">
+                        <input type="radio" class="dia" id="dia${i}_4" name="dia${i}" value="4">
                     </div>    
                 </div><br/>
                 `; 
