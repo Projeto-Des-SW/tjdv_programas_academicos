@@ -347,4 +347,14 @@ class VinculoController extends Controller
         }
         return redirect(route("vinculos.index"));
     }
+
+    public function getFrequencia($idVinculo, $mes)
+    {
+        $frequenciaMensal = Frequencia_mensal::where('vinculo_id', $idVinculo)->where('mes', $mes)->first();
+        if(isset($frequenciaMensal->frequencia)){
+            return $frequenciaMensal->frequencia;
+        } else{
+            return "nao existe";
+        }
+    }
 }
