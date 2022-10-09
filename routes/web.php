@@ -52,5 +52,6 @@ Route::get('/vinculos/frequencia/{idVinculo}', [VinculoController::class, 'frequ
 Route::post('/vinculos/frequencia', [VinculoController::class, 'salvarfrequenciaMensal'])->name("vinculos.salvarFrequenciaMensal");
 Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->name("vinculos.relatorio");
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
+Route::get('/getFrequenciaMensal/{idVinculo}/{mes}', [VinculoController::class, 'getFrequencia'])->name("getFrequencia");
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
