@@ -44,7 +44,7 @@
     
             //verificando quantos dias tem o mes
             mes = $(this).val();
-            meses_30 = [4, 6, 9, 11]
+            meses_30 = ['4', '6', '9', '11']
             
             if (mes == 2){
                 qtdDias = 29;
