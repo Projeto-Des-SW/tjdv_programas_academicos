@@ -45,32 +45,17 @@
             $("#formulario_frequencia").html('');
     
             //verificando quantos dias tem o mes
-            if ($(this).val() == 1){
-                qntDias = 31;
-            } else if ($(this).val() == 2){
+            mes = $(this).val();
+            meses_30 = [4, 6, 9, 11]
+            
+            if (mes == 2){
                 qntDias = 29;
-            } else if ($(this).val() == 3){
-                qntDias = 31;
-            } else if ($(this).val() == 4){
-                qntDias = 30;
-            } else if ($(this).val() == 5){
-                qntDias = 31;
-            } else if ($(this).val() == 6){
-                qntDias = 30;
-            } else if ($(this).val() == 7){
-                qntDias = 31;
-            } else if ($(this).val() == 8){
-                qntDias = 31;
-            } else if ($(this).val() == 9){
-                qntDias = 30;
-            } else if ($(this).val() == 10){
-                qntDias = 31;
-            } else if ($(this).val() == 11){
+            } else if (meses_30.includes(mes)){
                 qntDias = 30;
             } else{
                 qntDias = 31;
             }
-    
+
             //fazendo colunas do formulario
             formulario += `
                 <div class="container row" style="margin-left: 5rem">
