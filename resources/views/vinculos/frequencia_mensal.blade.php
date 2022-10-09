@@ -38,7 +38,7 @@
 
     <script>
         $("#mes").change( function(){
-            let qntDias;
+            let qtdDias;
             let formulario = "";
             $("#formulario_frequencia").html('');
     
@@ -47,11 +47,11 @@
             meses_30 = [4, 6, 9, 11]
             
             if (mes == 2){
-                qntDias = 29;
+                qtdDias = 29;
             } else if (meses_30.includes(mes)){
-                qntDias = 30;
+                qtdDias = 30;
             } else{
-                qntDias = 31;
+                qtdDias = 31;
             }
 
             //fazendo colunas do formulario
@@ -75,7 +75,7 @@
             </div>
         `;
 
-            for (i = 1; i <= qntDias; i++){
+            for (i = 1; i <= qtdDias; i++){
                 formulario += `
                 <div class="container row" style="margin-left: 5rem">
                     <div class="col-2 p-3" style="background-color: #0D2579">
@@ -99,6 +99,7 @@
 
             $("#formulario_frequencia").html(formulario);
 
+            // Preenchendo os radio-buttons com as informacoes que tem no banco de dados
             $.get('/getFrequenciaMensal/' + {{$idVinculo}} + '/' + mes, function (frequencia) {
                 if(frequencia == "nao existe"){
                     $("#botao").val("Salvar");
