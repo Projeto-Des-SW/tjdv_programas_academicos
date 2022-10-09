@@ -29,10 +29,9 @@
                 </div>
             </div><br/><br/>
 
-            <div id="formulario_frequencia">
+            <div id="formulario_frequencia"></div>
 
-            </div>
-
+            <br/><br/><input id="botao" class="btn btn-success" type="submit" style="width: 200px;" value="Salvar"/>
 
         </form>
     </div>
@@ -55,63 +54,69 @@
                 qntDias = 31;
             }
 
+            //fazendo colunas do formulario
+            formulario += `
+            <div class="container row" style="margin-left: 5rem">
+                <div class="col-2" style="background-color: #0D2579">
+                    <label class="text-light">Dias/Horas</label>
+                </div>
+                <div class="col-2 " style="background-color: #0D2579">
+                    <label class="text-light">1h</label>
+                </div>
+                <div class="col-2" style="background-color: #0D2579">
+                    <label class="text-light">2h</label>
+                </div>
+                <div class="col-2" style="background-color: #0D2579">
+                    <label class="text-light">3h</label>
+                </div>
+                <div class="col-2" style="background-color: #0D2579">
+                    <label class="text-light">4h</label>
+                </div>    
+            </div>
+        `;
+
+            for (i = 0; i < qntDias; i++){
+                formulario += `
+                <div class="container row" style="margin-left: 5rem">
+                    <div class="col-2 p-3" style="background-color: #0D2579">
+                        <label class="text-white"> Dia ${i + 1}</label>
+                    </div>
+                    <div class="col-2 bg-light p-3 ">
+                        <input type="radio" class="dia" id="dia${i + 1}_1" name="dia${i + 1}" value="1">
+                    </div>
+                    <div class="col-2 bg-light p-3 ">
+                        <input type="radio" class="dia" id="dia${i + 1}_2" name="dia${i + 1}" value="2">
+                    </div>
+                    <div class="col-2 bg-light p-3 ">
+                        <input type="radio" class="dia" id="dia${i + 1}_3" name="dia${i + 1}" value="3">
+                    </div>
+                    <div class="col-2 bg-light p-3 ">
+                        <input type="radio" class="dia" id="dia${i + 1}_4" name="dia${i + 1}" value="4">
+                    </div>    
+                </div><br/>
+                `; 
+            }
+
+            $("#formulario_frequencia").html(formulario);
+
             $.get('/getFrequenciaMensal/' + {{$idVinculo}} + '/' + mes, function (frequencia) {
                 if(frequencia == "nao existe"){
-                    //fazendo colunas do formulario
-                    formulario += `
-                        <div class="container row" style="margin-left: 5rem">
-                            <div class="col-2" style="background-color: #0D2579">
-                                <label class="text-light">Dias/Horas</label>
-                            </div>
-                            <div class="col-2 " style="background-color: #0D2579">
-                                <label class="text-light">1h</label>
-                            </div>
-                            <div class="col-2" style="background-color: #0D2579">
-                                <label class="text-light">2h</label>
-                            </div>
-                            <div class="col-2" style="background-color: #0D2579">
-                                <label class="text-light">3h</label>
-                            </div>
-                            <div class="col-2" style="background-color: #0D2579">
-                                <label class="text-light">4h</label>
-                            </div>    
-                        </div>
-                    `;
-
-                    for (i = 0; i < qntDias; i++){
-                        formulario += `
-                        <div class="container row" style="margin-left: 5rem">
-                            <div class="col-2 p-3" style="background-color: #0D2579">
-                                <label class="text-white"> Dia ${i + 1}</label>
-                            </div>
-                            <div class="col-2 bg-light p-3 ">
-                                <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="1">
-                            </div>
-                            <div class="col-2 bg-light p-3 ">
-                                <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="2">
-                            </div>
-                            <div class="col-2 bg-light p-3 ">
-                                <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="3">
-                            </div>
-                            <div class="col-2 bg-light p-3 ">
-                                <input type="radio" class="dia" id="dia${i + 1}" name="dia${i + 1}" value="4">
-                            </div>    
-                        </div><br/>
-                        `; 
+                    $("#botao").val("Salvar");
+                } else{
+                    frequencia = JSON.parse(frequencia);
+                    for(i = 1; i <= 31; i++){
+                        dia = 'dia' + i;
+                        hora = frequencia[dia];
+                        if(hora !== undefined){
+                            $("#" +  dia + "_" + hora).attr("checked", "checked");
+                        }
                     }
 
-                    formulario += `
-                    <br/><br/><input class="btn btn-success" type="submit" style="width: 200px;" value="Salvar"/>
-                    `;
-                    $("#formulario_frequencia").html(formulario);
-                } else {
-                    alert(frequencia);
+                    $("#botao").val("Atualizar");
                 }
-                
             });
-
         });
-
+        
         // $(".dia").click(function(){
         //     if ($(this).prop("checked")){
         //         console.log('a')
