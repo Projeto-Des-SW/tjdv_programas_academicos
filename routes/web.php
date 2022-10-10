@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ServidorController;
 use App\Http\Controllers\VinculoController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,4 +67,11 @@ Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->nam
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get("/email", function () {
+    Mail::send("email.teste", ["professor" => "Luiz"], function ($mail) {
+        $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV");
+        $mail->subject("Email teste- Ofericimento TJDV");
+        $mail->to("luizd4398@gmail.com");
+    });
+});
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
