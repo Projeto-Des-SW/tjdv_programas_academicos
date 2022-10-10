@@ -64,6 +64,8 @@ Route::post('/vinculos/frequencia', [VinculoController::class, 'salvarfrequencia
 Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->name("vinculos.relatorio");
 
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
+Route::get('/vinculos/declaracao/{id}', [VinculoController::class, 'declaracao'])->name("vinculos.declaracao");
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");
