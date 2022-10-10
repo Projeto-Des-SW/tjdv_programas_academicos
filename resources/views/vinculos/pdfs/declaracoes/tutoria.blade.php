@@ -4,11 +4,11 @@
 
   <div class="message monitoria">
 
-    Declaramos que o(a) Docente <strong>{{$vinculo->professor->nome}}</strong> desenvolveu atividadedeorientação no 
-    <strong>Programa de Monitoria da Universidade Federal do Agreste de Pernambuco - UFAPE</strong> ,
-    durante o semestre letivo <strong>{{$vinculo->semestre}} (ano 2022)</strong>, na disciplina de <strong>{{$vinculo->disciplina}}</strong>, 
-    tendo como orientado(a) o(a) discente <strong>{{$vinculo->aluno->user->name}}</strong>, regularmente matriculado(a) no curso de 
-    <strong>Bacharelado em {{$vinculo->aluno->curso}}</strong>
+    Declaramos que o(a) Docente <strong>{{$vinculo->professor->nome}}</strong> desenvolveu atividade de 
+    orientação no <strong>Programa de Tutoria da Universidade Federal do Agreste de Pernambuco - UFAPE</strong>, 
+    durante o Semestre Letivo <strong>{{$vinculo->semestre}} (ano 2022)</strong>, na disciplina de <strong>{{$vinculo->disciplina}}</strong>, 
+    tendo como orientado(a) o(a) discente <strong>{{$vinculo->aluno->user->name}}</strong>, regularmente matriculado(a) 
+    no curso de <strong>Bacharelado em {{$vinculo->aluno->curso}}.</strong>
 
   </div>
 
