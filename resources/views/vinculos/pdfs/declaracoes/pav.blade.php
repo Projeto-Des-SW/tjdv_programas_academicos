@@ -4,12 +4,14 @@
 
   <div class="message monitoria">
 
-    Declaramos que o(a) Médico Veterinário <strong>Dr. {{$vinculo->professor->nome}}</strong>, SIAPE nº <strong>{{$vinculo->professor->sipe}}</strong>, 
+    Declaramos que o(a) Médico Veterinário <strong>Dr. {{$vinculo->professor->nome}}</strong>, SIAPE nº 
+    <strong>{{$vinculo->professor->sipe}}</strong>, 
     orientou o(a) discente <strong>{{$vinculo->aluno->user->name}}</strong>, do curso de
     <strong>Bacharelado em {{$vinculo->aluno->curso}}</strong>, nas atividades do 
     <strong>Programa de AtividadesdeVivência Interdisciplinar – PAVI 2021.1/2022</strong> , 
     na área de <strong>Vínculo precisa de uma area de atuação</strong>, desenvolvidas no <strong>Hospital Veterinário Universitário - HVU, 
-    da UniversidadeFederal do Agreste de Pernambuco - UFAPE</strong>, durante o período de <strong>{{$vinculo->data_inicio}} a {{$vinculo->data_fim}}</strong>.
+    da UniversidadeFederal do Agreste de Pernambuco - UFAPE</strong>, durante o período de 
+    <strong>{{$vinculo->data_inicio}} a {{$vinculo->data_fim}}</strong>.
 
   </div>
 
