@@ -10,7 +10,7 @@
 <body style="font-family:Arial, Helvetica, sans-serif;">
   <div class="lateral">
     <div class="ufape">UFAPE</div>
-    <img src="http://ufape.edu.br/sites/default/files/2022-06/Logo_UFAPE_Branco_com_Lettering.png" class="logo">
+    <img src="{{ base_path() }}/public/images/logo_ufape.png" class="logo">
   </div>
   <div class="certificado">
     <div class="head">
