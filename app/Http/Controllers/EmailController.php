@@ -27,7 +27,7 @@ class EmailController extends Controller
         $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
         Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
             $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
-            $mail->subject("Notificação de prazo de frequência mensal");
+            $mail->subject("Notificação de prazo de relatório final");
             $mail->to($vinculo->aluno->email);
         });
         
