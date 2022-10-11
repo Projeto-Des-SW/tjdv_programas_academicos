@@ -14,20 +14,27 @@
   }
 </style>
 <body>
-  Olá, {{ $professor->nome }}! <br>
+  Olá, {{ $professor->nome }}! <br/><br/>
   
-  O/a discente {{ $aluno->user->name}} acabou de submeter um relatório final referente 
-  ao programa {{ $vinculo->programa}}, em que o/a senhor(a) tem acompanhado por 
-  {{$vinculo->quantidade_horas}} horas. <br>
+  O/a discente {{ $aluno->user->name}} enviou o relatório final referente 
+  ao programa {{ $vinculo->programa}}, que teve inicio em {{$vinculo->data_inicio}}. <br/>
+  Nesse programa, o orientado trabalhou {{$vinculo->quantidade_horas}} horas. <br/><br/>
   
-  Por favor, avaliar o relatório! <br>
-  
-  O arquivo está em anexo. <br> <br>
-  
-  <form action="http://localhost:8000/teste" method="get">
+  O relatório final submetido está em anexo. <br/> <br/>
+
+  Por favor, avalie o relatório. <br>
+
+  <hr/>
+  <form action="{{route('vinculos.avaliarRelFinal')}}" method="POST">
     @csrf
-    <input name="avaliacao" type="text" id="">
-    <button class="submit" type="submit">Salvar</button>
+    @method('POST')
+    <input type="hidden" name="id_vinculo" value="{{$vinculo->id}}">
+    <input type="radio" name="status_relatorio" id="status_relatorio" value="APROVADO" checked/> Aprovado
+    <input type="radio" name="status_relatorio" id="status_relatorio" value="REPROVADO"/> Reprovado
+    <br/><br/>
+    Observação:<br/>
+    <textarea name="observacao" id="observacao" style="width: 40%; height: 40px;" required></textarea><br/><br/>
+    <button class="submit" type="submit">Enviar</button>
   </form>
 
 </body>

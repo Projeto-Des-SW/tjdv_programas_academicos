@@ -339,6 +339,7 @@ class VinculoController extends Controller
             ]
 
         );
+
         $vinculo = Vinculo::find($request->id);
         if ($request->relatorio) {
 
@@ -347,19 +348,42 @@ class VinculoController extends Controller
             }
             $relatorio = $request->relatorio->storeAs($vinculo->aluno->cpf, "{$vinculo->id}.pdf");
 
-            if ($vinculo->update(["relatorio" => $relatorio])) {
+            if ($vinculo->update(["relatorio" => $relatorio, "status_relatorio" => "ENVIADO"])) {
                 $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
                 Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
-                    $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV");
-                    $mail->subject("Email teste - Oferecimento TJDV");
+                    $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+                    $mail->subject("Relatório final do aluno: {$vinculo->aluno->user->name} - {$vinculo->aluno->cpf}");
                     $mail->attach(storage_path("app/public/{$vinculo->aluno->cpf}/{$vinculo->id}.pdf"));
                     $mail->to($vinculo->professor->email);
                 });
             }
         }
+
         return redirect(route("vinculos.index"));
     }
 
+    public function avaliar_relatorio_final(Request $request)
+    {
+        $vinculo = Vinculo::find($request->id_vinculo);
+
+        if($vinculo->status == "CONCLUIDA" || $vinculo->status == "CANCELADA"){
+            return "Este vínculo já foi finalizado, não é possível fazer mais alterações.";
+        }
+
+        $vinculo->status_relatorio = $request->status_relatorio;
+        $vinculo->observacao_relatorio = $request->observacao;
+
+        if ($vinculo->status_relatorio == "APROVADO"){
+            $vinculo->status = "CONCLUIDA";
+        }
+
+        if($vinculo->save()){
+            return "Relatório avaliado com sucesso.";
+        } else {
+            return "Algo deu errado. Tente novamente mais tarde!";
+        }
+    }
+    
     public function getFrequencia($idVinculo, $mes)
     {
         $frequenciaMensal = Frequencia_mensal::where('vinculo_id', $idVinculo)->where('mes', $mes)->first();
@@ -368,10 +392,5 @@ class VinculoController extends Controller
         } else{
             return "nao existe";
         }
-    }
-
-    public function teste(Request $request)
-    {
-        dd($request->avaliacao);
     }
 }

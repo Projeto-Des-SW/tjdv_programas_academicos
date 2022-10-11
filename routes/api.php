@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VinculoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/teste', [VinculoController::class, 'teste'])->name("vinculos.teste");
+
+Route::post('/vinculos/avaliar/relatorio/final', [VinculoController::class, 'avaliar_relatorio_final'])->name("vinculos.avaliarRelFinal");
+
