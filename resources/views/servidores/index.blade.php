@@ -20,18 +20,18 @@
       <div id="list">
         @foreach ($servidores as $servidor)
           <div class="row justify-content-md-center listing-card">
-            <div class="col-md-6 col-lg-6 informacoes">
+            <div class="col-md-9 col-lg-9 informacoes">
               <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$servidor->id}})">
                 <label class="labelIndex">{{$servidor->user->name}}</label>
                 <hr class="labelIndex">
                 <label class="labelIndex">Setor: {{$servidor->setor}}</label>
               </a>
             </div>
-            <div class="col-md-4 col-lg-4 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$servidor->id}})">
+            <div class="col-md-2 col-lg-2 opcoes row">
+              <a type="button" class="col-md-auto edit" onclick="exibirModalEditar({{$servidor->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar servidor">
               </a>
-              <a type="button" class="delete" onclick="exibirModalDeletar({{$servidor->id}})">
+              <a type="button" class="col-md-auto delete" onclick="exibirModalDeletar({{$servidor->id}})">
                 <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir servidor">
               </a>
             </div>
