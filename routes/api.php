@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VinculoController;
+use App\Http\Controllers\EmailController;
 
 
 /*
@@ -21,4 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/vinculos/avaliar/relatorio/final', [VinculoController::class, 'avaliar_relatorio_final'])->name("vinculos.avaliarRelFinal");
+
+Route::get('/notificarPrazoFrequencia', [EmailController::class, 'notificarPrazoFrequencia'])->name("email.notificarPrazoFrequencia");
+Route::get('/notificarPrazoRelatorio', [EmailController::class, 'notificarPrazoRelatorio'])->name("email.notificarPrazoRelatorio");
 
