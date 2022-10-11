@@ -15,7 +15,7 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a class="links-menu" href="{{route("vinculos.index")}}">Listagem de Vinculos</a>
+                <a class="links-menu" href="{{route("vinculos.index")}}">Listagem de vínculos</a>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a href="{{route("alunos.index")}}">Listagem de Alunos</a>
+                <a href="{{route("alunos.index")}}">Listagem de alunos</a>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a href="{{route("professores.index")}}">Listagem de Professores</a>
+                <a href="{{route("professores.index")}}">Listagem de professores</a>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a href="{{route("servidores.index")}}">Listagem de Servidores</a>
+                <a href="{{route("servidores.index")}}">Listagem de servidores</a>
               </div>
             </div>
           </div>
