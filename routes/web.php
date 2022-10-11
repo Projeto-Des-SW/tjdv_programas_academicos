@@ -56,4 +56,3 @@ Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificaca
 Route::get('/getFrequenciaMensal/{idVinculo}/{mes}', [VinculoController::class, 'getFrequencia'])->name("getFrequencia");
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/teste', [VinculoController::class, 'teste'])->name("vinculos.teste");
