@@ -1,4 +1,4 @@
-@extends("vinculos.pdfs.app")
+@extends("vinculos.pdfs.certificados.app")
 
 @section("body")
   <div class="text">
