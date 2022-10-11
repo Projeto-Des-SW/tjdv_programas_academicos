@@ -12,12 +12,25 @@ class EmailController extends Controller
 
         $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
         Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
-            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV");
+            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
             $mail->subject("Notificação de prazo de frequência mensal");
             $mail->to($vinculo->aluno->email);
         });
         
-        // Modificar rota para pagina de sucesso
-        return redirect(route("vinculos.index"));
+        return "E-mail enviado com sucesso!";
+    }
+
+    public function notificarPrazoRelatorio()
+    {
+        // Percorrer a lista de vinculos, filtrando status 'andamento' e onde nao existe relatorio
+
+        $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
+        Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
+            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+            $mail->subject("Notificação de prazo de frequência mensal");
+            $mail->to($vinculo->aluno->email);
+        });
+        
+        return "E-mail enviado com sucesso!";
     }
 }
