@@ -8,15 +8,29 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <form id="cert_form" class="dropdown-item" action="{{route("vinculos.certificado", $vinculo->id)}}" method="get">
+              <form id="cert_form" class="dropdown-item" method="get">
                 @csrf
-                <input name="programa" type="hidden" value={{$vinculo->programa}}>
+                <input id="programa_cert" name="programa" type="hidden">
                 <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
                   Certificado
                 </button>
               </form>
             </li>
             <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Frequência mensal</a></li>
+            <li>
+              <form id="declaracao" class="dropdown-item" method="get">
+                @csrf
+                <input id="programa_dec" name="programa" type="hidden">
+                <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
+                  Declaração
+                </button>
+              </form>
+            </li>
+            <li><a class="dropdown-item" href="#">Visualizar frequência</a></li>
+            @if (auth()->user()->typage_type == "App\Models\Aluno")  
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Preencher frequência</a></li>
+            @endif
             @if (auth()->user()->typage_type == "App\Models\Servidor")
               <li><a class="dropdown-item" target="_blank" id="relatorio_final">Relatório final</a></li>
             @endif
@@ -95,6 +109,8 @@
   let semestre_ver = $('#semestre_ver')
   let curso_ver = $('#curso_ver')
   let disciplina_ver = $('#disciplina_ver')
+  let programa_cert = $("#programa_cert")
+  let programa_dec = $("#programa_dec")
 
   function exibirModalVer(vinculo, professor, aluno, user, auth){
     status_ver.text(vinculo.status)
@@ -130,6 +146,12 @@
       disciplina_ver.text("Não foi necessário disciplina.")
     }
     $("#frequencia_mensal").attr('href', `/vinculos/frequencia/${vinculo.id}`)
+
+    programa_cert.val(vinculo.programa);
+    document.getElementById('cert_form').action = `/vinculos/certificado/${vinculo.id}`;
+
+    programa_dec.val(vinculo.programa);
+    document.getElementById('declaracao').action = `/vinculos/declaracao/${vinculo.id}`;
 
     // Habilitando botao de ver relatorio apenas quando existir relatorio
     if(auth.typage_type == "App\\Models\\Servidor"){
