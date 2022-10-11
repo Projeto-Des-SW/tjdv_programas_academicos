@@ -318,10 +318,30 @@ class VinculoController extends Controller
         $programa = strtolower($request->programa);
         $vinculo = Vinculo::find($id);
 
-        $pdf = FacadePdf::loadView("vinculos/pdfs/{$programa}", compact("vinculo"));
+        $pdf = FacadePdf::loadView("vinculos/pdfs/certificados/{$programa}", compact("vinculo"));
 
         return $pdf->setPaper('A4', 'landscape')->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
     }
+
+    public function declaracao(Request $request, $id)
+    {
+        $request->validate(
+            [
+                "programa" => ['required']
+            ],
+            [
+                'required' => 'O campo :attribute é obrigatório.'
+            ]
+        );
+
+        $programa = strtolower($request->programa);
+        $vinculo = Vinculo::find($id);
+
+        $pdf = FacadePdf::loadView("vinculos/pdfs/declaracoes/{$programa}", compact("vinculo"));
+
+        return $pdf->setPaper('A4',)->stream("{$vinculo->aluno->nome}-{$vinculo->data_fim}-{$vinculo->programa}.pdf");
+    }
+
 
     public function relatorio(Request $request)
     {
