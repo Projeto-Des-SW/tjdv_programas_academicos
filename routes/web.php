@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ServidorController;
 use App\Http\Controllers\VinculoController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 // Rotas de autenticacao

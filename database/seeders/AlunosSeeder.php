@@ -12,14 +12,14 @@ class AlunosSeeder extends Seeder
     public function run()
     {
         $aluno1 = Aluno::create([
-            'cpf' => "656.032.798-18",
+            'cpf' => "348.126.240-02",
             'curso' => "BCC",
             'semestre_entrada' => "2018.2"
         ]);
 
         $aluno1->user()->create([
             'name' => "Victor Francisco",
-            'email' => "victor@gmail.com",
+            'email' => "victorfran18@gmail.com",
             'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
@@ -31,7 +31,7 @@ class AlunosSeeder extends Seeder
 
         $aluno2->user()->create([
             'name' => "Luiz Davi",
-            'email' => "davi@gmail.com",
+            'email' => "luizd4398@gmail.com",
             'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
@@ -43,7 +43,7 @@ class AlunosSeeder extends Seeder
 
         $aluno3->user()->create([
             'name' => "Thiago Cavalcanti",
-            'email' => "thiago@gmail.com",
+            'email' => "tcavalcanti.tc@gmail.com",
             'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
 
@@ -55,7 +55,7 @@ class AlunosSeeder extends Seeder
 
         $aluno4->user()->create([
             'name' => "Jackson Lima",
-            'email' => "jack@gmail.com",
+            'email' => "jacksonlmp17.jl@gmail.com",
             'password' =>  Hash::make('12345678')
         ])->givePermissionTo('aluno');
     }
