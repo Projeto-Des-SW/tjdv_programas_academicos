@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ServidorController;
 use App\Http\Controllers\VinculoController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 // Rotas de autenticacao
@@ -55,3 +56,4 @@ Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificaca
 Route::get('/getFrequenciaMensal/{idVinculo}/{mes}', [VinculoController::class, 'getFrequencia'])->name("getFrequencia");
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/teste', [VinculoController::class, 'teste'])->name("vinculos.teste");

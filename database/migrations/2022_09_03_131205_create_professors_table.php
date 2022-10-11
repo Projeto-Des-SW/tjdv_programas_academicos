@@ -18,6 +18,7 @@ class CreateProfessorsTable extends Migration
             $table->string("nome", 100);
             $table->string("siape", 7)->unique();
             $table->string("cpf", 14)->unique();
+            $table->string("email")->unique();
             $table->timestamps();
         });
     }

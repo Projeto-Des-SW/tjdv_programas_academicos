@@ -7,7 +7,9 @@ use App\Models\Aluno;
 use App\Models\Vinculo;
 use App\Models\Frequencia_mensal;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class VinculoController extends Controller
@@ -339,11 +341,21 @@ class VinculoController extends Controller
         );
         $vinculo = Vinculo::find($request->id);
         if ($request->relatorio) {
+
             if (Storage::exists($vinculo->relatorio)) {
                 Storage::delete($vinculo->relatorio);
             }
             $relatorio = $request->relatorio->storeAs($vinculo->aluno->cpf, "{$vinculo->id}.pdf");
-            $vinculo->update(["relatorio" => $relatorio]);
+
+            if ($vinculo->update(["relatorio" => $relatorio])) {
+                $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
+                Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
+                    $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV");
+                    $mail->subject("Email teste- Ofericimento TJDV");
+                    $mail->attach(storage_path("app/public/{$vinculo->aluno->cpf}/{$vinculo->id}.pdf"));
+                    $mail->to($vinculo->professor->email);
+                });
+            }
         }
         return redirect(route("vinculos.index"));
     }
@@ -356,5 +368,10 @@ class VinculoController extends Controller
         } else{
             return "nao existe";
         }
+    }
+
+    public function teste(Request $request)
+    {
+        dd($request->avaliacao);
     }
 }
