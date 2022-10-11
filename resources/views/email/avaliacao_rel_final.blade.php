@@ -16,11 +16,11 @@
 <body>
   Olá, {{ $professor->nome }}! <br>
   
-  O aluno {{ $aluno->user->name}} acabou de submter um relatório final referente 
-  ao programa {{ $vinculo->programa}}, em que o senhor o tem acompanhado por 
+  O/a discente {{ $aluno->user->name}} acabou de submeter um relatório final referente 
+  ao programa {{ $vinculo->programa}}, em que o/a senhor(a) tem acompanhado por 
   {{$vinculo->quantidade_horas}} horas. <br>
   
-  Por favor avaliar o relatório! <br>
+  Por favor, avaliar o relatório! <br>
   
   O arquivo está em anexo. <br> <br>
   
