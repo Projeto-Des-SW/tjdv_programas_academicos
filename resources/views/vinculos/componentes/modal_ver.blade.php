@@ -17,15 +17,17 @@
               </form>
             </li>
             <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Frequência mensal</a></li>
-            <li>
-              <form id="declaracao" class="dropdown-item" method="get">
-                @csrf
-                <input id="programa_dec" name="programa" type="hidden">
-                <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
-                  Declaração
-                </button>
-              </form>
-            </li>
+            @if (auth()->user()->typage_type == "App\Models\Servidor")
+              <li>
+                <form id="declaracao" class="dropdown-item" method="get">
+                  @csrf
+                  <input id="programa_dec" name="programa" type="hidden">
+                  <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
+                    Declaração
+                  </button>
+                </form>
+              </li>
+            @endif
             <li><a class="dropdown-item" href="#">Visualizar frequência</a></li>
             @if (auth()->user()->typage_type == "App\Models\Aluno")  
               <li><hr class="dropdown-divider"></li>
@@ -150,11 +152,10 @@
     programa_cert.val(vinculo.programa);
     document.getElementById('cert_form').action = `/vinculos/certificado/${vinculo.id}`;
 
-    programa_dec.val(vinculo.programa);
-    document.getElementById('declaracao').action = `/vinculos/declaracao/${vinculo.id}`;
-
     // Habilitando botao de ver relatorio apenas quando existir relatorio
     if(auth.typage_type == "App\\Models\\Servidor"){
+      programa_dec.val(vinculo.programa);
+      document.getElementById('declaracao').action = `/vinculos/declaracao/${vinculo.id}`;
       if(vinculo.relatorio){
         // Exibe
         $("#relatorio_final").attr('href', `storage/${aluno.cpf}/${vinculo.id}.pdf`)
@@ -169,4 +170,3 @@
   }
 
 </script>
-

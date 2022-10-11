@@ -10,7 +10,7 @@
 <body>
   <div class="declaracao">
     <div class="head">
-      <img src="http://ufape.edu.br/sites/default/files/2022-06/Logo_UFAPE_Preta_sem_Lettering.png" class="ufape" alt=""> <br>
+      <img src="{{ base_path() }}/public/images/logo-ufape-dec.png" class="ufape" alt=""> <br>
       <strong>UNIVERSIDADE FEDERAL DO AGRESTE DE PERNAMBUCO</strong> <br> 
       PRÓ-REITORIA DE ENSINO E GRADUAÇÃO <br> 
       <strong>DEPARTAMENTO DE PRÁTICAS DE FORMAÇÃO INICIAL E CONTINUADA</strong> <br> 
