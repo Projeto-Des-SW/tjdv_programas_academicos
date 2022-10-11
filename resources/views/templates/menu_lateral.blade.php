@@ -63,7 +63,12 @@
             </h2>
             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a href="{{route("servidores.index")}}">Notificar prazo</a>
+                <a href="{{route("servidores.index")}}">Notificar prazo de frequência mensal</a>
+              </div>
+            </div>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="{{route("servidores.index")}}">Notificar prazo de relatório final</a>
               </div>
             </div>
           </div>
