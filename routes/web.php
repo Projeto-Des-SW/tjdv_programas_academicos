@@ -66,7 +66,5 @@ Route::post('/vinculos/relatorio', [VinculoController::class, 'relatorio'])->nam
 
 Route::get('/vinculos/certificado/{id}', [VinculoController::class, 'certificacao'])->name("vinculos.certificado");
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/teste', [VinculoController::class, 'teste'])->name("vinculos.teste");
-
 
 // Route::get("/professors", [ProfessorController::class, "index"])->name("professors.index");

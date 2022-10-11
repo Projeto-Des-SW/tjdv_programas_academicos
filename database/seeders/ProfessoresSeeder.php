@@ -18,7 +18,7 @@ class ProfessoresSeeder extends Seeder
 
         Professor::create([
             'nome' => 'Marcius',
-            'email' => "aaaa@gmail.com",
+            'email' => "victorfran18@gmail.com",
             'cpf' => '017.197.098-58',
             'siape' => '1234566'
         ]);
