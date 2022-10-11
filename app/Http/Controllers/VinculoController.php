@@ -351,7 +351,7 @@ class VinculoController extends Controller
                 $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
                 Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
                     $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV");
-                    $mail->subject("Email teste- Ofericimento TJDV");
+                    $mail->subject("Email teste - Oferecimento TJDV");
                     $mail->attach(storage_path("app/public/{$vinculo->aluno->cpf}/{$vinculo->id}.pdf"));
                     $mail->to($vinculo->professor->email);
                 });
