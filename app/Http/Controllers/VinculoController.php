@@ -438,7 +438,7 @@ class VinculoController extends Controller
         $vinculo = Vinculo::find($request->id_vinculo);
 
         if($vinculo->status == "CONCLUIDA" || $vinculo->status == "CANCELADA"){
-            return "Este Vínculo já foi finalizado, não é possível fazer mais alterações.";
+            return "Este vínculo já foi finalizado, não é possível fazer mais alterações.";
         }
 
         $vinculo->status_relatorio = $request->status_relatorio;
