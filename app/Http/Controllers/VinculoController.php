@@ -459,7 +459,7 @@ class VinculoController extends Controller
     {
         $frequenciaMensal = Frequencia_mensal::where('vinculo_id', $idVinculo)->where('mes', $mes)->first();
         if(isset($frequenciaMensal->frequencia)){
-            return $frequenciaMensal->frequencia;
+            return $frequenciaMensal;
         } else{
             return "nao existe";
         }
