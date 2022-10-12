@@ -17,7 +17,8 @@
   Olá, {{ $aluno->user->name }}! <br>
   
   Este é um e-mail automático, é apenas um lembrete para preencher a frequência mensal referente 
-  ao programa {{ $vinculo->programa}}, acompanhado por {{ $professor->nome }}
+  ao programa {{ $vinculo->programa}}, acompanhado por {{ $professor->nome }}. Caso já tenha 
+  preenchido, por favor ignore esta mensagem.
 </body>
 </html>
 
