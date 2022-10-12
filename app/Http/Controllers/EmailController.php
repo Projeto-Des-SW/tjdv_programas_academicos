@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Vinculo;
+use App\Models\Frequencia_mensal;
+use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -8,29 +12,33 @@ class EmailController extends Controller
 {
     public function notificarPrazoFrequencia()
     {
-        // Percorrer a lista de vinculos, filtrando status 'andamento' e onde nao existe frequencia
+        $vinculos = Vinculo::where('status', 'andamento')->get();
 
-        $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
-        Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
-            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
-            $mail->subject("Notificação de prazo de frequência mensal");
-            $mail->to($vinculo->aluno->email);
-        });
-        
+        foreach($vinculos as $vinculo){
+            $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
+            Mail::send("email.prazo_frequencia_mensal", $email_params, function ($mail) use ($vinculo) {
+                $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+                $mail->subject("Notificação de prazo de frequência mensal");
+                $mail->to($vinculo->aluno->user->email);
+            });
+        }
+
         return "E-mail enviado com sucesso!";
     }
 
     public function notificarPrazoRelatorio()
     {
-        // Percorrer a lista de vinculos, filtrando status 'andamento' e onde nao existe relatorio
+        $vinculos = Vinculo::where('status', 'andamento')->get();
 
-        $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
-        Mail::send("email.avaliacao_rel_final", $email_params, function ($mail) use ($vinculo) {
-            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
-            $mail->subject("Notificação de prazo de relatório final");
-            $mail->to($vinculo->aluno->email);
-        });
-        
+        foreach($vinculos as $vinculo){
+            $email_params = ["professor" => $vinculo->professor, "aluno" => $vinculo->aluno, "vinculo" => $vinculo];
+            Mail::send("email.prazo_relatorio_final", $email_params, function ($mail) use ($vinculo) {
+                $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+                $mail->subject("Notificação de prazo de relatório final");
+                $mail->to($vinculo->aluno->user->email);
+            });
+        }
+
         return "E-mail enviado com sucesso!";
     }
 }
