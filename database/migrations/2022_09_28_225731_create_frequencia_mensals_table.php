@@ -19,6 +19,7 @@ class CreateFrequenciaMensalsTable extends Migration
             $table->json('frequencia')->nullable(false);
             $table->integer('tempo_total')->nullable(false);
             $table->enum('status', ['enviada','aprovada', 'recusada'])->default('enviada')->nullable(false);
+            $table->string('observacao')->nullable();
             $table->timestamps();
         });
 

@@ -298,8 +298,36 @@ class VinculoController extends Controller
             'vinculo_id' => intval($request->idVinculo)
         ]);
 
-        $frequenciaMensal->vinculo->quantidade_horas += $frequenciaMensal->tempo_total;
-        $frequenciaMensal->vinculo->update();
+        $meses = [
+            "1"=>[31, "janeiro"],
+            "2"=>[29, "fevereiro"],
+            "3"=>[31, "março"],
+            "4"=>[30, "abril"],
+            "5"=>[31, "maio"],
+            "6"=>[30, "junho"],
+            "7"=>[31, "julho"],
+            "8"=>[31, "agosto"],
+            "9"=>[30, "setembro"],
+            "10"=>[31, "outubro"],
+            "11"=>[30, "novembro"],
+            "12"=>[31, "dezembro"]
+        ];
+
+        $email_params = [
+            "frequenciaMensal" => $frequenciaMensal,
+            "frequencia" =>$frequenciaMensal->frequencia,
+            "aluno" => $frequenciaMensal->vinculo->aluno,
+            "vinculo" => $frequenciaMensal->vinculo,
+            "professor" => $frequenciaMensal->vinculo->professor,
+            "mes" =>$meses[$frequenciaMensal->mes][1],
+            "qntDiasMes" =>$meses[$frequenciaMensal->mes][0]
+        ];
+
+        Mail::send("email.avaliacao_freq_mensal", $email_params, function ($mail) use ($frequenciaMensal) {
+            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+            $mail->subject("Frenquência mensal de {$frequenciaMensal->mes} do aluno: {$frequenciaMensal->vinculo->aluno->user->name} - {$frequenciaMensal->vinculo->aluno->cpf}");
+            $mail->to($frequenciaMensal->vinculo->professor->email);
+        });
 
         return redirect(route("vinculos.index"));
     }
