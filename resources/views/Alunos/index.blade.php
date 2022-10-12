@@ -84,8 +84,9 @@
   </script>
   @endif
   
-    @elsecan('aluno')
-      <h3>Você não possui permissão!</h3>
-    @endcan
-  @endsection
+  @elsecan('aluno')
+    <h3 style="margin-top: 1rem">Você não possui permissão!</h3>
+    <a class="btn btn-primary submit" style="margin-top: 1rem" href="{{route("vinculos.index")}}">Voltar</a>
+  @endcan
+@endsection
 
