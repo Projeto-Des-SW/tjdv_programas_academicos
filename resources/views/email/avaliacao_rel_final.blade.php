@@ -16,13 +16,14 @@
 <body>
   Olá, {{ $professor->nome }}! <br/><br/>
   
-  O aluno {{ $aluno->user->name}}, enviou o relatório final referente 
+  O/a discente {{ $aluno->user->name}} enviou o relatório final referente 
   ao programa {{ $vinculo->programa}}, que teve inicio em {{$vinculo->data_inicio}}. <br/>
   Nesse programa, o orientado trabalhou {{$vinculo->quantidade_horas}} horas. <br/><br/>
   
   O relatório final submetido está em anexo. <br/> <br/>
 
-  Por favor, avalie o relatório. <br/>
+  Por favor, avalie o relatório. <br>
+
   <hr/>
   <form action="{{route('vinculos.avaliarRelFinal')}}" method="POST">
     @csrf
