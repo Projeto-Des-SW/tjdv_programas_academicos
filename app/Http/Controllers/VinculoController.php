@@ -298,10 +298,61 @@ class VinculoController extends Controller
             'vinculo_id' => intval($request->idVinculo)
         ]);
 
-        $frequenciaMensal->vinculo->quantidade_horas += $frequenciaMensal->tempo_total;
-        $frequenciaMensal->vinculo->update();
+        $meses = [
+            "1"=>[31, "janeiro"],
+            "2"=>[29, "fevereiro"],
+            "3"=>[31, "março"],
+            "4"=>[30, "abril"],
+            "5"=>[31, "maio"],
+            "6"=>[30, "junho"],
+            "7"=>[31, "julho"],
+            "8"=>[31, "agosto"],
+            "9"=>[30, "setembro"],
+            "10"=>[31, "outubro"],
+            "11"=>[30, "novembro"],
+            "12"=>[31, "dezembro"]
+        ];
+
+        $email_params = [
+            "frequenciaMensal" => $frequenciaMensal,
+            "frequencia" =>(array)json_decode($frequenciaMensal->frequencia),
+            "aluno" => $frequenciaMensal->vinculo->aluno,
+            "vinculo" => $frequenciaMensal->vinculo,
+            "professor" => $frequenciaMensal->vinculo->professor,
+            "mes" =>$meses[$frequenciaMensal->mes][1],
+            "qntDiasMes" =>$meses[$frequenciaMensal->mes][0]
+        ];
+
+        Mail::send("email.avaliacao_freq_mensal", $email_params, function ($mail) use ($frequenciaMensal, $meses) {
+            $mail->from("tjdvprogramaacademicos@gmail.com", "TJDV Programas Acadêmicos - UFAPE");
+            $mail->subject("Frenquência mensal de ". $meses[$frequenciaMensal->mes][1] . " do aluno: {$frequenciaMensal->vinculo->aluno->user->name} - {$frequenciaMensal->vinculo->aluno->cpf}");
+            $mail->to($frequenciaMensal->vinculo->professor->email);
+        });
 
         return redirect(route("vinculos.index"));
+    }
+
+    public function avaliar_frequencia_mensal(Request $request){
+
+        $frequencia = Frequencia_mensal::find($request->id_frequencia);
+
+        if($frequencia->status == "aprovada"){
+            return "Esta Frequência Mensal já foi finalizado, não é possível fazer mais alterações.";
+        }
+
+        $frequencia->status = $request->status;
+        $frequencia->observacao = $request->observacao;
+
+        if ($frequencia->status == "aprovada"){
+            $frequencia->vinculo->quantidade_horas = $frequencia->vinculo->quantidade_horas + $frequencia->tempo_total;
+            $frequencia->vinculo->update();
+        }
+
+        if($frequencia->save()){
+            return "Frequência mensal avaliada com sucesso.";
+        } else {
+            return "Algo deu errado. Tente novamente mais tarde!";
+        }
     }
 
     public function certificacao(Request $request, $id)
@@ -408,7 +459,7 @@ class VinculoController extends Controller
     {
         $frequenciaMensal = Frequencia_mensal::where('vinculo_id', $idVinculo)->where('mes', $mes)->first();
         if(isset($frequenciaMensal->frequencia)){
-            return $frequenciaMensal->frequencia;
+            return $frequenciaMensal;
         } else{
             return "nao existe";
         }

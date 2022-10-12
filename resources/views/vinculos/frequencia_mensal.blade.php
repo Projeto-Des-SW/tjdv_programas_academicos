@@ -5,7 +5,7 @@
     <div class="container">
         <h1><strong>Frequência mensal</strong></h1><br/>
 
-        <form action="{{route('vinculos.salvarFrequenciaMensal')}}" method="post">
+        <form id="form_frequencia_mensal" action="{{route('vinculos.salvarFrequenciaMensal')}}" method="post">
             @csrf
             <input type="hidden" id="idVinculo" name="idVinculo" value="{{$idVinculo}}"/>
             <div class="row">
@@ -30,6 +30,18 @@
             </div><br/><br/>
 
             <div id="formulario_frequencia"></div>
+
+            <div id="informacoes_frequencia" hidden>
+                <label>Situação: </label>
+                <label id="situacao"></label>
+
+                <br/><br/>
+
+                <label>Observação: </label>
+                <label id="observacao"></label>
+
+                <br/>
+            </div>
 
             <br/><br/><input id="botao" class="btn btn-success" type="submit" style="width: 200px;" value="Salvar"/>
 
@@ -100,11 +112,16 @@
             $("#formulario_frequencia").html(formulario);
 
             // Preenchendo os radio-buttons com as informacoes que tem no banco de dados
-            $.get('/getFrequenciaMensal/' + {{$idVinculo}} + '/' + mes, function (frequencia) {
-                if(frequencia == "nao existe"){
+            $.get('/getFrequenciaMensal/' + {{$idVinculo}} + '/' + mes, function (frequenciaMensal) {
+                
+                if(frequenciaMensal == "nao existe"){
+
+                    $("#informacoes_frequencia").attr("hidden", true);
                     $("#botao").val("Salvar");
-                } else{
-                    frequencia = JSON.parse(frequencia);
+
+                } else{ 
+                
+                    let frequencia = JSON.parse(frequenciaMensal.frequencia);
                     for(i = 1; i <= 31; i++){
                         dia = 'dia' + i;
                         hora = frequencia[dia];
@@ -112,21 +129,25 @@
                             $("#" +  dia + "_" + hora).attr("checked", "checked");
                         }
                     }
+                    
+                    $("#situacao").html(frequenciaMensal.status);
+                    if (frequenciaMensal.status == "aprovada"){
+                        $("#situacao").attr("style", "color: green;");
+                    }else if(frequenciaMensal.status == "recusada"){
+                        $("#situacao").attr("style", "color: red;");
+                    }else{
+                        $("#situacao").attr("style", "color: blue;");
+                    }
+
+                    $("#observacao").html(frequenciaMensal.observacao)
+
+                    $("#informacoes_frequencia").attr("hidden", false);
 
                     $("#botao").val("Atualizar");
                 }
             });
         });
-        
-        // $(".dia").click(function(){
-        //     if ($(this).prop("checked")){
-        //         console.log('a')
-        //         $(this).prop("checked",false);
-        //     } else {
-        //         console.log('b')
-        //         $(this).prop("checked",true);
-        //     }
-        // });
+
     </script>
 
 @endsection

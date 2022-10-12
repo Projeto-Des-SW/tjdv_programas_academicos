@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/vinculos/avaliar/relatorio/final', [VinculoController::class, 'avaliar_relatorio_final'])->name("vinculos.avaliarRelFinal");
-
+Route::post('/vinculos/avaliar/frequencia/mensal', [VinculoController::class, 'avaliar_frequencia_mensal'])->name("vinculos.avaliarFreqMensal");
 Route::get('/notificarPrazoFrequencia', [EmailController::class, 'notificarPrazoFrequencia'])->name("email.notificarPrazoFrequencia");
 Route::get('/notificarPrazoRelatorio', [EmailController::class, 'notificarPrazoRelatorio'])->name("email.notificarPrazoRelatorio");
 
