@@ -15,7 +15,7 @@ class CreateVinculosTable extends Migration
     {
         Schema::create('vinculos', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['ANDAMENTO', 'CONCLUIDA', 'CANCELADA'])->default('ANDAMENTO')->nullable(false);
+            $table->enum('status', ['ANDAMENTO', 'CONCLUIDA', 'CANCELADA'])->default('ANDAMENTO')->nullable();
             $table->enum('bolsa', ['REMUNERADA', 'VOLUNTARIA'])->nullable(false);
             $table->float('valor_bolsa')->nullable();
             $table->enum('programa', ['PAVI', 'BIA', 'PET', 'MONITORIA', 'TUTORIA'])->nullable(false);
@@ -27,7 +27,7 @@ class CreateVinculosTable extends Migration
             $table->string("semestre")->nullable(false);
             $table->date("data_inicio")->nullable(false);
             $table->date("data_fim")->nullable(false);
-            $table->integer('quantidade_horas')->default(0)->nullable();
+            $table->integer('quantidade_horas')->default(0);
             $table->timestamps();
         });
 
