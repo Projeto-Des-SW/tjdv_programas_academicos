@@ -10,16 +10,15 @@
 
     @include("alunos.components.modal_create")
   
-    @if (sizeof($aluno) == 0)
+    @if (sizeof($alunos) == 0)
       <div class="empty">
         <p>
           Não há alunos cadastrados
         </p>
-        {{--  --}}
       </div>
     @else
       <div id="list">
-      @foreach ($aluno as $aluno)
+      @foreach ($alunos as $aluno)
           <div class="row justify-content-md-center listing-card">
             <div class="col-md-9 col-lg-9 informacoes">
               <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$aluno->id}})">
