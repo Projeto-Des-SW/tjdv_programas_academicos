@@ -2,6 +2,42 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content modal-create">
       <div class="modal-header" >
+        <div class="btn-group">
+          <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background-color: inherit; padding: 0px;">
+            <img src="{{asset("images/menu_tres_pontos.svg")}}" class="option-button" alt="Menu">
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <form id="cert_form" class="dropdown-item" method="get">
+                @csrf
+                <input id="programa_cert" name="programa" type="hidden">
+                <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
+                  Certificado
+                </button>
+              </form>
+            </li>
+            <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Frequência mensal</a></li>
+            @if (auth()->user()->typage_type == "App\Models\Servidor")
+              <li>
+                <form id="declaracao" class="dropdown-item" method="get">
+                  @csrf
+                  <input id="programa_dec" name="programa" type="hidden">
+                  <button type="submit" formtarget="_blank" style="border: none; background-color: inherit">
+                    Declaração
+                  </button>
+                </form>
+              </li>
+            @endif
+            <li><a class="dropdown-item" href="#">Visualizar frequência</a></li>
+            @if (auth()->user()->typage_type == "App\Models\Aluno")  
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Preencher frequência</a></li>
+            @endif
+            @if (auth()->user()->typage_type == "App\Models\Servidor")
+              <li><a class="dropdown-item" target="_blank" id="relatorio_final">Relatório final</a></li>
+            @endif
+          </ul>
+        </div>
         <h5 id="programa_ver" class="modal-title title"></h5>
         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -56,7 +92,6 @@
           </div>
         
           <div style="margin-bottom: 15px; margin-top: 15px">
-            <a id="frequencia_mensal" class="btn btn-success" role="button" style="width: 230px">Formulário de Frequência</a>
             <p></p>
             <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 230px" role="button">Voltar</a>
           </div> 
@@ -76,15 +111,18 @@
   let semestre_ver = $('#semestre_ver')
   let curso_ver = $('#curso_ver')
   let disciplina_ver = $('#disciplina_ver')
+  let programa_cert = $("#programa_cert")
+  let programa_dec = $("#programa_dec")
 
-  function exibirModalVer(vinculo, professor, aluno, user){
+  function exibirModalVer(vinculo, professor, aluno, user, auth){
     status_ver.text(vinculo.status)
     
-    if (vinculo.status == "VIGOR"){
+    if (vinculo.status == "ANDAMENTO"){
+      document.getElementById("status_ver").style.color = "yellow";
+    }else if(vinculo.status == "CONCLUIDA"){
       document.getElementById("status_ver").style.color = "green";
-    }else{
+    } else {
       document.getElementById("status_ver").style.color = "red";
-
     }
 
     if (vinculo.bolsa == "REMUNERADA"){
@@ -110,8 +148,25 @@
       disciplina_ver.text("Não foi necessário disciplina.")
     }
     $("#frequencia_mensal").attr('href', `/vinculos/frequencia/${vinculo.id}`)
+
+    programa_cert.val(vinculo.programa);
+    document.getElementById('cert_form').action = `/vinculos/certificado/${vinculo.id}`;
+
+    // Habilitando botao de ver relatorio apenas quando existir relatorio
+    if(auth.typage_type == "App\\Models\\Servidor"){
+      programa_dec.val(vinculo.programa);
+      document.getElementById('declaracao').action = `/vinculos/declaracao/${vinculo.id}`;
+      if(vinculo.relatorio){
+        // Exibe
+        $("#relatorio_final").attr('href', `storage/${aluno.cpf}/${vinculo.id}.pdf`)
+        document.getElementById("relatorio_final").style.display = "block";
+      } else{
+        // Oculta
+        document.getElementById("relatorio_final").style.display = "none";
+      }
+    }
+
     $('#verModal').modal('show');
   }
 
 </script>
-

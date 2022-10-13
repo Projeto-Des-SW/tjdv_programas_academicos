@@ -36,8 +36,8 @@
             <div class="col-md-1 col-lg-1 status">
               <img src="{{asset("images/$vinculo->status.png")}}" class="status-icon">
             </div>
-            <div class="col-md-8 col-lg-8 informacoes">
-              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}}, {{$vinculo->aluno->user}})">
+            <div class="col-md-9 col-lg-9 informacoes">
+              <a type="button" style="text-decoration: none; color: black;" onclick="exibirModalVer({{$vinculo}}, {{$vinculo->professor}}, {{$vinculo->aluno}}, {{$vinculo->aluno->user}}, {{$auth}})">
                 <label class="labelIndex">{{$vinculo->professor->nome}} - {{$vinculo->aluno->user->name}}</label>
                 <hr class="labelIndex">
                 <label class="labelIndex">{{$vinculo->programa}} - {{$vinculo->bolsa}} - {{$vinculo->semestre}}</label>
@@ -45,25 +45,18 @@
             </div>
             @auth
               @if (auth()->user()->typage_type == "App\Models\Servidor")          
-                <div id="opcoes" class="col-md-3 col-lg-3 opcoes row">
+                <div id="opcoes" class="col-md-2 col-lg-2 opcoes row">
                   <a type="button" class="col-md-auto edit" onclick="exibirModalEditar({{$vinculo}})">
                     <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar Vinculo">
                   </a>
                   <a type="button" class="col-md-auto delete" onclick="exibirModalDelete({{$vinculo}})">
                     <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir Vinculo">
                   </a>
-                  <form id="cert_form" class="col-md-auto" action="{{route("vinculos.certificado", $vinculo->id)}}" method="get">
-                    @csrf
-                    <input name="programa" type="hidden" value={{$vinculo->programa}}>
-                    <button type="submit" formtarget="_balnk" style="border: none; background-color: inherit">
-                      <img src="{{asset("images/certificado.png")}}" class="option-button" alt="Certificado">
-                    </button>
-                  </form>
                 </div>
               @else
                 <div class="col-md-2 col-lg-2 opcoes">
                   <a type="button" class="edit" onclick="exibirModalRelatorio({{$vinculo->id}})">
-                    <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Editar Vinculo">
+                    <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Relatorio final">
                   </a>
                 </div>
               @endif
@@ -103,7 +96,7 @@
     }
 
     function exibirModalRelatorio(id){
-      $("#modal_show_" + id).modal("show");
+      $("#modal_relatorio_" + id).modal("show");
     }
   </script>
 

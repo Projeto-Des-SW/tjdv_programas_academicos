@@ -13,7 +13,7 @@ class VinculosSeeder extends Seeder
         Vinculo::create([
             'status' => 'CANCELADA',
             'bolsa' => 'REMUNERADA',
-            'programa' => 'PAV',
+            'programa' => 'PAVI',
             'valor_bolsa' => 800,
             'curso' => 'BCC',
             'semestre' => '2021.1',
@@ -27,7 +27,7 @@ class VinculosSeeder extends Seeder
             'bolsa' => 'REMUNERADA',
             'valor_bolsa' => 350,
             'programa' => 'Tutoria',
-            'disciplina' => 'Logica Matematica',
+            'disciplina' => 'Lógica matemática',
             'curso' => 'BCC',
             'semestre' => '2022.2',
             'data_inicio' => "2022-08-17",
@@ -59,6 +59,19 @@ class VinculosSeeder extends Seeder
             'data_inicio' => "2022-08-17",
             'data_fim' => '2022-11-17',
             'aluno_id' => 3,
+            'professor_id' => 5
+        ]);
+
+        Vinculo::create([
+            'status' => 'CONCLUIDA',
+            'bolsa' => 'REMUNERADA',
+            'programa' => 'PET',
+            'valor_bolsa' => 500,
+            'curso' => 'BCC',
+            'semestre' => '2022.2',
+            'data_inicio' => "2022-08-17",
+            'data_fim' => '2022-11-17',
+            'aluno_id' => 2,
             'professor_id' => 5
         ]);
     }

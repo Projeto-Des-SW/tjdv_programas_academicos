@@ -17,9 +17,9 @@ class ServidorSeeder extends Seeder
         ]);
 
         $servidor1->user()->create([
-            'name' => "Vanessa",
+            'name' => "Vanessa Passos",
             'email' => "vanessa@gmail.com",
-            'password' => Hash::make('123456')
+            'password' => Hash::make('12345678')
         ])->givePermissionTo('servidor');
     }
 }

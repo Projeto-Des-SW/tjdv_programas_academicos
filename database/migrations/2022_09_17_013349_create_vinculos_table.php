@@ -18,9 +18,11 @@ class CreateVinculosTable extends Migration
             $table->enum('status', ['ANDAMENTO', 'CONCLUIDA', 'CANCELADA'])->default('ANDAMENTO')->nullable(false);
             $table->enum('bolsa', ['REMUNERADA', 'VOLUNTARIA'])->nullable(false);
             $table->float('valor_bolsa')->nullable();
-            $table->enum('programa', ['PAV', 'BIA', 'MONITORIA', 'TUTORIA'])->nullable(false);
+            $table->enum('programa', ['PAVI', 'BIA', 'PET', 'MONITORIA', 'TUTORIA'])->nullable(false);
             $table->string("disciplina")->nullable();
             $table->string("relatorio")->nullable();
+            $table->enum('status_relatorio', ['ENVIADO', 'APROVADO', 'REPROVADO'])->nullable();
+            $table->string("observacao_relatorio")->nullable();
             $table->string("curso")->nullable();
             $table->string("semestre")->nullable(false);
             $table->date("data_inicio")->nullable(false);
