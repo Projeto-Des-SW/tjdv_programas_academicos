@@ -20,18 +20,18 @@
       <div id="list">
       @foreach ($aluno as $aluno)
           <div class="row justify-content-md-center listing-card">
-            <div class="col-md-8 col-lg-8 informacoes">
+            <div class="col-md-9 col-lg-9 informacoes">
               <a type="button" class="ver" style="text-decoration: none; color: black;" onclick="exibirModalVisualizar({{$aluno->id}})">
                 <label class="labelIndex">{{$aluno->user->name}}</label>
                 <hr class="labelIndex">
                 <label class="labelIndex">Curso: {{$aluno->curso}}</label>
               </a>
             </div>
-            <div class="col-md-3 col-lg-3 opcoes">
-              <a type="button" class="edit" onclick="exibirModalEditar({{$aluno->id}})">
+            <div class="col-md-2 col-lg-2 opcoes row">
+              <a type="button" class="col-md-auto edit" onclick="exibirModalEditar({{$aluno->id}})">
                 <img src="{{asset("images/editar.png")}}" class="option-button" alt="Editar aluno">
               </a>
-              <a type="button" class="delete" onclick="exibirModalDeletar({{$aluno->id}})">
+              <a type="button" class="col-md-auto delete" onclick="exibirModalDeletar({{$aluno->id}})">
                 <img src="{{asset("images/excluir.png")}}" class="option-button" alt="Excluir aluno">
               </a>
             </div>
@@ -84,8 +84,9 @@
   </script>
   @endif
   
-    @elsecan('aluno')
-      <h3>Você não possui permissão!</h3>
-    @endcan
-  @endsection
+  @elsecan('aluno')
+    <h3 style="margin-top: 1rem">Você não possui permissão!</h3>
+    <a class="btn btn-primary submit" style="margin-top: 1rem" href="{{route("vinculos.index")}}">Voltar</a>
+  @endcan
+@endsection
 
