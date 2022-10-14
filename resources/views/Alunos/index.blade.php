@@ -8,7 +8,7 @@
       <img src="{{asset("images/add-icon.png")}}" class="add-button" alt="Adicionar aluno">
     </a>
 
-    @include("alunos.components.modal_create")
+    @include("Alunos.components.modal_create")
   
     @if (sizeof($alunos) == 0)
       <div class="empty">
@@ -37,9 +37,9 @@
             </div>
           </div>
           <br>
-        @include("alunos.components.modal_edit", ['aluno' => $aluno])
-        @include("alunos.components.modal_show")
-        @include("alunos.components.modal_delete")
+        @include("Alunos.components.modal_edit", ['aluno' => $aluno])
+        @include("Alunos.components.modal_show")
+        @include("Alunos.components.modal_delete")
       @endforeach
       </div>
     @endif
