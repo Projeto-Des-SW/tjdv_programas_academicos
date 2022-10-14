@@ -61,18 +61,5 @@ class VinculosSeeder extends Seeder
             'aluno_id' => 3,
             'professor_id' => 5
         ]);
-
-        Vinculo::create([
-            'status' => 'CONCLUIDA',
-            'bolsa' => 'REMUNERADA',
-            'programa' => 'PET',
-            'valor_bolsa' => 500,
-            'curso' => 'BCC',
-            'semestre' => '2022.2',
-            'data_inicio' => "2022-08-17",
-            'data_fim' => '2022-11-17',
-            'aluno_id' => 2,
-            'professor_id' => 5
-        ]);
     }
 }

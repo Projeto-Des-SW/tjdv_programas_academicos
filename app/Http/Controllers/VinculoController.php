@@ -17,7 +17,7 @@ class VinculoController extends Controller
 
     public function index(Request $request)
     {
-        if (auth()->user()->typage_type == "App\Models\Servidor") {
+        if (isset(auth()->user()->typage_type) && auth()->user()->typage_type == "App\Models\Servidor") {
             $professors = Professor::all();
             $alunos = Aluno::all();
             for ($i = 0; $i < count($alunos); $i++) {
@@ -49,11 +49,13 @@ class VinculoController extends Controller
                     $query->where("vinculos.programa", "=", "{$search}");
                 }
             })->orderBy('vinculos.created_at', 'desc')->select("vinculos.*")->get();
-        } else if (auth()->user()->typage_type == "App\Models\Aluno") {
+        } else if (isset(auth()->user()->typage_type) && auth()->user()->typage_type == "App\Models\Aluno") {
             $vinculos = auth()->user()->typage->vinculos;
             $professors = [];
             $alunos = [];
             $search = $request->search;
+        } else {
+            return redirect(url("/login"));
         }
         $auth = auth()->user();
         return view("vinculos.index", compact('vinculos', 'professors', 'alunos', 'search', 'auth'));
