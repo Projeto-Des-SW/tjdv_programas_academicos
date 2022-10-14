@@ -1,13 +1,14 @@
 @extends("templates.app")
 
 @section("body")
-    
-    <x-jet-validation-errors class="mb-4" />
+    @include("auth.modal_criar_aluno")
+
+    {{-- <x-jet-validation-errors class="mb-4" />
     @if (session('status'))
         <div class="mb-4 font-medium text-sm text-green-600">
             {{ session('status') }}
         </div>
-    @endif
+    @endif --}}
     <div class="container">
         <div class="row" style="padding-top: 50px">
             <div class="col">
@@ -29,18 +30,9 @@
                         <input id="password" name="password" class="form-control input-modal-create" type="password" placeholder="Digite sua senha" >
                     </div>
 
-                    <div class="row">
-                        <div class="block mt-4 col">
-                            <label for="remember_me" class="flex items-center">
-                                <x-jet-checkbox id="remember_me" name="remember" />
-                                <span class="ml-2 text-sm text-gray-600">Lembre-se de mim</span>
-                            </label>
-                        </div>
-                    </div>
-                    
                     <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px; width: 100%">Entrar</button>
                     <div style="text-align: center; margin-top: 10px">
-                        <a href="#" style="text-decoration: none;">Cadastre-se</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_create" style="text-decoration: none; cursor: point;">Cadastre-se</a>
                     </div>
                 </form>
             </div>

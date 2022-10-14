@@ -31,6 +31,38 @@ class AlunoController extends Controller
         return redirect(route("alunos.index"));
     }
 
+    public function criar_aluno(Request $request)
+    {
+        $validacao = $request->validate(
+            [
+                'name' => ['required'],
+                'cpf' => ['required'],
+                'email' => ['required'],
+                'semestre_entrada' => ['required'],
+                'curso' => ['required'],
+                'password' => ['required']
+            ],
+            [
+                'required' => 'O campo :attribute é obrigatório.'
+            ]
+        );
+
+        $aluno = Aluno::create([
+            'cpf' => $request->input('cpf'),
+            'curso' => $request->input('curso'),
+            'semestre_entrada' => $request->input('semestre_entrada')
+        ]);
+        
+        $aluno->user()->create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ])->givePermissionTo('aluno');
+
+        return redirect(url("/login"));
+
+    }
+
     public function update(Request $request)
     {
         $aluno = Aluno::find($request->id);
