@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="css/projeto/pdfs/dec.css" rel="stylesheet" type="text/css" />
-  <title>aaaaaaa</title>
+  <title>Declaração - {{$vinculo->aluno->user->name}} - {{$vinculo->programa}}</title>
 </head>
 <body>
   <div class="declaracao">
