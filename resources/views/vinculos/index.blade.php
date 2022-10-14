@@ -59,6 +59,7 @@
                     <img src="{{asset("images/relatorio.png")}}" class="relatorio-icon" alt="Relatorio final">
                   </a>
                 </div>
+                @include("vinculos.componentes.modal_relatorio")
               @endif
             @endauth
           </div>
@@ -71,8 +72,6 @@
           @if (auth()->user()->typage_type == "App\Models\Servidor")
             @include("vinculos.componentes.modal_delete")
             @include("vinculos.componentes.modal_edit")
-          @else
-            @include("vinculos.componentes.modal_relatorio")
           @endif
         @endauth
     @endif
