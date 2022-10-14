@@ -52,7 +52,7 @@ class AlunoController extends Controller
             'curso' => $request->input('curso'),
             'semestre_entrada' => $request->input('semestre_entrada')
         ]);
-        
+
         $aluno->user()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -60,7 +60,6 @@ class AlunoController extends Controller
         ])->givePermissionTo('aluno');
 
         return redirect(url("/login"));
-
     }
 
     public function update(Request $request)
@@ -114,6 +113,6 @@ class AlunoController extends Controller
     public function index()
     {
         $alunos = Aluno::all();
-        return view("alunos.index", compact("alunos"));
+        return view("Alunos.index", compact("alunos"));
     }
 }
