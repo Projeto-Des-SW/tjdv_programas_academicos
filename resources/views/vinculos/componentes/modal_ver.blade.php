@@ -28,11 +28,6 @@
                 </form>
               </li>
             @endif
-            <li><a class="dropdown-item" href="#">Visualizar frequência</a></li>
-            @if (auth()->user()->typage_type == "App\Models\Aluno")  
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" target="_blank" id="frequencia_mensal">Preencher frequência</a></li>
-            @endif
             @if (auth()->user()->typage_type == "App\Models\Servidor")
               <li><a class="dropdown-item" target="_blank" id="relatorio_final">Relatório final</a></li>
             @endif
