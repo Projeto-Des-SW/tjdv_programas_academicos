@@ -20,22 +20,6 @@ class ProfessorController extends Controller
         return view("professores.index", compact('professors'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view("professores.create");
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         Validator::make($request->all(), Professor::$rules, Professor::$messages)->validateWithBag('create');
@@ -45,39 +29,10 @@ class ProfessorController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Professor $professor)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Professor $professor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $professor = Professor::find($request->id);
-        
+
         $rules = Professor::$rules;
         $rules['cpf'] = [
             'bail', 'required', 'formato_cpf', 'cpf', 'unique:servidors', 'unique:alunos',
@@ -87,23 +42,22 @@ class ProfessorController extends Controller
             'bail', 'required', 'min:7', 'max:7',
             Rule::unique('professors')->ignore($professor->id)
         ];
+        $rules['email'] = [
+            'bail', 'required', 'email', 'max:100', 'unique:users',
+            Rule::unique('professors')->ignore($professor->id)
+        ];
 
         Validator::make($request->all(), $rules, Professor::$messages)->validateWithBag('update');
-        
+
         $professor->nome = $request->nome;
         $professor->cpf = $request->cpf;
         $professor->siape = $request->siape;
+        $professor->email = $request->email;
         if ($professor->save()) {
             return redirect(route("professores.index"));
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Professor  $professor
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
         $id = $request->only(['id']);

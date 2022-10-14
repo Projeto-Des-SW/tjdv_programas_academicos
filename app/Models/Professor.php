@@ -9,12 +9,13 @@ class Professor extends Model
 {
     use HasFactory;
 
-    protected $fillable = array('nome', 'cpf', 'siape');
+    protected $fillable = array('nome', 'cpf', 'siape', 'email');
 
     public static $rules = [
         'nome' => 'bail|required|min:10|max:100|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\' ]+$/',
         'cpf' => 'bail|required|formato_cpf|cpf|unique:servidors|unique:alunos|unique:professors',
         'siape' => 'bail|required|min:7|max:7|unique:professors',
+        'email' => 'bail|required|email|max:100|unique:professors|unique:users'
     ];
 
     public static $messages = [
@@ -29,7 +30,11 @@ class Professor extends Model
         'siape.required' => 'Siape é obrigatório',
         'siape.unique' => 'SIAPE já cadastrado',
         'siape.min' => 'Siape deve possuir 7 caracteres',
-        'siape.max' => 'Siape deve possuir 7 caracteres'
+        'siape.max' => 'Siape deve possuir 7 caracteres',
+        'email.required' => 'E-mail é obrigatório',
+        'email.email' => 'E-mail inválido',
+        'email.max' => 'E-mail deve possuir no máximo 100 caracteres',
+        'email.unique' => 'E-mail já cadastrado'
     ];
 
     public function vinculos()

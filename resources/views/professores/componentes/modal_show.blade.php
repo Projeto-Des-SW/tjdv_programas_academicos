@@ -17,6 +17,10 @@
               <div class="modal-ver">{{$professor->siape}}</div>
             </div>
           </div>
+          <div>
+            <label class="form-label">Email</label>
+            <div class="modal-ver">{{$professor->email}}</div>
+          </div> 
           <p></p>
           <a class="btn btn-primary submit-button" data-bs-dismiss="modal" style="width: 200px" role="button">Voltar</a>
         </div>

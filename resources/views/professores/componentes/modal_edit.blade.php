@@ -42,6 +42,16 @@
               @endif
             </div>
           </div>
+          <div class="mb-3">
+            <label for="email_edit" class="form-label">Email</label>
+            <input name="email" id="email_edit" type="text" placeholder="Digite o email" value="{{ old('email', $professor->email) }}"
+            class="form-control input-modal-create @if(!empty($errors->update->first('email'))) is-invalid @endif">
+            @if(!empty($errors->update->first('email')))
+                  <span class="invalid-feedback d-block">
+                    <strong> {{$errors->update->first('email')}} </strong>
+                  </span>
+            @endif
+          </div>
           <button type="submit" class="btn btn-primary submit-button" style="margin-top: 30px;">Salvar informações</button>
         </div>
       </form>

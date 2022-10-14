@@ -17,7 +17,7 @@ class ProfessoresSeeder extends Seeder
         ]);
 
         Professor::create([
-            'nome' => 'Marcius',
+            'nome' => 'Marcius Petruciu',
             'email' => "victorfran18@gmail.com",
             'cpf' => '017.197.098-58',
             'siape' => '1234566'
@@ -32,14 +32,14 @@ class ProfessoresSeeder extends Seeder
 
         Professor::create([
             'nome' => 'Ícaro Lins',
-            'email' => "victorfran18@gmail.com",
+            'email' => "asldnkjlasbdkjhasvbdjhgcvasghd@gmail.com",
             'cpf' => '107.409.038-10',
             'siape' => '1234564'
         ]);
 
         Professor::create([
             'nome' => 'Jean Carlos',
-            'email' => "luizd4398@gmail.com",
+            'email' => "tcavalcanti.tc@gmail.com",
             'cpf' => '910.096.198-10',
             'siape' => '1234563'
         ]);

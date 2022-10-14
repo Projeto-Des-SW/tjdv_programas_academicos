@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public static $rules = [
         'name' => 'bail|required|min:10|max:100|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\' ]+$/',
-        'email' => 'bail|required|email|max:100|unique:users',
+        'email' => 'bail|required|email|max:100|unique:users|unique:professors',
         'password' => 'bail|required|min:8|max:30'
     ];
 
